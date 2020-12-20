@@ -4,26 +4,26 @@ define('CONST_INCLUDE',NULL);
 if (!defined('CONST_INCLUDE')){
     die('Accès direct interdit');
 }
-$tampon = new VueIndex();
+$patron = new VueIndex();
 
-            if (!isset($_GET['module'])) {
-                $module="Recherche";
+            if (!isset($_GET['modules'])) {
+                $modules="Recherche";
                 $_GET['action'] = "liste";
             }
             else {
-                $module=htmlspecialchars($_GET['module']);
+                $modules=htmlspecialchars($_GET['modules']);
             }
-            switch($module){
+            switch($modules){
                 case "Anime":
                 case "Recherche":
                 case "Utilisateur":
                 case "Connexion":
-                    include 'module/module_'.$module.'/Mod'.$module.'.php';
+                    include 'module/module_'.$modules.'/Mod'.$modules.'.php';
                     break;
                 default :
                     die("Erreur Index : Module inacessible.");
             }
 
-    $module = $tampon->getAffichage();//on recupere l'affichage des modules
-/*    require('template.php');*/
+    $modules = $patron->getAffichage();//on recupere l'affichage des modules
+    require('patron.php');
 ?>
