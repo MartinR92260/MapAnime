@@ -2,7 +2,7 @@
 if (!defined('CONST_INCLUDE')){
     die('Accès direct interdit');
 }
-	include 'cont_connexion.php';
+	include 'ContConnexion.php';
 
 
 	$controleur = new ContConnexion();

@@ -18,7 +18,7 @@ $patron = new VueIndex();
                 case "Recherche":
                 case "Utilisateur":
                 case "Connexion":
-                    include 'module/module_'.$modules.'/Mod'.$modules.'.php';
+                    include 'module/module_'.$modules.'/mod_'.$modules.'.php';
                     break;
                 default :
                     die("Erreur Index : Module inacessible.");

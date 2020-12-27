@@ -2,12 +2,12 @@
 if (!defined('CONST_INCLUDE')){
     die('Accès direct interdit');
 }
-include_once('./VueGenerique.php');
+include_once('./VueIndex.php');
 
 class VueConnexion extends VueIndex{//!!!!!
     public function __construct() {
          parent::__construct();
-         echo '<link rel="stylesheet" type="text/css" href="module/module_connexion/vue_connexion.css"/>';
+         echo '<link rel="stylesheet" type="text/css" href="module/module_Connexion/VueConnexion.css"/>';
 
      }
 

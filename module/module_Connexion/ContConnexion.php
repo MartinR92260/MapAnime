@@ -6,32 +6,32 @@ if (!defined('CONST_INCLUDE')){
 }
 	class ContConnexion{
         
-		protected $modeleConnexion;
-		protected $vueConnexion;
+		protected $ModeleConnexion;
+		protected $VueConnexion;
         
 		public function __construct(){
-			$this->modeleConnexion = new ModeleConnexion();
-			$this->vueConnexion = new VueConnexion();
+			$this->ModeleConnexion = new ModeleConnexion();
+			$this->VueConnexion = new VueConnexion();
 		}
         
 		function formulaire() {
-			$this->vueConnexion->afficheForm();
+			$this->VueConnexion->afficheForm();
 		}
 
 		function connexion() {
-			$this->modeleConnexion->verifConnexion();
+			$this->ModeleConnexion->verifConnexion();
 		}
 
 		function deconnexion(){
-			$this->modeleConnexion->deconnexion();
+			$this->ModeleConnexion->deconnexion();
 		}
         
 		function formulaireInscription(){
-			$this->vueConnexion->afficheFormInscription();
+			$this->VueConnexion->afficheFormInscription();
 		}
 
 		function Inscription(){
-			$this->vueConnexion->result($this->modeleConnexion->Inscription());
+			$this->VueConnexion->result($this->ModeleConnexion->Inscription());
                 
 		}
 	}

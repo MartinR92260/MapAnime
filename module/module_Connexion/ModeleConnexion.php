@@ -2,7 +2,7 @@
 if (!defined('CONST_INCLUDE')){
     die('Accès direct interdit');
 }
-require_once('./connexionBD.php');//!!!!
+require_once('./ConnexionBD.php');//!!!!
 
 class ModeleConnexion extends ConnexionBD {
     public function __construct(){

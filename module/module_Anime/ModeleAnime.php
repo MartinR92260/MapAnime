@@ -1,6 +1,6 @@
 <?php
 
-require_once("./connexionBD.php"); 
+require_once("./ConnexionBD.php"); 
 
 class ModeleAnime extends ConnexionBD{
 
