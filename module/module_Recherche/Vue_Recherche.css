@@ -1,0 +1,24 @@
+.block{
+    border: solid 15px #082740;
+    background-color: #082740;
+    padding:20px 20px 20px 20px;
+}
+.block>a>div{
+    border: solid 6px #31250E;
+    background-color: white;
+    text-decoration: none;
+    margin-bottom:30px;
+    padding:10px;
+}
+.block>a>div:hover{
+    color: #E99D34;
+    border: solid 0px #96e2fc;
+    background-color: #5E1732;
+}
+.block>a>div>img{
+    width: 125px;
+    height: 150px;
+}
+/*.block>a>div>div{
+    display: inline-block;
+}*/
