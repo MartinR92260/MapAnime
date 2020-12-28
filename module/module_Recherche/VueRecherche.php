@@ -5,7 +5,7 @@ include_once('./VueIndex.php');
 class VueRecherche extends VueIndex{
 
 	public function __construct(){
-        echo '<link rel="stylesheet" type="text/css" href="module/module_Recherche/VueRecherche.css"/>';
+        echo '<link rel="stylesheet" type="text/css" href="module/module_Recherche/Vue_Recherche.css"/>';
     }
 
 	public function rechercher($result){
@@ -44,7 +44,7 @@ class VueRecherche extends VueIndex{
 			echo "<div>"; //75d2ed
 				echo "<img src=./Images/Anime/".$key['ImageAnime']." class=\"col-3\">";
 				echo "<div class=\"col-9\">";
-			       	echo "Nom de l'Oeuvre: ".$key['nomAnime']."<br/>";
+			       	echo "Nom de l'Oeuvre: ".$key['nom']."<br/>";
 			       	echo "Sysnopsis :</br>".$key['SUBSTRING(synopsis,1,255)']."...</br>";
 		       	echo "</div>";
 			echo "</div>";
