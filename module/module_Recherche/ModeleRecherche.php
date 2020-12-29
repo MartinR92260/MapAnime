@@ -50,7 +50,7 @@ class ModeleRecherche extends ConnexionBD{
 	}
 
 	public function listeOeuvre(){
-		$this->request = "SELECT idAnime,nom,ImageAnime,SUBSTRING(synopsis,1,255) FROM Anime";
+		$this->request = "SELECT idAnime,nom,ImageAnime,SUBSTRING(synopsis,1,255), NoteG, Popularite FROM Anime";
 		$prepareRequest=self::$bdd->prepare($this->request);
 		$prepareRequest->execute();
 		return $prepareRequest->fetchAll();

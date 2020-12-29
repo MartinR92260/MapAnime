@@ -39,18 +39,24 @@ class VueRecherche extends VueIndex{
 
 	public function affListe($result){
 		echo "<div class=\"block\">";
+		echo '<p>Anime</p>';
+		echo "<hr class = \"haut\">";
     	foreach ($result as $key) {
     		echo "<a href=\"index.php?module=Anime&action=Anime&id=".$key['idAnime']."\">";
 			echo "<div>"; //75d2ed
-				echo "<img src=./Images/Anime/".$key['ImageAnime']." class=\"col-3\">";
+				echo "<img src=./images/Anime/".$key['ImageAnime']." class=\"col-3\">";
 				echo "<div class=\"col-9\">";
-			       	echo "Nom de l'Oeuvre: ".$key['nom']."<br/>";
-			       	echo "Sysnopsis :</br>".$key['SUBSTRING(synopsis,1,255)']."...</br>";
+			       	echo "Nom : ".$key['nom']."<br/>";
+			       	echo "Description :</br>".$key['SUBSTRING(synopsis,1,255)']."...</br>";
+			       	echo "Note : ".$key['NoteG']."<br/>";
+			       	echo "Popularite : ".$key['Popularite']."<br/>";
 		       	echo "</div>";
 			echo "</div>";
 			echo "</a>";
 		}
+		echo "<hr class = \"bas\">";
 		echo "</div>";
+		
 	}
 }
 ?>
