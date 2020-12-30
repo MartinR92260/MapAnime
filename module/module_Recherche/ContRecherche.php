@@ -12,33 +12,14 @@ class ContRecherche{
 		$this->modele = new ModeleRecherche();
 		$this->vue = new VueRecherche();
 	}
-	public function recherche(){
-		$this->vue->rechercher($this->modele->listeGenre());
-	}
-
-	public function rechercheParNom(){
+    
+    public function rechercheParBar(){
 		$nomSaisie=htmlspecialchars($_POST['nomSaisie']);
 		$this->vue->afficheParNom($this->modele->search($nomSaisie),$nomSaisie);
 	}
-
-	public function rechercheTousAnime(){
-		$_POST['papier']=NULL;
-		$_POST['anime']='default';
-		$_POST['genre']=NULL;
-		$this->vue->rechercheTousFormat($this->modele->rFormat(),"Anime");
+	
+    public function rechercheParGenre(){
+		$this->vue->rechercher($this->modele->listeGenre());
 	}
-    
-	public function rechercheTousPapier(){
-		$_POST['papier']='default';
-		$_POST['anime']=NULL;
-		$_POST['genre']=NULL;
-		$this->vue->rechercheTousFormat($this->modele->rFormat(),"Papier");
-	}
-    
-	public function listeManga(){
-		$this->vue->affListe($this->modele->listeOeuvre());
-	}
-    
 }
-
 ?>

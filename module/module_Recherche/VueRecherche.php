@@ -8,6 +8,16 @@ class VueRecherche extends VueIndex{
         echo '<link rel="stylesheet" type="text/css" href="module/module_Recherche/Vue_Recherche.css"/>';
     }
 
+	public function afficheParNom($result,$saisieRecherche=null){
+		if($saisieRecherche!=NULL){
+			echo "<h3>Resultat=$saisieRecherche</h3></br>";
+		}
+		foreach ($result as $res) {
+			echo "<a href=\"index.php?module=Anime&action=Anime&id=".$res['idAnime']."\">".$res['nom']."</a>";
+			echo '</br>';
+		}
+	}
+
 	public function rechercher($result){
         echo '<form action="index.php?module=Recherche&action=parNom" method="POST">
                 <h3>Saisir un nom:</h3>
@@ -20,43 +30,6 @@ class VueRecherche extends VueIndex{
 				}
 				echo '<input type="submit" value="Lancer la recherche">
 			</form>';
-	}
-	
-	public function afficheParNom($result,$saisieRecherche=null){
-		if($saisieRecherche!=NULL){
-			echo "<h3>Resultat=$saisieRecherche</h3></br>";
-		}
-		foreach ($result as $res) {
-			echo "<a href=\"index.php?module=Anime&action=Anime&id=".$res['idAnime']."\">".$res['nom']."</a>";
-			echo '</br>';
-		}
-	}
-
-	public function rechercheTousFormat($result,$Genre){
-		echo "<h3>$Genre</h3></br>";
-		$this->affListe($result);
-	}
-
-	public function affListe($result){
-		echo "<div class=\"block\">";
-		echo '<p>Anime</p>';
-		echo "<hr class = \"haut\">";
-    	foreach ($result as $key) {
-    		echo "<a href=\"index.php?module=Anime&action=Anime&id=".$key['idAnime']."\">";
-			echo "<div>"; //75d2ed
-				echo "<img src=./images/Anime/".$key['ImageAnime']." class=\"col-3\">";
-				echo "<div class=\"col-9\">";
-			       	echo "Nom : ".$key['nom']."<br/>";
-			       	echo "Description :</br>".$key['SUBSTRING(synopsis,1,255)']."...</br>";
-			       	echo "Note : ".$key['NoteG']."<br/>";
-			       	echo "Popularite : ".$key['Popularite']."<br/>";
-		       	echo "</div>";
-			echo "</div>";
-			echo "</a>";
-		}
-		echo "<hr class = \"bas\">";
-		echo "</div>";
-		
 	}
 }
 ?>

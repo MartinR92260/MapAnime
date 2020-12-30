@@ -12,19 +12,10 @@ class ModRecherche{
 			$choix=htmlspecialchars($_GET['action']);
 			switch($choix){
 				case "parNom":
-					$this->controleur->rechercheParNom();
+					$this->controleur->rechercheParBar();
 					break;
-				case "anime":
-					$this->controleur->rechercheTousAnime();
-					break;
-				case "papier":
-					$this->controleur->rechercheTousPapier();
-					break;
-				case "recherche":
-					$this->controleur->recherche();
-					break;
-				case "liste":
-					$this->controleur->listeManga();
+				case "parGenre":
+					$this->controleur->rechercheParGenre();
 					break;
 				default:
 					echo $choix." Erreur Index : Action inexistant";
