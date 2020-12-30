@@ -41,5 +41,27 @@ class ModeleRecherche extends ConnexionBD{
 		$prepareRequest->execute();
 		return $prepareRequest->fetchAll();
 	}
+
+	public function rFormat(){
+		$this->request = "SELECT idAnime,nom,ImageAnime,SUBSTRING(synopsis,1,255) FROM Anime WHERE idAnime IS NOT NULL";
+		$this->queryMaker();
+		$prepareRequest=self::$bdd->prepare($this->request);
+		$prepareRequest->execute();
+		return $prepareRequest->fetchAll();
+	}
+
+	public function listeOeuvre(){
+		$this->request = "SELECT idAnime,nom,ImageAnime,SUBSTRING(synopsis,1,255) FROM Anime";
+		$prepareRequest=self::$bdd->prepare($this->request);
+		$prepareRequest->execute();
+		return $prepareRequest->fetchAll();
+	}
+
+	public function listeClub(){
+		$this->request = "SELECT idClub,nomClub, SUBSTRING(DescriptionClub,1,255), nbUtilisateur FROM Club";
+		$prepareRequest=self::$bdd->prepare($this->request);
+		$prepareRequest->execute();
+		return $prepareRequest->fetchAll();
+	}
 } 
 ?>

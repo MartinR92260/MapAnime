@@ -6,7 +6,7 @@
 
         <meta charset="UTF-8" />
         <link rel="icon" type="image/jpg" href="./images/icone.jpg"/>
-        <link href="style.css" rel="stylesheet" type="text/css">
+        <link href="site.css" rel="stylesheet" type="text/css">
     </head>
     
     <!-- corps de la page -->
@@ -17,7 +17,7 @@
             <nav>
                 <div class="gauche">
                     <a href="index.php?module=Recherche&action=anime">Anime</a>
-                    <a href="index.php?module=Recherche&action=Club">Club</a>
+                    <a href="index.php?module=Recherche&action=club">Club</a>
                     <?php
                     if (isset($_SESSION['idRole'])) {
                         echo "<a href=\"index.php?module=Profil&action=afficheProfil\" class=\"col-auto\">Profil</a>";

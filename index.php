@@ -4,7 +4,7 @@ define('CONST_INCLUDE',NULL);
 if (!defined('CONST_INCLUDE')){
     die('Accès direct interdit');
 }
-include 'module/module_Club/ModClub.php';
+
 $patron = new VueIndex();
 
             if (!isset($_GET['module'])) {
@@ -12,7 +12,7 @@ $patron = new VueIndex();
                 $_GET['action'] = "liste";
             }
             else {
-                $modules=htmlspecialchars($_GET['module']);
+                $module=htmlspecialchars($_GET['module']);
             }
             switch($module){
                 case "Anime":

@@ -5,7 +5,7 @@ include_once('./VueIndex.php');
 class VueRecherche extends VueIndex{
 
 	public function __construct(){
-        echo '<link rel="stylesheet" type="text/css" href="module/module_Recherche/Vue_Recherche.css"/>';
+        echo '<link rel="stylesheet" type="text/css" href="module/module_Recherche/VueRecherche.css"/>';
     }
 
 	public function afficheParNom($result,$saisieRecherche=null){
@@ -30,6 +30,46 @@ class VueRecherche extends VueIndex{
 				}
 				echo '<input type="submit" value="Lancer la recherche">
 			</form>';
+	}
+
+		public function rechercheTousFormat($result,$Genre){
+		echo "<h3>$Genre</h3></br>";
+		$this->affListe($result);
+	}
+
+		public function affListe($result){
+		echo "<div class=\"block\">";
+		echo '<p>Anime</p>';
+		echo "<hr class = \"haut\">";
+    	foreach ($result as $key) {
+    		echo "<a href=\"index.php?module=Anime&action=Anime&id=".$key['idAnime']."\">";
+			echo "<div>"; //75d2ed
+				echo "<img src=./images/Anime/".$key['ImageAnime']." class=\"col-3\">";
+				echo "<div class=\"col-9\">";
+			       	echo "Nom : ".$key['nom']."<br/>";
+			       	echo "Description :</br>".$key['SUBSTRING(synopsis,1,255)']."...</br>";
+		       	echo "</div>";
+			echo "</div>";
+			echo "</a>";
+		}
+		echo "<hr class = \"bas\">";
+		echo "</div>";
+	}
+
+	public function affListeClub($result){
+		echo "<div class=\"block\">";
+    	foreach ($result as $key) {
+    		echo "<a href=\"index.php?module=Club&action=Club&id=".$key['idClub']."\">";
+			echo "<div>"; //75d2ed
+				echo "<div class=\"col-9\">";
+			       	echo "Nom : ".$key['nomClub']."<br/>";
+			       	echo "Description :</br>".$key['SUBSTRING(DescriptionClub,1,255)']."...</br>";
+			       	echo "Nombre d'adherents : ".$key['nbUtilisateur']."<br/>";
+		       	echo "</div>";
+			echo "</div>";
+			echo "</a>";
+		}
+		echo "</div>";
 	}
 }
 ?>

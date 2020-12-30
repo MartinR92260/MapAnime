@@ -14,8 +14,17 @@ class ModRecherche{
 				case "parNom":
 					$this->controleur->rechercheParBar();
 					break;
+				case "anime":
+					$this->controleur->rechercheTousAnime();
+					break;
+				case "liste":
+					$this->controleur->listeAnime();
+					break;
 				case "parGenre":
 					$this->controleur->rechercheParGenre();
+					break;
+				case "club":
+					$this->controleur->listeDesClub();
 					break;
 				default:
 					echo $choix." Erreur Index : Action inexistant";
