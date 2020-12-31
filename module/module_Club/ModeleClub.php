@@ -38,14 +38,14 @@ class ModeleClub extends ConnexionBD{
     }
 
     public function getNbAdherent($id) {
-        $req = self::$bdd->prepare = prepare("SELECT nbUtilisateur FROM Club WHERE idClub = :id");
+        $req = self::$bdd->prepare("SELECT nbUtilisateur FROM Club WHERE idClub = ?");
         $req->execute(array($id)); 
-        $nbAdherent = $req->fetchAll();
-        return $nbAdherent;
+        return $req->fetchAll();
+
     }
 
         public function setNbAdherent($id) {
-        $req = self::$bdd->prepare = prepare("UPDATE Club SET idClub = :id WHERE idClub = :id");
+        $req = self::$bdd->prepare("UPDATE Club SET idClub = :id WHERE idClub = :id");
         $req->execute(array($id)); 
         $nbAdherent = $req->fetchAll();
         return $nbAdherent;
