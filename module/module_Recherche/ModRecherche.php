@@ -15,12 +15,9 @@ class ModRecherche{
 					$this->controleur->rechercheParBar();
 					break;
 				case "anime":
-					$this->controleur->rechercheTousAnime();
+					$this->controleur->listeDesAnime();
 					break;
-				case "liste":
-					$this->controleur->listeAnime();
-					break;
-				case "parGenre":
+				case "recherche":
 					$this->controleur->rechercheParGenre();
 					break;
 				case "club":

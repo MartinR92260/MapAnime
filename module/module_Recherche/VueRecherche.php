@@ -21,9 +21,7 @@ class VueRecherche extends VueIndex{
 	public function rechercher($result){
         echo '<form action="index.php?module=Recherche&action=parNom" method="POST">
                 <h3>Saisir un nom:</h3>
-				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="nomSaisie">
-				<input type="checkbox" name="papier"/> <label>Papier</label><br>
-				<input type="checkbox" name="anime"/> <label>Anime</label><br>
+				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="nomSaisie"><br>
 				Genre<br>';
 				foreach ($result as $tuple) {
 				    echo "<input type=\"checkbox\" name=\"Genre[]\" value=\"".intval($tuple['idGenre'])."\">".$tuple['NomGenre']."</br>";	
@@ -32,12 +30,7 @@ class VueRecherche extends VueIndex{
 			</form>';
 	}
 
-		public function rechercheTousFormat($result,$Genre){
-		echo "<h3>$Genre</h3></br>";
-		$this->affListe($result);
-	}
-
-		public function affListe($result){
+		public function afficheListeAnime($result){
 		echo "<div class=\"block\">";
 		echo '<p>Anime</p>';
 		echo "<hr class = \"haut\">";
@@ -56,7 +49,7 @@ class VueRecherche extends VueIndex{
 		echo "</div>";
 	}
 
-	public function affListeClub($result){
+	public function afficheListeClub($result){
 		echo "<div class=\"block\">";
     	foreach ($result as $key) {
     		echo "<a href=\"index.php?module=Club&action=Club&id=".$key['idClub']."\">";

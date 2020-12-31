@@ -42,15 +42,7 @@ class ModeleRecherche extends ConnexionBD{
 		return $prepareRequest->fetchAll();
 	}
 
-	public function rFormat(){
-		$this->request = "SELECT idAnime,nom,ImageAnime,SUBSTRING(synopsis,1,255) FROM Anime WHERE idAnime IS NOT NULL";
-		$this->queryMaker();
-		$prepareRequest=self::$bdd->prepare($this->request);
-		$prepareRequest->execute();
-		return $prepareRequest->fetchAll();
-	}
-
-	public function listeOeuvre(){
+	public function listeAnime(){
 		$this->request = "SELECT idAnime,nom,ImageAnime,SUBSTRING(synopsis,1,255) FROM Anime";
 		$prepareRequest=self::$bdd->prepare($this->request);
 		$prepareRequest->execute();

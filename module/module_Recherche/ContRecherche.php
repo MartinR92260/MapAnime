@@ -21,17 +21,14 @@ class ContRecherche{
     public function rechercheParGenre(){
 		$this->vue->rechercher($this->modele->listeGenre());
 	}
-
-	public function rechercheTousAnime(){
-		$this->vue->rechercheTousFormat($this->modele->rFormat(),"Anime");
-	}
 	
-	public function listeAnime(){
-		$this->vue->affListe($this->modele->listeOeuvre());
+	public function listeDesAnime(){
+		$this->vue->afficheListeAnime($this->modele->listeAnime());
 	}
 
 	public function listeDesClub(){
-		$this->vue->affListeClub($this->modele->listeClub());
+		$this->vue->afficheListeClub($this->modele->listeClub());
 	}
+
 }
 ?>
