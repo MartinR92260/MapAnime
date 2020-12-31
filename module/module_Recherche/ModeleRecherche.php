@@ -13,9 +13,18 @@ class ModeleRecherche extends ConnexionBD{
 		$this->arg = array();
 	}
 
-	public function search($expr=NULL){
+	public function searchNom($expr=NULL){
 		$expr="%".$expr."%";
-		$this->request='SELECT DISTINCT idAnime,nom FROM anime NATURAL JOIN genre WHERE nom LIKE ?';
+		$this->request='SELECT DISTINCT idAnime,nom,ImageAnime,SUBSTRING(synopsis,1,255) FROM anime WHERE nom LIKE ?';
+		$this->arg=array($expr);
+		$this->requestPrepare=self::$bdd->prepare($this->request);
+		$this->requestPrepare->execute($this->arg);
+		return $this->requestPrepare->fetchAll();
+	}
+
+	public function searchGenre($expr=NULL){
+		$expr="%".$expr."%";
+		$this->request='SELECT DISTINCT idAnime,nom,ImageAnime,SUBSTRING(synopsis,1,255) FROM anime NATURAL JOIN etre NATURAL JOIN genre WHERE nom LIKE ?';
 		$this->arg=array($expr);
 		$this->queryMaker($expr);
 		$this->requestPrepare=self::$bdd->prepare($this->request);
@@ -24,12 +33,10 @@ class ModeleRecherche extends ConnexionBD{
 	}
 
 	private function queryMaker($expr=NULL){
-		if(isset($_POST['anime'])){
-			$this->request=$this->request.' AND nbEpisodes IS NOT NULL';
-		}
-		else if(isset($_POST['Genre']) && 0<count($_POST['Genre'])){
+		if(0<count($_POST['Genre'])){
+			$i=0;
 			for($i=0 ; $i<intval(count($_POST['Genre'])) ; $i++){
-				$this->request=$this->request.' AND idAnime IN (SELECT idAnime FROM genre WHERE idGenre = ?)';
+				$this->request=$this->request.' AND idAnime IN (SELECT idAnime FROM etre WHERE idGenre = ?)';
 				array_push($this->arg,$_POST['Genre'][$i]);
 			}
 		}

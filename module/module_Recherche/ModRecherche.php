@@ -14,11 +14,14 @@ class ModRecherche{
 				case "parNom":
 					$this->controleur->rechercheParBar();
 					break;
+				case "parGenre":
+					$this->controleur->rechercheParGenre();
+					break;
 				case "anime":
 					$this->controleur->listeDesAnime();
 					break;
 				case "recherche":
-					$this->controleur->rechercheParGenre();
+					$this->controleur->formRecherche();
 					break;
 				case "club":
 					$this->controleur->listeDesClub();

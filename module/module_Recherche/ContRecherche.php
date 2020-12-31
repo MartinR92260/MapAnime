@@ -12,13 +12,17 @@ class ContRecherche{
 		$this->modele = new ModeleRecherche();
 		$this->vue = new VueRecherche();
 	}
-    
+
+    public function rechercheParGenre(){
+		$this->vue->afficheListeAnime($this->modele->searchGenre());
+    }
+
     public function rechercheParBar(){
 		$nomSaisie=htmlspecialchars($_POST['nomSaisie']);
-		$this->vue->afficheParNom($this->modele->search($nomSaisie),$nomSaisie);
+		$this->vue->afficheListeAnime($this->modele->searchNom($nomSaisie));
 	}
 	
-    public function rechercheParGenre(){
+    public function formRecherche(){
 		$this->vue->rechercher($this->modele->listeGenre());
 	}
 	
