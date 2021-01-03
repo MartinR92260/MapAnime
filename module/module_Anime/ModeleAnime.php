@@ -15,7 +15,8 @@ class ModeleAnime extends ConnexionBD{
 	}
 
     public function getGenre($id){//getGenre== ancien getGenreFrom
-        $req = self::$bdd->prepare("SELECT DISTINCT idGenre,nomGenre FROM genre  WHERE idGenre = ?");
+       /* $req = self::$bdd->prepare("SELECT DISTINCT idGenre,NomGenre FROM genre  WHERE idGenre = ?");*/
+       $req = self::$bdd->prepare("SELECT DISTINCT idGenre,NomGenre FROM Anime NATURAL JOIN etre NATURAL JOIN Genre WHERE idAnime = ?");
         $req->execute(array($id));
         return $req->fetchAll();
     }

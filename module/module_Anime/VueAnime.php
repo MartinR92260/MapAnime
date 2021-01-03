@@ -11,22 +11,44 @@ class VueAnime extends VueIndex{
     public function afficheAnime($arrayAnime,$arrayGenre,$arrayCommentaires,$arrayListe){
     	foreach ($arrayAnime as $key) {
 
-    		echo"TEST CLICK ANIME";
 
     		echo 
     		"<div class=\"Anime\">
 	    		<h1>". $key['nom']."</h1>
-	    		<img src=./icone/".$key['image']." id=\"imageAnime\"/>
-	    		<img src=./Images/Anime/".$key['image']." id=\"imageAnime\"/>
+	    		
+	    		<img src=./images/Anime/".$key['ImageAnime']." id=\"imageAnime\"/>
 
 
 
 	    		<div class=\"infoAnime\"> 
-		    		<h3> Note :</h3>";
-		       		for($i = 0; $i<$key['note'];$i++){
+
+	    	
+		   			
+		    		 <div class=\"synAnime\">
+
+		    		 
+
+                    <h2>Sysnopsis :</h2>".$key['synopsis']."
+				</div><br/>";
+            
+				if(isset($_SESSION['idUtilisateur'])) {
+					if($arrayListe){
+                    	echo "<a href=\"index.php?module=Utilisateur&action=supprListe&id=".$key['idAnime']."\">Supprimer a la liste</a>";
+                    }
+                    else{
+                    	echo "<a href=\"index.php?module=Utilisateur&action=ajoutListe&id=".$key['idAnime']."\">Ajouter a la liste</a>";
+                    }
+					
+                    //SUPPR DE   if($arrayFav){ A </script> et <?php
+
+				}
+                echo "</div><br/>
+                <div class=\"synAnime\">
+              <h3> Note :</h3>";
+		       		for($i = 0; $i<$key['NoteG'];$i++){
 		   				echo "&#9733";
 		   			}
-		   			for($i = 0;$i<10-$key['note'];$i++){
+		   			for($i = 0;$i<10-$key['NoteG'];$i++){
 		   				echo "&#9734";
 		   			}
 		   			echo "<br/>";
@@ -40,11 +62,11 @@ class VueAnime extends VueIndex{
 					}*/
 					echo "<h2>Anime : </h2>";
 					
-					if($key['nbSaison']!=NULL || $key['nbSaison']!=0){
-						echo "<h3>Nombre de Saison :</h3> ".$key['nbSaison']."<br/>";//!!! AJOUTER NB EPISODE ET NB SAISON A LA BD
+					if($key['nbSaisons']!=NULL || $key['nbSaisons']!=0){
+						echo "<h3>Nombre de Saison :</h3> ".$key['nbSaisons']."<br/>";//!!! AJOUTER NB EPISODE ET NB SAISON A LA BD
 					}
-					if($key['nbEpisode']!=NULL || $key['nbEpisode']!=0){
-						echo "<h3>Nombre total d'épisode :</h3> ".$key['nbEpisode']."<br/>";//!!! AJOUTER NB EPISODE ET NB SAISON A LA BD
+					if($key['nbEpisodes']!=NULL || $key['nbEpisodes']!=0){
+						echo "<h3>Nombre total d'épisode :</h3> ".$key['nbEpisodes']."<br/>";//!!! AJOUTER NB EPISODE ET NB SAISON A LA BD
 					}
 					/*if($key['nomStudio']!=NULL){
 						echo "<h3>Nom du Studio d'Animation :</h3> ".$key['nomStudio']."<br/>";
@@ -57,22 +79,6 @@ class VueAnime extends VueIndex{
 							echo " - ".$keyG['NomGenre']."</br>";
 						}
 					}
-                echo "</div><br/>
-                <div class=\"synAnime\">
-                    <h2>Sysnopsis :</h2>".$key['synopsis']."
-				</div><br/>";//!!!A AJOUTER DANS LA BD
-            
-				if(isset($_SESSION['idUtilisateur'])) {
-					if($arrayListe){
-                    	echo "<a href=\"index.php?module=Utilisateur&action=supprListe&id=".$key['idAnime']."\">Supprimer a la liste</a>";
-                    }
-                    else{
-                    	echo "<a href=\"index.php?module=Utilisateur&action=ajoutListe&id=".$key['idAnime']."\">Ajouter a la liste</a>";
-                    }
-					
-                    //SUPPR DE   if($arrayFav){ A </script> et <?php
-
-				}
             
 	            echo"<div class=\"form-commentaire\">
 	            	<form action=\"index.php?action=AddCommentaire&module=Anime&id=".$key['idAnime']."\" method=\"post\">

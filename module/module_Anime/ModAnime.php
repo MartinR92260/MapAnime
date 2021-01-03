@@ -28,7 +28,7 @@ switch($menu){
     	break;
     case "AjoutAnime":
 		$cont->AjoutAnime();
-		break;*/
+		break;
 	case "AjoutEnCours":
 		$cont->InsertionAnime();
 		break;
