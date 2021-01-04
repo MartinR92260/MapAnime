@@ -19,7 +19,7 @@
                     <a href="index.php?module=Recherche&action=anime">Anime</a>
                     <a href="index.php?module=Recherche&action=club">Club</a>
                     <?php
-                    if (isset($_SESSION['idRole'])) {
+                    if (isset($_SESSION['idUtilisateur'])) {
                         echo "<a href=\"index.php?module=Profil&action=afficheProfil\" class=\"col-auto\">Profil</a>";
                     }
                     ?>
