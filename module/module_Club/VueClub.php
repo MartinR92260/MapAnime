@@ -5,7 +5,7 @@ include_once('./VueIndex.php');
 class VueClub extends VueIndex{
 
 	public function __construct(){
-        echo '<link rel="stylesheet" type="text/css" href="module/module_club/VueClub.css"/>';
+        echo '<link rel="stylesheet" type="text/css" href="module/module_club/Vue_Club.css"/>';
     }
 
     public function afficheButtonRejoindre(){
@@ -34,23 +34,26 @@ class VueClub extends VueIndex{
 		        </div>";
 		    echo "<div class=\"PosterCommentaire\">
 		    		<textarea name=\"Commentaires\" placeholder=\"Postez votre message :\"></textarea><br/>
-	                <input type=\"submit\" value=\"Confirmer\">";
+	                <a href=\"index.php?action=AjouterCommentaire&module=Club&id=?\"><input type=\"submit\" value=\"Confirmer\">
+	                </a>
+	              </div>";
 
-/*			if($commentaires!=NULL){
+			if($commentaires!=NULL){
 				echo "<div class=\"ListeCommentaires\">";
 					foreach ($commentaires as $key) {
 			            echo "<div class=\"Commentaires\">
 			            	<div class=\"headerCommentaires\">"
-				            	.$key['idUtilisateur'];
+				            	.$key['pseudo'];
 				        if(isset($_SESSION['idUtilisateur'])){
 					        if ($key['idUtilisateur'] == $_SESSION['idUtilisateur']){
 					        	echo "<a href=\"index.php?module=Club&action=SupprimerCommentaire&id=".$key['idCommentaire']."\">Supprimer</a>";
 					        }				    
 					    }
-				        echo "</div><p>".$key['contenu']."</p></div>";
+				        echo "</div>
+				        <p>".$key['contenu']."</p></div>";
 			        }
 		    	echo "</div>";
-			}*/
+			}
 	}
 }
 ?>

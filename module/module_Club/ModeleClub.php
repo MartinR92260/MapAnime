@@ -52,8 +52,8 @@ class ModeleClub extends ConnexionBD{
     }
 
 	public function posterCommentaire($id){
-        $req = self::$bdd->prepare("INSERT INTO Commentaire VALUES (default, ?, ?, ?, ?, ?, ?)");
-        $result=$req->execute(array($_POST['commentaire'], $id,$_SESSION['idUtilisateur']));
+        $req = self::$bdd->prepare("INSERT INTO Commentaire VALUES (default, ?, NULL, ?, ?, ?, ?)");
+        $result=$req->execute(array($id));
         return $result;
     }
 
@@ -64,7 +64,7 @@ class ModeleClub extends ConnexionBD{
     }
 
     public function getCommentaire($id) {
-        $req = self::$bdd->prepare("SELECT * FROM Commentaire WHERE idClub = ?");
+        $req = self::$bdd->prepare("SELECT * FROM Commentaire INNER JOIN Utilisateur ON Commentaire.idClub = Utilisateur.idClub WHERE Commentaire.idClub = ?");
         $req->execute(array($id));
         return $req->fetchAll();
     }

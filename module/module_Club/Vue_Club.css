@@ -26,7 +26,6 @@ main {
 .NombreAdherent {
 	border: solid 3px white;
 	width : 190px;
-	margin-left: 180px;
 	margin-top: 30px;
 	padding : 10px;
 }
@@ -37,11 +36,27 @@ main {
 }
 
 .Rejoindre {
-	margin-left: 450px;
-	position : relative;
-	top : -200px;
+	margin-left: 1600px;
+	position : absolute;
+	top : 160px;
 }
 
-.Rejoindre a{
+.headerCommentaires {
+	font-size: 1.1em;
+	color : #7CFC00;
+	border: solid 1px white;
+}
 
+.Commentaires {
+	margin-left: 80px;
+	position : relative;
+	top : -180px;
+	width : 800px;
+	border: solid 2px white;
+}
+
+.Commentaires p {
+	font-size: 1.3em;
+	color : white;
+	padding : 5px;
 }
