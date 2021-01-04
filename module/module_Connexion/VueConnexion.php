@@ -13,7 +13,7 @@ class VueConnexion extends VueIndex{//!!!!!
 
 	function afficheForm(){
         echo '<center>
-        <form action="index.php?action=connexion&module=connexion" method="post">
+        <form action="index.php?action=connexion&module=Connexion" method="post">
             <div class="formulaire">
                 <h1>Connexion</h1>
                 <label>Entrer votre pseudo : </label></br>
@@ -28,7 +28,7 @@ class VueConnexion extends VueIndex{//!!!!!
 
     function afficheFormInscription(){
         echo '<center>
-        <form action="index.php?action=inscription&module=connexion" method="post">
+        <form action="index.php?action=inscription&module=Connexion" method="post">
             <div class="formulaire">
                 <h1>Inscription</h1>
                 <label>Entrer votre pseudo : </label></br>

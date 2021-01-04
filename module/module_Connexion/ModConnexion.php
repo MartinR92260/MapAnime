@@ -8,9 +8,9 @@ if (!defined('CONST_INCLUDE')){
 	$controleur = new ContConnexion();
 
 	
-			if(isset($_GET['action'])){
-				$action =  $_GET['action'];
-			}
+				$action =!isset($_GET['action'])?"":$_GET['action'];
+
+
 
 		switch($action){
 			case 'form':
