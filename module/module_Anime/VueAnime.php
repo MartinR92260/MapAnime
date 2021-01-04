@@ -9,6 +9,10 @@ class VueAnime extends VueIndex{
 	}
 
     public function afficheAnime($arrayAnime,$arrayGenre,$arrayCommentaires,$arrayListe){
+
+
+
+
     	foreach ($arrayAnime as $key) {
 
 
@@ -28,6 +32,30 @@ class VueAnime extends VueIndex{
 
 		    		 
 
+		    	 <h2> Genre :</h2>";
+
+
+		    		 if($arrayGenre){
+						/*echo "<h2>Genre :</h2></br>";*/
+						foreach ($arrayGenre as $keyG) {
+							echo " - ".$keyG['NomGenre']."</br>";
+						}
+					}
+
+					echo "<br/>
+
+
+		    	 <h2> NoteG :</h2>";
+
+		    	 for($i = 0; $i<$key['NoteG'];$i++){
+		   				echo "&#9733";
+		   			}
+		   			for($i = 0;$i<10-$key['NoteG'];$i++){
+		   				echo "&#9734";
+		   			}
+		   					echo "<br/>
+
+
                     <h2>Sysnopsis :</h2>".$key['synopsis']."
 				</div><br/>";
             
@@ -44,23 +72,10 @@ class VueAnime extends VueIndex{
 				}
                 echo "</div><br/>
                 <div class=\"synAnime\">
-              <h3> Note :</h3>";
-		       		for($i = 0; $i<$key['NoteG'];$i++){
-		   				echo "&#9733";
-		   			}
-		   			for($i = 0;$i<10-$key['NoteG'];$i++){
-		   				echo "&#9734";
-		   			}
-		   			echo "<br/>";
-		   			/*echo "<h2>Manga : </h2>";
-					if($key['nbVolume']!=NULL || $key['nbVolume']!=0){
-						echo "<h3>Nombre de Volume :</h3>".$key['nbVolume']."<br/>";
-					}
-					if($key['nomAuteur']!=NULL){
-						echo "<h3>Auteur :</h3> ".$key['nomAuteur']."<br/>
-						<br/>";
-					}*/
-					echo "<h2>Anime : </h2>";
+             
+		   			
+		   		
+					 <h2>Anime : </h2>";
 					
 					if($key['nbSaisons']!=NULL || $key['nbSaisons']!=0){
 						echo "<h3>Nombre de Saison :</h3> ".$key['nbSaisons']."<br/>";//!!! AJOUTER NB EPISODE ET NB SAISON A LA BD
@@ -73,12 +88,7 @@ class VueAnime extends VueIndex{
 					}
 					echo "<br/>";*/
 
-					if($arrayGenre){
-						echo "<h2>Genre :</h2></br>";
-						foreach ($arrayGenre as $keyG) {
-							echo " - ".$keyG['NomGenre']."</br>";
-						}
-					}
+					
             
 	            echo"<div class=\"form-commentaire\">
 	            	<form action=\"index.php?action=AddCommentaire&module=Anime&id=".$key['idAnime']."\" method=\"post\">
