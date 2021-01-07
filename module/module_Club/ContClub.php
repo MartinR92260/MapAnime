@@ -16,6 +16,7 @@ class ContClub{
 /*		if(isset($_SESSION['idUtilisateur'])){
 			if($this->modele->adherentDansUnAutreClub() == FALSE) {*/
 		        $this->modele->rejoindreClub($id);
+		        $this->detailClub($id);
 /*		        $this->modele->incrementNbUtilisateur($id);*/
 /*	    	}
 	    	else {
@@ -34,6 +35,7 @@ class ContClub{
 	    else {
 	    	if($this->modele->dejaAdherentDuClub($id) == TRUE) {*/
 		    	$this->modele->quitterClub($id);
+		    	$this->detailClub($id);
 /*		        $this->modele->decrementNbUtilisateur($id);*/
 /*	    	}
 	    	else {
@@ -46,6 +48,7 @@ class ContClub{
 /*	    if(isset($_SESSION['idUtilisateur'])){
 	    	if($this->modele->dejaAdherentDuClub($id) == TRUE) {*/
 	        	$this->vue->result($this->modele->posterCommentaire($id));
+	        	$this->detailClub($id);
 /*	   		}
 	    }
 	    else {

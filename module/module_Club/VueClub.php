@@ -29,21 +29,19 @@ class VueClub extends VueIndex{
 	}
 
 	public 	function afficheCommentaire($commentaires, $club){
+		foreach($club as $key) {
 	        echo"<div class=\"FormCommentaires\">
-		        <form action=\"index.php?module=Club&action=Club&id= ? method=\"post\">
-		        <label for=\"Commentaires\">
-	                <h1>Messages du Club : <h1>
-		            </label>
-		        </form>
-		        </div>";
-		    foreach($club as $key) {
-			    echo "<div class=\"PosterCommentaire\">
-			    		<textarea name=\"Commentaires\" placeholder=\"Postez votre message :\"></textarea><br/>
-		                <a href=\"index.php?action=AjouterCommentaire&module=Club&id=".$key['idClub']."\"><input type=\"submit\" value=\"Confirmer\">
-		                </a>
-		              </div>";
-	        }
-
+		        <form action=\"index.php?action=AjouterCommentaire&module=Club&id=".$key['idClub']."\" method=\"post\">
+		        <label for=\"commentaire\">
+                        <h2>Commentaires : <h2>
+	            		</label>
+	            		<textarea name=\"comm\" placeholder=\"inserez votre commentaire\"></textarea><br/>
+                        <input type=\"submit\" value=\"valider\">
+	            	</form>
+	            </div> 
+	        </div>";
+		
+}
 			if($commentaires!=NULL){
 				echo "<div class=\"ListeCommentaires\">";
 					foreach ($commentaires as $key) {
@@ -64,5 +62,6 @@ class VueClub extends VueIndex{
 		    	echo "</div>";
 			}
 	}
+
 }
 ?>

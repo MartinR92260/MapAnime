@@ -54,14 +54,14 @@ class ModeleClub extends ConnexionBD{
         return $req->fetchAll();
     }*/
 
-	public function posterCommentaire($id){
-        $req = self::$bdd->prepare("INSERT INTO Commentaire VALUES (default, ?, ?, ?, ?, ?, ?)");
-        $result=$req->execute(array($_SESSION['idUtilisateur'], NULL, $id, $_POST['Commentaires'],NULL,NULL));
+    public function posterCommentaire($id){
+        $req = self::$bdd->prepare("INSERT INTO commentaire VALUES (default, ?, ?, ?, ?, ?, ?)");
+        $result=$req->execute(array($_SESSION['idUtilisateur'], NULL, $id, $_POST['comm'],NULL,NULL));
         return $result;
     }
 
     public function retirerCommentaire($id){
-        $req = self::$bdd->prepare("DELETE FROM Commentaire WHERE idCommentaire LIKE ?");
+        $req = self::$bdd->prepare("DELETE FROM Commentaire WHERE idCommentaire = ?");
         $result = $req->execute(array($id));
         return $result;
     }

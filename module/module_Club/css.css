@@ -1,3 +1,71 @@
+/*main {
+	background-color: #082740;
+	height : 500px;
+}
+.FormCommentaires {
+	padding : 30px;
+	margin-left: 50px;
+	color : white;
+}
+
+.PosterCommentaire {
+	margin-left: 950px;
+	padding : 20px;
+	margin-top: -50px;
+}
+
+.PosterCommentaire textarea{
+	width : 500px;
+	height : 150px;
+}
+
+.PosterCommentaire input{
+	margin-top: 20px;
+	margin-left: 220px;
+}
+
+.NombreAdherent {
+	border: solid 3px white;
+	width : 190px;
+/*	margin-top: 30px;*/
+/*	padding : 10px;
+}
+
+.NombreAdherent p{
+	color : white;
+	font-size : 1.3em;
+}
+
+.Rejoindre {
+	margin-left: 1500px;
+	position : absolute;
+	top : 160px;
+}
+
+.headerCommentaires {
+	font-size: 1.1em;
+	color : #7CFC00;
+	border: solid 2px white;
+}
+
+.Commentaires {*/
+/*	position : relative;
+	top : -180px;
+*/
+/*	width : 800px;*/
+/*}
+
+.Commentaires p {
+	font-size: 1.3em;
+	color : white;
+	padding : 5px;
+}
+
+.ListeCommentaires {
+	margin-top: -200px;
+	margin-left: 75px;
+}*/
+
 main {
 	background-color: #082740;
 }
@@ -8,9 +76,9 @@ main {
 }
 
 .PosterCommentaire {
-	margin-left: 60px;
+	margin-left: 1000px;
 	padding : 20px;
-	margin-top: -50px;
+	margin-top: -90px;
 }
 
 .PosterCommentaire textarea{
@@ -36,7 +104,7 @@ main {
 }
 
 .Rejoindre {
-	margin-left: 1500px;
+	margin-left: 1600px;
 	position : absolute;
 	top : 160px;
 }
@@ -48,11 +116,12 @@ main {
 }
 
 .Commentaires {
+	margin-left: 80px;
 /*	position : relative;
 	top : -180px;
 */
-	width : 1400px;
-	border: solid 2px black;
+	width : 800px;
+	border: solid 2px white;
 }
 
 .Commentaires p {
