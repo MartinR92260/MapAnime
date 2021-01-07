@@ -33,7 +33,7 @@ class ModeleConnexion extends ConnexionBD {
     public function deconnexion(){
         session_unset();
         header('Location:index.php');
-    }	
+    }   
 
 
     public function inscription(){
@@ -58,9 +58,9 @@ class ModeleConnexion extends ConnexionBD {
         }
 
         else{
-            $bd = self::$bdd->prepare('INSERT into Utilisateur values(default,NULL,NULL,NULL,?,?,NULL,NULL,2)');
+            $bd = self::$bdd->prepare('INSERT into Utilisateur values(default,NULL,?,?,NULL,NULL,2)');
             $bd->execute(array($login,$mdp));
-            return true;//Confirmation MDP marche pas et Conexioon marche pas
+            return true;
         }
     }
 }
