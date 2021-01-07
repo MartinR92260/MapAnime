@@ -8,9 +8,9 @@ main {
 }
 
 .PosterCommentaire {
-	margin-left: 1000px;
+	margin-left: 60px;
 	padding : 20px;
-	margin-top: -90px;
+	margin-top: -50px;
 }
 
 .PosterCommentaire textarea{
@@ -36,7 +36,7 @@ main {
 }
 
 .Rejoindre {
-	margin-left: 1600px;
+	margin-left: 1500px;
 	position : absolute;
 	top : 160px;
 }
@@ -48,12 +48,11 @@ main {
 }
 
 .Commentaires {
-	margin-left: 80px;
 /*	position : relative;
 	top : -180px;
 */
-	width : 800px;
-	border: solid 2px white;
+	width : 1400px;
+	border: solid 2px black;
 }
 
 .Commentaires p {

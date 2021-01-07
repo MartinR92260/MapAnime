@@ -11,8 +11,10 @@ class ModeleClub extends ConnexionBD{
 
     public function rejoindreClub($id) {
             if (isset($_SESSION['idUtilisateur'])){
-                $req = self::$bdd->prepare("UPDATE possede SET idClub = ? where idUtilisateur = ?");
-                $req->execute(array($id,$_SESSION['idUtilisateur']));
+                $req = self::$bdd->prepare("INSERT INTO possede VALUES (?,?)");
+/*                var_dump($id);
+                var_dump($_SESSION['idUtilisateur']);*/
+                $req->execute(array($_SESSION['idUtilisateur'], $id));
                 return $req->fetchAll();
         }
     }
@@ -20,15 +22,15 @@ class ModeleClub extends ConnexionBD{
     public function quitterClub($id) {
         if (isset($_SESSION['idUtilisateur'])){
                 $req = self::$bdd->prepare("DELETE FROM possede WHERE idUtilisateur = ? AND idClub = ?");
-                $req->execute(array($id,$_SESSION['idUtilisateur']));
+                $req->execute(array($_SESSION['idUtilisateur'], $id));
                 return $req->fetchAll();
         }
     }
 
-    public function incrementNbUtilisateur($id) {
+/*    public function incrementNbUtilisateur($id) {
         $nbAdherent = $this->getNbAdherent($id);
         $nbAdherent++;
-        $newNbAdherent = $this->setNbAdherent($nbAdherent);
+        $this->setNbAdherent($nbAdherent, $id);
     }
 
     public function decrementNbUtilisateur($id) {
@@ -36,23 +38,25 @@ class ModeleClub extends ConnexionBD{
         $nbAdherent--;
 /*        $newNbAdherent = $this->setNbAdherent($nbAdherent);*/
     
-    }
+   // }
 
     public function getNbAdherent($id) {
-        $req = self::$bdd->prepare("SELECT nbUtilisateur FROM Club WHERE idClub = ?");
+        $req = self::$bdd->prepare("SELECT count('idUtilisateur') AS nbUtilisateur FROM possede where idClub = ?");
         $req->execute(array($id)); 
         return $req->fetchAll();
     }
 
-    public function setNbAdherent($id) {
+/*    public function setNbAdherent($nbAdherent, $id) {
         $req = self::$bdd->prepare("UPDATE Club SET nbUtilisateur = ? WHERE idClub = ?");
-        $req->execute($id); 
+        var_dump($nbAdherent);
+        var_dump($id);
+        $req->execute(array($nbAdherent, $id)); 
         return $req->fetchAll();
-    }
+    }*/
 
 	public function posterCommentaire($id){
-        $req = self::$bdd->prepare("INSERT INTO Commentaire VALUES (default, 1, NULL, ?, ?, ?, ?)");
-        $result=$req->execute(array($id));
+        $req = self::$bdd->prepare("INSERT INTO Commentaire VALUES (default, ?, ?, ?, ?, ?, ?)");
+        $result=$req->execute(array($_SESSION['idUtilisateur'], NULL, $id, $_POST['Commentaires'],NULL,NULL));
         return $result;
     }
 
@@ -86,6 +90,12 @@ class ModeleClub extends ConnexionBD{
         else {
             return true;
         }
+    }
+
+    public function getIdClub($id) {
+        $req = self::$bdd->prepare("SELECT idClub FROM Club where idClub = ?");
+        $req->execute(array($id)); 
+        return $req->fetchAll();
     }
 }
 

@@ -54,7 +54,6 @@ class VueRecherche extends VueIndex{
 				echo "<div class=\"col-9\">";
 			       	echo "Nom : ".$key['nomClub']."<br/>";
 			       	echo "Description :</br>".$key['SUBSTRING(DescriptionClub,1,255)']."...</br>";
-			       	echo "Nombre d'adherents : ".$key['nbUtilisateur']."<br/>";
 		       	echo "</div>";
 			echo "</div>";
 			echo "</a>";

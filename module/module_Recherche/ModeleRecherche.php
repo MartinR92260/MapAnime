@@ -57,7 +57,7 @@ class ModeleRecherche extends ConnexionBD{
 	}
 
 	public function listeClub(){
-		$this->request = "SELECT idClub,nomClub, SUBSTRING(DescriptionClub,1,255), nbUtilisateur FROM Club";
+		$this->request = "SELECT idClub,nomClub, SUBSTRING(DescriptionClub,1,255) FROM Club";
 		$prepareRequest=self::$bdd->prepare($this->request);
 		$prepareRequest->execute();
 		return $prepareRequest->fetchAll();

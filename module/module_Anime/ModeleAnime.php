@@ -100,7 +100,7 @@ class ModeleAnime extends ConnexionBD{
     
     public function insertionCommentaire($idAnime){
         $req = self::$bdd->prepare("INSERT INTO commentaire VALUES (default, ?, ?, ?, ?, ?, ?)");
-        $result=$req->execute(array($_SESSION['idUtilisateur'], $idAnime,NULL, $_POST['commentaire'],NULL,NULL));//2 dernier null = date et heure
+        $result=$req->execute(array($_SESSION['idUtilisateur'], $idAnime,NULL, $_POST['Commentaires'],NULL,NULL));//2 dernier null = date et heure
         echo date('l j F Y, H:i');
         return $result;
     }

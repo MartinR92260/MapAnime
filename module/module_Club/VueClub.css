@@ -49,10 +49,9 @@ main {
 
 .Commentaires {
 	margin-left: 80px;
-/*	position : relative;
+	position : relative;
 	top : -180px;
-*/
-	width : 800px;
+/*	width : 800px;*/
 	border: solid 2px white;
 }
 

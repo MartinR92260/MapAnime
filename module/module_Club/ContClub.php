@@ -15,8 +15,8 @@ class ContClub{
 	public function addClub($id) {
 /*		if(isset($_SESSION['idUtilisateur'])){
 			if($this->modele->adherentDansUnAutreClub() == FALSE) {*/
-		        $this->vue->result($this->modele->rejoindreClub($id));
-		        $this->modele->incrementNbUtilisateur($id);
+		        $this->modele->rejoindreClub($id);
+/*		        $this->modele->incrementNbUtilisateur($id);*/
 /*	    	}
 	    	else {
 	    		echo 'Vous êtes deja adherent dans un autre Club';
@@ -33,8 +33,8 @@ class ContClub{
 	    }
 	    else {
 	    	if($this->modele->dejaAdherentDuClub($id) == TRUE) {*/
-		    	$this->vue->result($this->modele->quitterClub($id));
-		        $this->modele->decrementNbUtilisateur($id);
+		    	$this->modele->quitterClub($id);
+/*		        $this->modele->decrementNbUtilisateur($id);*/
 /*	    	}
 	    	else {
 	    		echo 'Vous devez être adherent pour quitter ce club';
@@ -58,11 +58,10 @@ class ContClub{
     }
 
     public function detailClub($id) {
-		$this->vue->afficheCommentaire($this->modele->getCommentaire($id));
-		$this->vue->afficheButtonRejoindre();
-		$this->vue->afficheButtonQuitter();
+		$this->vue->afficheCommentaire($this->modele->getCommentaire($id), $this->modele->getIdClub($id));
+		$this->vue->afficheButtonRejoindre($this->modele->getIdClub($id));
+		$this->vue->afficheButtonQuitter($this->modele->getIdClub($id));
 		$this->vue->afficheNbAdherent($this->modele->getNbAdherent($id));
-
 	}
 }
 

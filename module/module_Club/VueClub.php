@@ -5,16 +5,20 @@ include_once('./VueIndex.php');
 class VueClub extends VueIndex{
 
 	public function __construct(){
-        echo '<link rel="stylesheet" type="text/css" href="module/module_club/Vue_Club.css"/>';
+        echo '<link rel="stylesheet" type="text/css" href="module/module_club/css.css"/>';
     }
 
-    public function afficheButtonRejoindre(){
-		echo "<div class =\"Rejoindre\">
-		<a href=\"index.php?module=Club&action=Rejoindre&id=?\"><input type=\"button\" name=\"join\" value=\"Rejoindre le Club\" class=\"joinClub\"/></a>";
+    public function afficheButtonRejoindre($idClub){
+    	foreach ($idClub as $id) {
+			echo "<div class =\"Rejoindre\">
+			<a href=\"index.php?module=Club&action=Rejoindre&id=".$id['idClub']."\"><input type=\"button\" name=\"join\" value=\"Rejoindre le Club\" class=\"joinClub\"/></a>";
+		}
 	 }
 
-	public function afficheButtonQuitter(){
-		echo "<a href=\"index.php?module=Club&action=Quitter&id=?\"><input type=\"button\" name=\"quit\" value=\"Quitter le Club\" class=\"quitClub\"/></a>";
+	public function afficheButtonQuitter($idClub){
+		foreach ($idClub as $id) {
+			echo "<a href=\"index.php?module=Club&action=Quitter&id=".$id['idClub']."\"><input type=\"button\" name=\"quit\" value=\"Quitter le Club\" class=\"quitClub\"/></a>";
+		}
 	}
 
 	public function afficheNbAdherent($nombre) {
@@ -24,7 +28,7 @@ class VueClub extends VueIndex{
 		}
 	}
 
-	public 	function afficheCommentaire($commentaires){
+	public 	function afficheCommentaire($commentaires, $club){
 	        echo"<div class=\"FormCommentaires\">
 		        <form action=\"index.php?module=Club&action=Club&id= ? method=\"post\">
 		        <label for=\"Commentaires\">
@@ -32,11 +36,13 @@ class VueClub extends VueIndex{
 		            </label>
 		        </form>
 		        </div>";
-		    echo "<div class=\"PosterCommentaire\">
-		    		<textarea name=\"Commentaires\" placeholder=\"Postez votre message :\"></textarea><br/>
-	                <a href=\"index.php?action=AjouterCommentaire&module=Club&id=?\"><input type=\"submit\" value=\"Confirmer\">
-	                </a>
-	              </div>";
+		    foreach($club as $key) {
+			    echo "<div class=\"PosterCommentaire\">
+			    		<textarea name=\"Commentaires\" placeholder=\"Postez votre message :\"></textarea><br/>
+		                <a href=\"index.php?action=AjouterCommentaire&module=Club&id=".$key['idClub']."\"><input type=\"submit\" value=\"Confirmer\">
+		                </a>
+		              </div>";
+	        }
 
 			if($commentaires!=NULL){
 				echo "<div class=\"ListeCommentaires\">";
