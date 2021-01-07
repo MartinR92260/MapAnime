@@ -10,11 +10,11 @@ class VueClub extends VueIndex{
 
     public function afficheButtonRejoindre(){
 		echo "<div class =\"Rejoindre\">
-		<a href=\"index.php?module=Club&action=Rejoindre\"><input type=\"button\" name=\"join\" value=\"Rejoindre le Club\" class=\"joinClub\"/></a>";
+		<a href=\"index.php?module=Club&action=Rejoindre&id=?\"><input type=\"button\" name=\"join\" value=\"Rejoindre le Club\" class=\"joinClub\"/></a>";
 	 }
 
 	public function afficheButtonQuitter(){
-		echo "<a href=\"index.php?module=Club&action=Quitter\"><input type=\"button\" name=\"quit\" value=\"Quitter le Club\" class=\"quitClub\"/></a>";
+		echo "<a href=\"index.php?module=Club&action=Quitter&id=?\"><input type=\"button\" name=\"quit\" value=\"Quitter le Club\" class=\"quitClub\"/></a>";
 	}
 
 	public function afficheNbAdherent($nombre) {
@@ -46,9 +46,12 @@ class VueClub extends VueIndex{
 				            	.$key['pseudo'];
 				        if(isset($_SESSION['idUtilisateur'])){
 					        if ($key['idUtilisateur'] == $_SESSION['idUtilisateur']){
-					        	echo "<a href=\"index.php?module=Club&action=SupprimerCommentaire&id=".$key['idCommentaire']."\">Supprimer</a>";
+					        	echo "<a href=\"index.php?module=Club&action=SupprimerCommentaire&id=".$key['idCommentaire']."\">   Supprimer</a>";
 					        }				    
 					    }
+				        echo "<div class =\"headerDetails\">"
+					        .$key['Date']
+					        .$key['Heure'];
 				        echo "</div>
 				        <p>".$key['contenu']."</p></div>";
 			        }

@@ -11,7 +11,7 @@ class ModeleClub extends ConnexionBD{
 
     public function rejoindreClub($id) {
             if (isset($_SESSION['idUtilisateur'])){
-                $req = self::$bdd->prepare("UPDATE Utilisateur SET idClub = :id WHERE idUtilisateur = ?");
+                $req = self::$bdd->prepare("UPDATE possede SET idClub = ? where idUtilisateur = ?");
                 $req->execute(array($id,$_SESSION['idUtilisateur']));
                 return $req->fetchAll();
         }
@@ -19,40 +19,39 @@ class ModeleClub extends ConnexionBD{
 
     public function quitterClub($id) {
         if (isset($_SESSION['idUtilisateur'])){
-                $req = self::$bdd->prepare("UPDATE Utilisateur SET idClub = NULL WHERE idUtilisateur = ? AND idClub = :id");
+                $req = self::$bdd->prepare("DELETE FROM possede WHERE idUtilisateur = ? AND idClub = ?");
                 $req->execute(array($id,$_SESSION['idUtilisateur']));
                 return $req->fetchAll();
         }
     }
 
     public function incrementNbUtilisateur($id) {
-        $nbAdherent = getNbAdherent($id);
+        $nbAdherent = $this->getNbAdherent($id);
         $nbAdherent++;
-        $newNbAdherent = setNbAdherent($nbAdherent);
+        $newNbAdherent = $this->setNbAdherent($nbAdherent);
     }
 
     public function decrementNbUtilisateur($id) {
-        $nbAdherent = getNbAdherent($id);
+        $nbAdherent = $this->getNbAdherent($id);
         $nbAdherent--;
-        $newNbAdherent = setNbAdherent($nbAdherent);
+/*        $newNbAdherent = $this->setNbAdherent($nbAdherent);*/
+    
     }
 
     public function getNbAdherent($id) {
         $req = self::$bdd->prepare("SELECT nbUtilisateur FROM Club WHERE idClub = ?");
         $req->execute(array($id)); 
         return $req->fetchAll();
-
     }
 
-        public function setNbAdherent($id) {
-        $req = self::$bdd->prepare("UPDATE Club SET idClub = :id WHERE idClub = :id");
-        $req->execute(array($id)); 
-        $nbAdherent = $req->fetchAll();
-        return $nbAdherent;
+    public function setNbAdherent($id) {
+        $req = self::$bdd->prepare("UPDATE Club SET nbUtilisateur = ? WHERE idClub = ?");
+        $req->execute($id); 
+        return $req->fetchAll();
     }
 
 	public function posterCommentaire($id){
-        $req = self::$bdd->prepare("INSERT INTO Commentaire VALUES (default, ?, NULL, ?, ?, ?, ?)");
+        $req = self::$bdd->prepare("INSERT INTO Commentaire VALUES (default, 1, NULL, ?, ?, ?, ?)");
         $result=$req->execute(array($id));
         return $result;
     }
@@ -64,12 +63,12 @@ class ModeleClub extends ConnexionBD{
     }
 
     public function getCommentaire($id) {
-        $req = self::$bdd->prepare("SELECT * FROM Commentaire INNER JOIN Utilisateur ON Commentaire.idClub = Utilisateur.idClub WHERE Commentaire.idClub = ?");
+        $req = self::$bdd->prepare("SELECT * FROM Commentaire NATURAL JOIN possede NATURAL JOIN Utilisateur WHERE Commentaire.idClub = ?");
         $req->execute(array($id));
         return $req->fetchAll();
     }
 
-    public function adherentDansUnAutreClub() {
+/*    public function adherentDansUnAutreClub() {
         $req = self::$bdd->prepare("SELECT idClub FROM Utilisateur WHERE idClub = ? AND idUtilisateur = ?");
         if($req == NULL) {
             return false;
@@ -77,10 +76,10 @@ class ModeleClub extends ConnexionBD{
         else {
             return true;
         }
-    }
+    }*/
 
         public function dejaAdherentDuClub($id) {
-        $req = self::$bdd->prepare("SELECT idClub FROM Utilisateur WHERE idClub = :id AND idUtilisateur = ?");
+        $req = self::$bdd->prepare("SELECT idClub FROM Utilisateur WHERE idClub = ? AND idUtilisateur = ?");
         if($req == NULL) {
             return false;
         }

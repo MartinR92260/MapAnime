@@ -15,7 +15,7 @@ class ContClub{
 	public function addClub($id) {
 /*		if(isset($_SESSION['idUtilisateur'])){
 			if($this->modele->adherentDansUnAutreClub() == FALSE) {*/
-		        $this->modele->rejoindreClub($id);
+		        $this->vue->result($this->modele->rejoindreClub($id));
 		        $this->modele->incrementNbUtilisateur($id);
 /*	    	}
 	    	else {
@@ -33,7 +33,7 @@ class ContClub{
 	    }
 	    else {
 	    	if($this->modele->dejaAdherentDuClub($id) == TRUE) {*/
-		    	$this->modele->quitterClub($id);
+		    	$this->vue->result($this->modele->quitterClub($id));
 		        $this->modele->decrementNbUtilisateur($id);
 /*	    	}
 	    	else {
