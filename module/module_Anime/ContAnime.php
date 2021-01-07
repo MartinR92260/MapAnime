@@ -30,9 +30,9 @@ class ContAnime{
     	$this->vue->result($this->modele->suppressionCommentaire($idCo));//If session -> Admin
     }
 
-   /* public function InsertionAnime(){
+    public function InsertionAnime(){
     	$this->vue->result($this->modele->insertAnime());
-	}*/
+	}
 
 	public function AjoutAnime(){//ajouterAnime
 		$this->vue->formulaireAnime();

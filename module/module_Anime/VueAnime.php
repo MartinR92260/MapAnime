@@ -95,7 +95,7 @@ class VueAnime extends VueIndex{
 	            		<label for=\"commentaire\">
                         <h2>Commentaires : <h2>
 	            		</label>
-	            		<textarea name=\"commentaire\" placeholder=\"inserez votre commentaire\"></textarea><br/>
+	            		<textarea name=\"commentaireV2\" placeholder=\"inserez votre commentaire\"></textarea><br/>
                         <input type=\"submit\" value=\"valider\">
 	            	</form>
 	            </div> 
@@ -109,8 +109,8 @@ class VueAnime extends VueIndex{
 		            	<div class=\"headerCommentaire\">"
 			            	.$key['pseudo'];
 			        if(isset($_SESSION['idUtilisateur'])){
-				        if ($key['idUtilisateur'] == $_SESSION['idUtilisateur'] || $_SESSION['idRole'] <= 2){//idrole = admin?
-				        	echo "<a href=\"index.php?action=DelCommentaire&module=Anime&id=".$key['idCommentaire']."\">supprimer</a>";
+				        if ($key['idUtilisateur'] == $_SESSION['idUtilisateur'] || $_SESSION['Admin'] == 1){//idrole = admin?
+				        	echo "<a href=\"index.php?action=DelCommentaire&module=Anime&id=".$key['idCommentaire']."\">Supprimer</a>";
 				        }				    
 				    }
 			        echo "</div><p>".$key['contenu']."</p></div>";
@@ -124,18 +124,16 @@ class VueAnime extends VueIndex{
 				<label>Entrer le titre : </label><br/>
 			 	<input type="text" name="nom" required><br/>
 			 	<label>Entrer le synopsis : </label><br/>
-				// <input type="text" name="synopsis" required><br/>
-				<label>Entrer la note : </label><br/>
-		 		<input type="number" min="0" max="10" name="noteG" required><br/>
+				<input type="text" name="synopsis" required><br/>
+				
 				    <label>Entrer le nombre de saison : </label><br/>
-		 		<input type="number" min="0" name="nbSaison"><br/>
+		 		<input type="number" min="0" name="nbSaisons"><br/>
 		 		<label>Entrer le nombre total d\'épisode : </label><br/>
-		 		<input type="number" min="0" name="nbTotalEp"><br/>
-			 	<label>Entrer le nom du studio d\'animation : </label><br/>
-				<input type="text" name="Studio"><br/>    
+		 		<input type="number" min="0" name="nbEpisodes"><br/>   
 				<input type="submit" value="Ajouter">
 			</form>';
 	}
 }
-
+/*<label>Entrer la note : </label><br/>
+		 		<input type="number" min="0" max="10" name="noteG" required><br/>*/
 ?>
