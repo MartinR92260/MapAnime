@@ -8,7 +8,7 @@ class ModeleAnime extends ConnexionBD{
 		parent::initConnexion();
 	}
 
-	public function getAnime($id){//getAnime
+	public function getAnime($id){
 		$req = self::$bdd->prepare("SELECT DISTINCT * from anime WHERE idAnime = ?");
 		$req->execute(array($id));
 		return $req->fetchAll();
@@ -81,8 +81,8 @@ class ModeleAnime extends ConnexionBD{
 	}	*/
     
     public function getCommentaire($id) {
-        $req = self::$bdd->prepare("SELECT * FROM commentaire NATURAL JOIN anime NATURAL JOIN utilisateur WHERE idAnime = ?");//Avis==commentaire
-        $req->execute(array($id));
+        $req = self::$bdd->prepare("SELECT * FROM Commentaire NATURAL JOIN Anime NATURAL JOIN Utilisateur WHERE idAnime = ?");
+         $req->execute(array($id));
 		return $req->fetchAll();
     }
 
@@ -98,21 +98,22 @@ class ModeleAnime extends ConnexionBD{
 
     /*getFav*/
     
-    public function insertionCommentaire($idOe){
-        $req = self::$bdd->prepare("INSERT INTO commentaire VALUES (default, ?, ?, ?)");
-        $result=$req->execute(array($_POST['commentaire'], $idOe,$_SESSION['idUtilisateur']));
+    public function insertionCommentaire($idAnime){
+        $req = self::$bdd->prepare("INSERT INTO commentaire VALUES (default, ?, ?, ?, ?, ?, ?)");
+        $result=$req->execute(array($_SESSION['idUtilisateur'], $idAnime,NULL, $_POST['commentaire'],NULL,NULL));//2 dernier null = date et heure
+        echo date('l j F Y, H:i');
         return $result;
     }
 
-    public function suppressionCommentaire($idOe){
+    public function suppressionCommentaire($idAnime){
     	$req = self::$bdd->prepare("DELETE FROM commentaire WHERE idCommentaire LIKE ?");
-        $result=$req->execute(array( $idOe));
+        $result=$req->execute(array( $idAnime));
         return $result;
     }
 
-    public function suppressionAnime($idOe){
+    public function suppressionAnime($idAnime){
     	$req = self::$bdd->prepare("DELETE FROM anime WHERE idAnime = ?");
-        $result=$req->execute(array($idOe));
+        $result=$req->execute(array($idAnime));
         return $result;
     }
 }

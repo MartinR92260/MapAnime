@@ -5,7 +5,7 @@ include_once('./VueIndex.php');
 class VueAnime extends VueIndex{
 
 	public function __construct(){
-		echo '<link rel="stylesheet" type="text/css" href="module/module_Anime/VueAnime.css"/>';
+		echo '<link rel="stylesheet" type="text/css" href="module/module_Anime/css.css"/>';
 	}
 
     public function afficheAnime($arrayAnime,$arrayGenre,$arrayCommentaires,$arrayListe){
@@ -113,7 +113,7 @@ class VueAnime extends VueIndex{
 				        	echo "<a href=\"index.php?action=DelCommentaire&module=Anime&id=".$key['idCommentaire']."\">supprimer</a>";
 				        }				    
 				    }
-			        echo "</div><p>".$key['commentaire']."</p></div>";
+			        echo "</div><p>".$key['contenu']."</p></div>";
 		        }
 	    	echo "</div>";
 		}
@@ -127,12 +127,12 @@ class VueAnime extends VueIndex{
 				// <input type="text" name="synopsis" required><br/>
 				<label>Entrer la note : </label><br/>
 		 		<input type="number" min="0" max="10" name="noteG" required><br/>
-				/*    <label>Entrer le nombre de saison : </label><br/>
+				    <label>Entrer le nombre de saison : </label><br/>
 		 		<input type="number" min="0" name="nbSaison"><br/>
 		 		<label>Entrer le nombre total d\'épisode : </label><br/>
 		 		<input type="number" min="0" name="nbTotalEp"><br/>
 			 	<label>Entrer le nom du studio d\'animation : </label><br/>
-				<input type="text" name="Studio"><br/>    */
+				<input type="text" name="Studio"><br/>    
 				<input type="submit" value="Ajouter">
 			</form>';
 	}

@@ -12,8 +12,8 @@ if(isset($_GET['action'])){
 switch($menu){
 	case "Anime":
 		if(isset($_GET['id'])){
-			$idOe=htmlspecialchars($_GET['id']);
-			$cont->detailAnime($idOe);//detailAnime
+			$idAnime=htmlspecialchars($_GET['id']);
+			$cont->detailAnime($idAnime);//detailAnime
 		}else{
 			echo "You are not supposed to be here.";
 		}
@@ -33,8 +33,8 @@ switch($menu){
 		$cont->InsertionAnime();
 		break;
 	case "SupprAnime":
-		$idOe=htmlspecialchars($_GET['id']);
-		$cont->SuppresionAnime($idOe);//supressionAnime
+		$idAnime=htmlspecialchars($_GET['id']);
+		$cont->SuppresionAnime($idAnime);//supressionAnime
 		break;
 	default :
 		die("Action impossible");

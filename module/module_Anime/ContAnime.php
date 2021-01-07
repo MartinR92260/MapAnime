@@ -17,12 +17,12 @@ class ContAnime{
 		$this->vue->afficheAnime($this->modele->getAnime($id),$this->modele->getGenre($id),$this->modele->getCommentaire($id),$this->modele->getListe($id));
 	}
     
-    public function insererCommentaire($idOe){
+    public function insererCommentaire($idAnime){
 	    if(!isset($_SESSION['idUtilisateur'])){
 	        echo "vous devez être connecter pour inserer un commentaire.";
 	    }
 	    else {
-	    	$this->vue->result($this->modele->insertionCommentaire($idOe));
+	    	$this->vue->result($this->modele->insertionCommentaire($idAnime));
 	    }
     }
 
@@ -38,8 +38,8 @@ class ContAnime{
 		$this->vue->formulaireAnime();
 	}
 
-	public function SuppresionAnime($idOe){
-		$this->vue->result($this->modele->suppressionAnime($idOe));
+	public function SuppresionAnime($idAnime){
+		$this->vue->result($this->modele->suppressionAnime($idAnime));
 	}
 }
 
