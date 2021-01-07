@@ -20,7 +20,7 @@
                     <a href="index.php?module=Recherche&action=club">Club</a>
                     <?php
                     if (isset($_SESSION['idUtilisateur'])) {
-                        echo "<a href=\"index.php?module=Profil&action=afficheProfil\" class=\"col-auto\">Profil</a>";
+                        echo "<a href=\"index.php?module=Utilisateur&action=afficheProfil\" class=\"col-auto\">Profil</a>";
                     }
                     ?>
                 </div>
