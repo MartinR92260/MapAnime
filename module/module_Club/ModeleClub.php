@@ -27,32 +27,11 @@ class ModeleClub extends ConnexionBD{
         }
     }
 
-/*    public function incrementNbUtilisateur($id) {
-        $nbAdherent = $this->getNbAdherent($id);
-        $nbAdherent++;
-        $this->setNbAdherent($nbAdherent, $id);
-    }
-
-    public function decrementNbUtilisateur($id) {
-        $nbAdherent = $this->getNbAdherent($id);
-        $nbAdherent--;
-/*        $newNbAdherent = $this->setNbAdherent($nbAdherent);*/
-    
-   // }
-
     public function getNbAdherent($id) {
         $req = self::$bdd->prepare("SELECT count('idUtilisateur') AS nbUtilisateur FROM possede where idClub = ?");
         $req->execute(array($id)); 
         return $req->fetchAll();
     }
-
-/*    public function setNbAdherent($nbAdherent, $id) {
-        $req = self::$bdd->prepare("UPDATE Club SET nbUtilisateur = ? WHERE idClub = ?");
-        var_dump($nbAdherent);
-        var_dump($id);
-        $req->execute(array($nbAdherent, $id)); 
-        return $req->fetchAll();
-    }*/
 
     public function posterCommentaire($id){
         $req = self::$bdd->prepare("INSERT INTO commentaire VALUES (default, ?, ?, ?, ?, ?, ?)");
@@ -72,23 +51,14 @@ class ModeleClub extends ConnexionBD{
         return $req->fetchAll();
     }
 
-/*    public function adherentDansUnAutreClub() {
-        $req = self::$bdd->prepare("SELECT idClub FROM Utilisateur WHERE idClub = ? AND idUtilisateur = ?");
-        if($req == NULL) {
-            return false;
-        }
-        else {
-            return true;
-        }
-    }*/
 
-        public function dejaAdherentDuClub($id) {
-        $req = self::$bdd->prepare("SELECT idClub FROM Utilisateur WHERE idClub = ? AND idUtilisateur = ?");
-        if($req == NULL) {
-            return false;
+    public function dejaAdherentDuClub($id) {
+        $req = self::$bdd->prepare("SELECT * FROM possede WHERE idClub = :id AND idUtilisateur = ?");
+        if($req != NULL) {
+            return true;
         }
         else {
-            return true;
+            return false;
         }
     }
 

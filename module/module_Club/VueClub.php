@@ -33,7 +33,7 @@ class VueClub extends VueIndex{
 	        echo"<div class=\"FormCommentaires\">
 		        <form action=\"index.php?action=AjouterCommentaire&module=Club&id=".$key['idClub']."\" method=\"post\">
 		        <label for=\"commentaire\">
-                        <h2>Commentaires : <h2>
+                        <h2>Messages du Club : <h2>
 	            		</label>
 	            		<textarea name=\"comm\" placeholder=\"inserez votre commentaire\"></textarea><br/>
                         <input type=\"submit\" value=\"valider\">
