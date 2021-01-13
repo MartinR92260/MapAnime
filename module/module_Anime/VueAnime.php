@@ -5,7 +5,7 @@ include_once('./VueIndex.php');
 class VueAnime extends VueIndex{
 
 	public function __construct(){
-		echo '<link rel="stylesheet" type="text/css" href="module/module_Anime/css.css"/>';
+		echo '<link rel="stylesheet" type="text/css" href="module/module_Anime/csspls.css"/>';
 	}
 
     public function afficheAnime($arrayAnime,$arrayGenre,$arrayCommentaires,$arrayListe){
@@ -55,6 +55,11 @@ class VueAnime extends VueIndex{
                     <h2>Sysnopsis :</h2>".$key['synopsis']."
 				</div><br/>";
             
+
+
+               			echo "<div class=\"test\">"; 
+				 
+
 				if(isset($_SESSION['idUtilisateur'])) {
 					if($arrayListe){
                     	echo "<a href=\"index.php?module=Utilisateur&action=supprListe&id=".$key['idAnime']."\">Supprimer a la liste</a>";
@@ -64,14 +69,14 @@ class VueAnime extends VueIndex{
                     }
 					
 
-		   			
-
 				        if ($_SESSION['Admin'] == 1){
 				        	echo "<a href=\"index.php?action=SupprAnime&module=Anime&id=".$key['idAnime']."\">Supprimer</a>";
 				        }				    
 				    	
 				}
+
                 echo "</div><br/>
+                </div>
                 <div class=\"synAnime\">
              
 		   			

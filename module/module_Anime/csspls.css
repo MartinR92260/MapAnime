@@ -27,6 +27,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
     text-decoration: underline;
+   
 }
 
 .Anime h3 {
@@ -63,4 +64,21 @@
 
 .commentaire p {
     padding-left: 10px;
+}
+
+
+.synAnime {
+
+font-size: 14px;
+  
+
+}
+
+
+.test a{
+
+font-size: 18px;
+color : red;
+text-decoration: none;
+
 }

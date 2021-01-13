@@ -34,7 +34,7 @@ switch($menu){
 		break;
 	case "SupprAnime":
 		$idAnime=htmlspecialchars($_GET['id']);
-		$cont->SuppresionAnime($idAnime);//supressionAnime
+		$cont->SuppresionAnime($idAnime);
 		break;
 	default :
 		die("Action impossible");
