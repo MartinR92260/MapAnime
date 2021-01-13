@@ -17,12 +17,12 @@ class ContUtilisateur{
 
 	public function ajouterListe($id){
 			$this->vueIndex->result($this->modele->addToliste($id));
-			$this->modele->incrementPop($id);
+			$this->modele->refreshPop($this->modele->popularite($id),$id);
 	}
 
     public function supprimerListe($id){
 			$this->vueIndex->result($this->modele->delToliste($id));
-			$this->modele->decrementPop($id);
+			$this->modele->refreshPop($this->modele->popularite($id),$id);
 	}
     
     public function profil(){
