@@ -34,7 +34,6 @@ class ModeleRecherche extends ConnexionBD{
 
 	private function queryMaker($expr=NULL){
 		if(0<count($_POST['Genre'])){
-			$i=0;
 			for($i=0 ; $i<intval(count($_POST['Genre'])) ; $i++){
 				$this->request=$this->request.' AND idAnime IN (SELECT idAnime FROM etre WHERE idGenre = ?)';
 				array_push($this->arg,$_POST['Genre'][$i]);
