@@ -26,7 +26,7 @@ class ModeleUtilisateur extends ConnexionBD{
 		$idUtilisateur = $_SESSION['idUtilisateur'];
 		$id = $_GET['id'];
 		//Insert
-		$this->request = 'INSERT INTO liste VALUES(?,?)';
+		$this->request = 'INSERT INTO liste VALUES(?,?,NULL)';
 		$this->arg = array($idUtilisateur,$id);
 		$this->requestPrepare = self::$bdd->prepare($this->request);
 		$this->requestPrepare->execute($this->arg);
