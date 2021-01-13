@@ -9,10 +9,19 @@ class ModeleAnime extends ConnexionBD{
 	}
 
 	public function getAnime($id){
-		$req = self::$bdd->prepare("SELECT DISTINCT * from anime WHERE idAnime = ?");
+		$req = self::$bdd->prepare("SELECT DISTINCT * FROM anime WHERE idAnime = ?");
 		$req->execute(array($id));
 		return $req->fetchAll();
 	}
+
+
+	public function test($id){
+		$req = self::$bdd->prepare("SELECT idAnime FROM liste WHERE idUtilisateur = ? AND idAnime= ?");
+		$req->execute(array($_SESSION['idUtilisateur'],$id));
+		return $req->fetchAll();
+	}
+
+
 
     public function getGenre($id){//getGenre== ancien getGenreFrom
        /* $req = self::$bdd->prepare("SELECT DISTINCT idGenre,NomGenre FROM genre  WHERE idGenre = ?");*/
@@ -94,8 +103,8 @@ class ModeleAnime extends ConnexionBD{
 
    public function getListe($id) {
         if (isset($_SESSION['idUtilisateur'])){
-            $req = self::$bdd->prepare("SELECT * FROM utilisateur WHERE idAnime = ? AND idUtilisateur = ?");
-            $req->execute(array($id,$_SESSION['idUtilisateur']));
+            $req = self::$bdd->prepare("SELECT idAnime FROM liste WHERE idUtilisateur = ? ");
+            $req->execute(array($_SESSION['idUtilisateur']));
             return $req->fetchAll();
         }
     }

@@ -8,7 +8,7 @@ class VueAnime extends VueIndex{
 		echo '<link rel="stylesheet" type="text/css" href="module/module_Anime/csspls.css"/>';
 	}
 
-    public function afficheAnime($arrayAnime,$arrayGenre,$arrayCommentaires,$arrayListe){
+    public function afficheAnime($arrayAnime,$arrayGenre,$arrayCommentaires,$arrayListe,$idd){
 
 
 
@@ -61,8 +61,8 @@ class VueAnime extends VueIndex{
 				 
 
 				if(isset($_SESSION['idUtilisateur'])) {
-					if($arrayListe){
-                    	echo "<a href=\"index.php?module=Utilisateur&action=supprListe&id=".$key['idAnime']."\">Supprimer a la liste</a>";
+					if(!$idd==NULL){
+                    	echo "<a href=\"index.php?module=Utilisateur&action=supprListe&id=".$key['idAnime']."\">Supprimer a la liste</a>"."<br>";
                     }
                     else{
                     	echo "<a href=\"index.php?module=Utilisateur&action=ajoutListe&id=".$key['idAnime']."\">Ajouter a la liste</a>" ."<br>";
@@ -74,6 +74,7 @@ class VueAnime extends VueIndex{
 				        }				    
 				    	
 				}
+			
 
                 echo "</div><br/>
                 </div>
