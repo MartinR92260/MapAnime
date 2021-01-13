@@ -34,13 +34,16 @@ class ContClub{
     
     public function insererCommentaire($id){
 	    if(isset($_SESSION['idUtilisateur'])){
-	    	if($this->modele->dejaAdherentDuClub($id)==TRUE) {
+	    	if($this->modele->dejaAdherentDuClub($id, $_SESSION['idUtilisateur'])) {
 		        $this->modele->posterCommentaire($id);
 		        $this->detailClub($id);
 	   		}
+	   		else {
+	    		echo "Vous devez être adherent pour poster un message";
+	    	}
 	    }
 	    else {
-	    	echo "Vous devez être adherent pour poster un message";
+	    	echo "Vous devez être connecter pour poster un message";
 	    }
 	}
 

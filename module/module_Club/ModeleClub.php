@@ -52,14 +52,10 @@ class ModeleClub extends ConnexionBD{
     }
 
 
-    public function dejaAdherentDuClub($id) {
-        $req = self::$bdd->prepare("SELECT * FROM possede WHERE idClub = :id AND idUtilisateur = ?");
-        if($req != NULL) {
-            return true;
-        }
-        else {
-            return false;
-        }
+    public function dejaAdherentDuClub($id, $ide) {
+        $req = self::$bdd->prepare("SELECT idUtilisateur FROM possede WHERE idClub = ? AND idUtilisateur = ?");
+        $req->execute(array($id, $ide));
+        return $req->fetchAll();
     }
 
     public function getIdClub($id) {
