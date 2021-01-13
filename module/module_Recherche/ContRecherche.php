@@ -30,6 +30,14 @@ class ContRecherche{
 		$this->vue->afficheListeAnime($this->modele->listeAnime());
 	}
 
+	public function topDesAnime(){
+		$this->vue->afficheTopAnime($this->modele->topAnime());
+	}
+
+	public function topDesAnimeNote(){
+		$this->vue->afficheTopAnimeNote($this->modele->topAnimeNote());
+	}
+
 	public function listeDesClub(){
 		$this->vue->afficheListeClub($this->modele->listeClub());
 	}

@@ -20,6 +20,10 @@ class ModRecherche{
 				case "anime":
 					$this->controleur->listeDesAnime();
 					break;
+				case "topAnime":
+					$this->controleur->topDesAnime();
+					$this->controleur->topDesAnimeNote();
+					break;
 				case "recherche":
 					$this->controleur->formRecherche();
 					break;

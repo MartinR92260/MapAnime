@@ -55,6 +55,20 @@ class ModeleRecherche extends ConnexionBD{
 		return $prepareRequest->fetchAll();
 	}
 
+	public function topAnime(){
+		$this->request = "SELECT idAnime,nom,ImageAnime,SUBSTRING(synopsis,1,255) FROM Anime ORDER BY  Popularite DESC ";
+		$prepareRequest=self::$bdd->prepare($this->request);
+		$prepareRequest->execute();
+		return $prepareRequest->fetchAll();
+	}
+
+	public function topAnimeNote(){
+		$this->request = "SELECT idAnime,nom,ImageAnime,SUBSTRING(synopsis,1,255) FROM Anime ORDER BY  NoteG DESC ";
+		$prepareRequest=self::$bdd->prepare($this->request);
+		$prepareRequest->execute();
+		return $prepareRequest->fetchAll();
+	}
+
 	public function listeClub(){
 		$this->request = "SELECT idClub,nomClub, SUBSTRING(DescriptionClub,1,255) FROM Club";
 		$prepareRequest=self::$bdd->prepare($this->request);
