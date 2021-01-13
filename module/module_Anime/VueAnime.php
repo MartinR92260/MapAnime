@@ -48,8 +48,10 @@ class VueAnime extends VueIndex{
 		    	 <h2> NoteG :</h2>"
 
 		   			.$key['NoteG'];
-		   			echo '/10';
+		   			echo '/20';
 		   					echo "<br/>
+
+				<h2> Nombre de personne ayant cette Animé dans leurs liste :</h2>".$key['Popularite']."
 
 
                     <h2>Sysnopsis :</h2>".$key['synopsis']."
