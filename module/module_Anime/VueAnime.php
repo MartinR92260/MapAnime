@@ -64,11 +64,16 @@ class VueAnime extends VueIndex{
                     	echo "<a href=\"index.php?module=Utilisateur&action=supprListe&id=".$key['idAnime']."\">Supprimer a la liste</a>";
                     }
                     else{
-                    	echo "<a href=\"index.php?module=Utilisateur&action=ajoutListe&id=".$key['idAnime']."\">Ajouter a la liste</a>";
+                    	echo "<a href=\"index.php?module=Utilisateur&action=ajoutListe&id=".$key['idAnime']."\">Ajouter a la liste</a>" ."<br>";
                     }
 					
-                    //SUPPR DE   if($arrayFav){ A </script> et <?php
 
+		   			
+
+				        if ($_SESSION['Admin'] == 1){
+				        	echo "<a href=\"index.php?action=SupprAnime&module=Anime&id=".$key['idAnime']."\">Supprimer</a>";
+				        }				    
+				    	
 				}
                 echo "</div><br/>
                 <div class=\"synAnime\">
@@ -78,10 +83,10 @@ class VueAnime extends VueIndex{
 					 <h2>Anime : </h2>";
 					
 					if($key['nbSaisons']!=NULL || $key['nbSaisons']!=0){
-						echo "<h3>Nombre de Saison :</h3> ".$key['nbSaisons']."<br/>";//!!! AJOUTER NB EPISODE ET NB SAISON A LA BD
+						echo "<h3>Nombre de Saison :</h3> ".$key['nbSaisons']."<br/>";
 					}
 					if($key['nbEpisodes']!=NULL || $key['nbEpisodes']!=0){
-						echo "<h3>Nombre total d'épisode :</h3> ".$key['nbEpisodes']."<br/>";//!!! AJOUTER NB EPISODE ET NB SAISON A LA BD
+						echo "<h3>Nombre total d'épisode :</h3> ".$key['nbEpisodes']."<br/>";
 					}
 					/*if($key['nomStudio']!=NULL){
 						echo "<h3>Nom du Studio d'Animation :</h3> ".$key['nomStudio']."<br/>";
@@ -89,6 +94,15 @@ class VueAnime extends VueIndex{
 					echo "<br/>";*/
 
 					
+					
+
+
+
+
+
+
+
+
             
 	            echo"<div class=\"form-commentaire\">
 	            	<form action=\"index.php?action=AddCommentaire&module=Anime&id=".$key['idAnime']."\" method=\"post\">
@@ -109,7 +123,7 @@ class VueAnime extends VueIndex{
 		            	<div class=\"headerCommentaire\">"
 			            	.$key['pseudo'];
 			        if(isset($_SESSION['idUtilisateur'])){
-				        if ($key['idUtilisateur'] == $_SESSION['idUtilisateur'] || $_SESSION['Admin'] == 1){//idrole = admin?
+				        if ($key['idUtilisateur'] == $_SESSION['idUtilisateur'] || $_SESSION['Admin'] == 1){
 				        	echo "<a href=\"index.php?action=DelCommentaire&module=Anime&id=".$key['idCommentaire']."\">Supprimer</a>";
 				        }				    
 				    }
