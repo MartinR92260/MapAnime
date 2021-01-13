@@ -31,7 +31,11 @@ class ModRecherche{
 					$this->controleur->listeDesClub();
 					break;
 				default:
-					echo $choix." Erreur Index : Action inexistant";
+					?>
+						<script type="text/javascript"> 
+        					alert("Action Inexistante"); 
+ 		 				</script>
+ 		 			<?php
 				break;
 			}
 		}

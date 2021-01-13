@@ -32,7 +32,11 @@ class ModClub{
 					$this->cont->supprimerCommentaire($id);
 				break;
 				default :
-					die("Action impossible");
+					?>
+						<script type="text/javascript"> 
+        					alert("Action Inexistante"); 
+ 		 				</script>
+ 		 			<?php
 				break;
 			}
 		}

@@ -14,7 +14,7 @@ if (!defined('CONST_INCLUDE')){
 
 		switch($action){
 			case 'form':
-					$controleur->formulaire();//!!!
+					$controleur->formulaire();
 					break;
 			case 'connexion':
 					$controleur->connexion();
@@ -29,7 +29,11 @@ if (!defined('CONST_INCLUDE')){
 					$controleur->formulaireInscription();
 					break;
 			default :
-					$controleur->formulaire();//!!!
+				?>
+					<script type="text/javascript"> 
+        				alert("Action Inexistante"); 
+ 		 			</script>
+ 		 		<?php
 				break;
 			}
 ?>

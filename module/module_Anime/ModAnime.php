@@ -14,8 +14,6 @@ switch($menu){
 		if(isset($_GET['id'])){
 			$idAnime=htmlspecialchars($_GET['id']);
 			$cont->detailAnime($idAnime);//detailAnime
-		}else{
-			echo "You are not supposed to be here.";
 		}
 		break;
     case "AddCommentaire":
@@ -37,7 +35,11 @@ switch($menu){
 		$cont->SuppresionAnime($idAnime);
 		break;
 	default :
-		die("Action impossible");
+	   	?>
+			<script type="text/javascript"> 
+        		alert("Action Inexistante"); 
+ 		 	</script>
+ 		<?php
 	break;
 }
 

@@ -18,7 +18,11 @@ class ContClub{
 		    $this->detailClub($id);
 	    }
 	    else {
-	    	echo 'Vous devez être connecter pour rejoindre ce club';
+	    ?>
+			<script type="text/javascript"> 
+        		alert("Vous devez être connecté pour rejoindre ce club"); 
+ 		 	</script>
+ 		<?php
 	    }
 	}
 
@@ -28,7 +32,11 @@ class ContClub{
 		   	$this->detailClub($id);
 	    }
 	    else {
-	    	echo 'Vous devez être connecter pour quitter ce club';
+	    ?>
+			<script type="text/javascript"> 
+        		alert("Vous devez être connecter pour quitter ce club"); 
+ 		 	</script>
+ 		<?php
 	    }
 	}
     
@@ -39,11 +47,19 @@ class ContClub{
 		        $this->detailClub($id);
 	   		}
 	   		else {
-	    		echo "Vous devez être adherent pour poster un message";
+	   		?>
+				<script type="text/javascript"> 
+        			alert("Vous devez être adherent pour poster un message"); 
+ 		 		</script>
+ 			<?php
 	    	}
 	    }
 	    else {
-	    	echo "Vous devez être connecter pour poster un message";
+	   		?>
+				<script type="text/javascript"> 
+        			alert("Vous devez être adherent pour poster un message"); 
+ 		 		</script>
+ 			<?php
 	    }
 	}
 

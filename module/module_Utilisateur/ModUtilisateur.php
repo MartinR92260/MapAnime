@@ -24,13 +24,21 @@ class ModUtilisateur{
                     	$this->controleur->profil();
                     break;
 					default:
-						echo $choix." Erreur Index : Action inexistant";
+					?>
+						<script type="text/javascript"> 
+        					alert("Action Inexistante"); 
+ 		 				</script>
+ 		 			<?php
 					break;
 				}
 			}
 		}
 		else{
-			echo 'Erreur Connexion : Vous n\'êtes pas connecter';
+		?>
+			<script type="text/javascript"> 
+       			alert("Non Connecter"); 
+ 		 	</script>
+ 		<?php
 		}
 	}
 }

@@ -15,7 +15,11 @@ class ModeleConnexion extends ConnexionBD {
             $mdp = $_POST['mdp'];
 
        if (!isset($_POST['pseudo']) || !isset($_POST['mdp'])) {
-            die("il manque le mot de passe ou le pseudo");
+        ?>
+            <script type="text/javascript"> 
+                alert("pseudo ou mot de passe non renseigner"); 
+            </script>
+        <?php
         }
         else{
             $bd = self::$bdd->prepare('SELECT * FROM Utilisateur where pseudo like ? and mdp like ?');
@@ -53,7 +57,11 @@ class ModeleConnexion extends ConnexionBD {
         }
 
         else if($_POST['mdp2']!=$_POST['mdp']) {
-            echo'La confirmation du Mot de passe a échoué';
+        ?>
+            <script type="text/javascript"> 
+                alert("Action Inexistante"); 
+            </script>
+        <?php
 
         }
 
