@@ -9,7 +9,7 @@ $patron = new VueIndex();
 
             if (!isset($_GET['module'])) {
                 $module="Recherche";
-                $_GET['action'] = "anime";
+                $_GET['action'] = "topAnime";
             }
             else {
                 $module=htmlspecialchars($_GET['module']);
