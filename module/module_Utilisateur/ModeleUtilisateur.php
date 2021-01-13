@@ -43,18 +43,19 @@ class ModeleUtilisateur extends ConnexionBD{
 		return $this->requestPrepare->execute($this->arg);
     }
 
-    public function incrementPop($id){
-    	$this->request = 'UPDATE anime SET Popularite=Popularite+1 where idAnime= ?';
-    	$this->arg = array($id);
+    public function RefreshPop($pop,$id){
+    	$this->request = 'UPDATE anime SET Popularite= ? where idAnime= ?';
+    	$this->arg = array($pop['nbu'],$id);
     	$this->requestPrepare = self::$bdd->prepare($this->request);
     	$this->requestPrepare->execute($this->arg);
 	}
 
-	public function decrementPop($id){
-		$this->request = 'UPDATE anime SET Popularite=Popularite-1 where idAnime= ?';
+	public function popularite($id){
+		$this->request = 'SELECT count(idUtilisateur) as nbu FROM liste WHERE idAnime= ?';
     	$this->arg = array($id);
     	$this->requestPrepare = self::$bdd->prepare($this->request);
     	$this->requestPrepare->execute($this->arg);
+    	return $this->requestPrepare->fetch();
 	}
 }
 
