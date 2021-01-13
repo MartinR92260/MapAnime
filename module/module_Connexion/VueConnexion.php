@@ -17,7 +17,7 @@ class VueConnexion extends VueIndex{//!!!!!
             <div class="formulaire">
                 <h1>Connexion</h1>
                 <label>Entrer votre pseudo : </label></br>
-                <input type="text" name="login"  placeholder="Pseudo" required></br>
+                <input type="text" name="pseudo"  placeholder="Pseudo" required></br>
                 <label>Entrer votre mot de passe : </label></br>
                 <input type="password" name="mdp" placeholder="Mot de passe" required></br>
             </div>
