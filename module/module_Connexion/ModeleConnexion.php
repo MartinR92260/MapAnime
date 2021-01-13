@@ -14,12 +14,12 @@ class ModeleConnexion extends ConnexionBD {
 */ 
             $mdp = $_POST['mdp'];
 
-       if (!isset($_POST['login']) || !isset($_POST['mdp'])) {
-            die("il manque le mot de passe ou le login");
+       if (!isset($_POST['pseudo']) || !isset($_POST['mdp'])) {
+            die("il manque le mot de passe ou le pseudo");
         }
         else{
             $bd = self::$bdd->prepare('SELECT * FROM Utilisateur where pseudo like ? and mdp like ?');
-            $bd->execute(array($_POST['login'], $mdp));
+            $bd->execute(array($_POST['pseudo'], $mdp));
             $response = $bd->fetch();
             if ($response) {
                 $_SESSION['idUtilisateur'] = $response['idUtilisateur'];
@@ -44,9 +44,9 @@ class ModeleConnexion extends ConnexionBD {
 
 
 
-        $login = $_POST['login'];
+        $pseudo = $_POST['pseudo'];
         $bd = self::$bdd->prepare('SELECT pseudo FROM Utilisateur where pseudo like ?');
-        $bd->execute(array($login));
+        $bd->execute(array($pseudo));
         $response = $bd->fetch();
         if ($response) {
             return false;
@@ -58,8 +58,8 @@ class ModeleConnexion extends ConnexionBD {
         }
 
         else{
-            $bd = self::$bdd->prepare('INSERT into Utilisateur values(default,NULL,?,?,NULL,NULL,2)');
-            $bd->execute(array($login,$mdp));
+            $bd = self::$bdd->prepare('INSERT into Utilisateur values(default,?,?,NULL,NULL,2)');
+            $bd->execute(array($pseudo,$mdp));
             return true;
         }
     }
