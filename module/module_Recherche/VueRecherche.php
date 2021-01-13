@@ -5,7 +5,7 @@ include_once('./VueIndex.php');
 class VueRecherche extends VueIndex{
 
 	public function __construct(){
-        echo '<link rel="stylesheet" type="text/css" href="module/module_Recherche/VueRecherche.css"/>';
+        echo '<link rel="stylesheet" type="text/css" href="module/module_Recherche/Vue_Recherche.css"/>';
     }
 
 	public function rechercher($result){ 
