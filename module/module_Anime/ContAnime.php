@@ -22,7 +22,8 @@ class ContAnime{
 	        echo "vous devez être connecter pour inserer un commentaire.";
 	    }
 	    else {
-	    	$this->vue->result($this->modele->insertionCommentaire($idAnime));
+	    	$this->modele->insertionCommentaire($idAnime);
+	    	$this->detailAnime($idAnime);
 	    }
     }
 
