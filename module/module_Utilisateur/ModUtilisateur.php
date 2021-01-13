@@ -13,10 +13,12 @@ class ModUtilisateur{
 				$choix=htmlspecialchars($_GET['action']);
 				switch($choix){
 					case "ajoutListe":
-						$this->controleur->ajouterListe();
+						$id=htmlspecialchars($_GET['id']);
+						$this->controleur->ajouterListe($id);
 					break;
                     case "supprListe":
-                        $this->controleur->supprimerListe();
+                    	$id=htmlspecialchars($_GET['id']);
+                        $this->controleur->supprimerListe($id);
                     break;
                     case "afficheProfil":
                     	$this->controleur->profil();

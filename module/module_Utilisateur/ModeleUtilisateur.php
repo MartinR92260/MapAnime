@@ -22,9 +22,8 @@ class ModeleUtilisateur extends ConnexionBD{
 		return $this->requestPrepare->fetchAll();
 	}
 
-	public function addToliste(){
+	public function addToliste($id){
 		$idUtilisateur = $_SESSION['idUtilisateur'];
-		$id = $_GET['id'];
 		//Insert
 		$this->request = 'INSERT INTO liste VALUES(?,?,NULL)';
 		$this->arg = array($idUtilisateur,$id);
@@ -37,12 +36,26 @@ class ModeleUtilisateur extends ConnexionBD{
 		return $this->requestPrepare->fetchAll();
 	}
     
-    public function delToliste(){
+    public function delToliste($id){
         $this->request = 'DELETE FROM liste WHERE idUtilisateur='.$_SESSION['idUtilisateur'].' AND idAnime=?';
-        $this->arg = array($_GET['id']);
+        $this->arg = array($id);
         $this->requestPrepare = self::$bdd->prepare($this->request);
 		return $this->requestPrepare->execute($this->arg);
     }
+
+    public function incrementPop($id){
+    	$this->request = 'UPDATE anime SET Popularite=Popularite+1 where idAnime= ?';
+    	$this->arg = array($id);
+    	$this->requestPrepare = self::$bdd->prepare($this->request);
+    	$this->requestPrepare->execute($this->arg);
+	}
+
+	public function decrementPop($id){
+		$this->request = 'UPDATE anime SET Popularite=Popularite-1 where idAnime= ?';
+    	$this->arg = array($id);
+    	$this->requestPrepare = self::$bdd->prepare($this->request);
+    	$this->requestPrepare->execute($this->arg);
+	}
 }
 
 ?>

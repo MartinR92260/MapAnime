@@ -15,16 +15,14 @@ class ContUtilisateur{
 		$this->vueIndex = new VueIndex();
 	}
 
-	public function ajouterListe(){
-		if(isset($_GET['id'])){
-			$this->vueIndex->result($this->modele->addToliste());
-		}
+	public function ajouterListe($id){
+			$this->vueIndex->result($this->modele->addToliste($id));
+			$this->modele->incrementPop($id);
 	}
 
-    public function supprimerListe(){
-		if(isset($_GET['id'])){
-			$this->vueIndex->result($this->modele->delToliste());
-		}
+    public function supprimerListe($id){
+			$this->vueIndex->result($this->modele->delToliste($id));
+			$this->modele->decrementPop($id);
 	}
     
     public function profil(){
