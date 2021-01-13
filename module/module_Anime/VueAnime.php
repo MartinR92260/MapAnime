@@ -45,14 +45,10 @@ class VueAnime extends VueIndex{
 					echo "<br/>
 
 
-		    	 <h2> NoteG :</h2>";
+		    	 <h2> NoteG :</h2>"
 
-		    	 for($i = 0; $i<$key['NoteG'];$i++){
-		   				echo "&#9733";
-		   			}
-		   			for($i = 0;$i<10-$key['NoteG'];$i++){
-		   				echo "&#9734";
-		   			}
+		   			.$key['NoteG'];
+		   			echo '/10';
 		   					echo "<br/>
 
 

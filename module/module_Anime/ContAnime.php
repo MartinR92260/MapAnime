@@ -35,7 +35,7 @@ class ContAnime{
     	$this->vue->result($this->modele->insertAnime());
 	}
 
-	public function AjoutAnime(){//ajouterAnime
+	public function AjoutAnime(){
 		$this->vue->formulaireAnime();
 	}
 
