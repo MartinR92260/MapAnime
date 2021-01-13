@@ -48,6 +48,8 @@ class VueRecherche extends VueIndex{
 
 	public function afficheListeClub($result){
 		echo "<div class=\"block\">";
+		echo '<p>Club</p>';
+		echo "<hr class = \"haut\">";
     	foreach ($result as $key) {
     		echo "<a href=\"index.php?module=Club&action=Club&id=".$key['idClub']."\">";
 			echo "<div>"; //75d2ed
@@ -58,6 +60,7 @@ class VueRecherche extends VueIndex{
 			echo "</div>";
 			echo "</a>";
 		}
+		echo "<hr class = \"bas\">";
 		echo "</div>";
 	}
 }
