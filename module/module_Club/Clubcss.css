@@ -67,4 +67,25 @@ main {
     float:right;
     font-size: 18px;
     padding: 2px;
+    text-decoration: none;
+    color : red;
+}
+
+/*
+*/
+
+@media all and (max-width: 400px) {
+
+    main {
+        width : 1420px;
+    }
+
+    .Rejoindre {
+    	width : 300px;
+    	margin-left: 850px;
+    }
+
+    .Commentaires {
+    	width : 750px;
+    }
 }

@@ -5,7 +5,7 @@ include_once('./VueIndex.php');
 class VueClub extends VueIndex{
 
 	public function __construct(){
-        echo '<link rel="stylesheet" type="text/css" href="module/module_club/css.css"/>';
+        echo '<link rel="stylesheet" type="text/css" href="module/module_club/Clubcss.css"/>';
     }
 
     public function afficheButtonRejoindre($idClub){
