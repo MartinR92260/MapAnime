@@ -1,0 +1,190 @@
+
+.block{
+    background-color: #082740;
+    padding:20px 20px 20px 20px;
+}
+.block>a>div{
+    background-color: white;
+    padding : 20px;
+    width: 1200px;
+    height : 150px;
+    vertical-align: middle;
+}
+
+.block a {
+    color : black;
+    text-decoration: none;
+}
+
+.block>a>div:hover{
+    color: #E99D34;
+    border: solid 0px #96e2fc;
+    background-color: #FFDEBF;
+}
+.block>a>div>img{
+    width: 125px;
+    height: 150px;
+}
+.col-9 {
+    color : black;
+    margin-left: 150px;
+    position: relative;
+    top : -150px;
+}
+
+.block hr {
+    width : 1238px;
+    margin-top: 10px;
+    margin-left: 0px;
+}
+
+.block p {
+    color : white;
+    font-size: 2em;
+    position: relative;
+    top : 25px;
+}
+
+/*
+----------------------------------------
+*/
+
+
+.blockClub{
+    background-color: #082740;
+    padding:20px 20px 20px 20px;
+}
+.blockClub>a>div{
+    background-color: white;
+    padding : 20px;
+    width: 1200px;
+    vertical-align: middle;
+}
+
+.blockClub a {
+    color : black;
+    text-decoration: none;
+}
+
+.blockClub>a>div:hover{
+    color: #E99D34;
+    border: solid 0px #96e2fc;
+    background-color: #FFDEBF;
+}
+.blockClub>a>div>img{
+    width: 125px;
+    height: 150px;
+}
+.col-8 {
+    color : black;
+    position: relative;
+}
+
+.blockClub hr {
+    margin-left: 0px;
+    margin-top: -20px;
+    width :1240px;
+    margin-top: 8px;
+    width :1240px;
+
+}
+
+.blockClub p {
+    color : white;
+    font-size: 2em;
+    position: relative;
+    top : 25px;
+}
+
+/*
+----------------------------------------
+*/
+
+
+.blockTopAnime{
+    background-color: #082740;
+    padding:20px 20px 20px 20px;
+}
+.blockTopAnime>a>div{
+    background-color: white;
+    padding : 20px;
+    width: 1200px;
+    height : 150px;
+    vertical-align: middle;
+}
+
+.blockTopAnime a {
+    color : black;
+    text-decoration: none;
+}
+
+.blockTopAnime>a>div:hover{
+    color: #E99D34;
+    border: solid 0px #96e2fc;
+    background-color: #FFDEBF;
+}
+.blockTopAnime>a>div>img{
+    width: 125px;
+    height: 150px;
+}
+
+.blockTopAnime p {
+    color : white;
+    font-size: 2em;
+    position: relative;
+    top : 25px;
+}
+
+.blockTopAnime hr {
+    width : 1238px;
+    margin-top: 10px;
+    margin-left: 0px;
+}
+
+
+/*
+----------------------------------------
+*/
+
+
+.blockTopAnimeNote{
+    background-color: #082740;
+    padding:20px 20px 20px 20px;
+    margin-left: 1300px;
+    margin-top: -1089px;
+}
+.blockTopAnimeNote>a>div{
+    background-color: white;
+    padding : 20px;
+    width: 500px;
+    height : 150px;
+    vertical-align: middle;
+}
+
+.blockTopAnimeNote a {
+    color : black;
+    text-decoration: none;
+}
+
+.blockTopAnimeNote>a>div:hover{
+    color: #E99D34;
+    border: solid 0px #96e2fc;
+    background-color: #FFDEBF;
+}
+.blockTopAnimeNote>a>div>img{
+    width: 125px;
+    height: 150px;
+}
+
+.blockTopAnimeNote p {
+    color : white;
+    font-size: 2em;
+    position: relative;
+    top : 25px;
+}
+
+.blockTopAnimeNote hr {
+    width : 538px;
+    margin-top: 10px;
+    margin-left: 0px;
+}

@@ -5,7 +5,7 @@ include_once('./VueIndex.php');
 class VueRecherche extends VueIndex{
 
 	public function __construct(){
-        echo '<link rel="stylesheet" type="text/css" href="module/module_Recherche/Vue_Recherche.css"/>';
+        echo '<link rel="stylesheet" type="text/css" href="module/module_Recherche/css.css"/>';
     }
 
 	public function rechercher($result){ 
@@ -53,7 +53,7 @@ class VueRecherche extends VueIndex{
 
 	public function afficheTopAnime($result){
 		$count=0;
-		echo "<div class=\"block\">";
+		echo "<div class=\"blockTopAnime\">";
 		echo '<p>Top 5 Anime Les plus populaires </p>';
 		echo "<hr class = \"haut\">";
     	foreach ($result as $key ) {
@@ -80,7 +80,7 @@ class VueRecherche extends VueIndex{
 
 public function afficheTopAnimeNote($result){
 		$count=0;
-		echo "<div class=\"block\">";
+		echo "<div class=\"blockTopAnimeNote\">";
 		echo '<p>Top 5 Anime Les mieux noté </p>';
 		echo "<hr class = \"haut\">";
     	foreach ($result as $key ) {
@@ -105,21 +105,14 @@ public function afficheTopAnimeNote($result){
 	}
 
 
-	
-
-
-
-
-
-
 	public function afficheListeClub($result){
-		echo "<div class=\"block\">";
+		echo "<div class=\"blockClub\">";
 		echo '<p>Club</p>';
 		echo "<hr class = \"haut\">";
     	foreach ($result as $key) {
     		echo "<a href=\"index.php?module=Club&action=Club&id=".$key['idClub']."\">";
 			echo "<div>"; //75d2ed
-				echo "<div class=\"col-9\">";
+				echo "<div class=\"col-8\">";
 			       	echo "Nom : ".$key['nomClub']."<br/>";
 			       	echo "Description :</br>".$key['SUBSTRING(DescriptionClub,1,255)']."...</br>";
 		       	echo "</div>";

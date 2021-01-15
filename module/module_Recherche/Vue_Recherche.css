@@ -48,6 +48,40 @@
     top : 25px;
 }
 
+
+
+.blockTopAnimeNote{
+    background-color: #082740;
+    padding:20px 20px 20px 20px;
+}
+.blockTopAnimeNote>a>div{
+    background-color: white;
+    padding : 20px;
+    width: 1200px;
+    vertical-align: middle;
+}
+
+.blockTopAnimeNote a {
+    color : black;
+    text-decoration: none;
+}
+
+.blockTopAnimeNote>a>div:hover{
+    color: #E99D34;
+    border: solid 0px #96e2fc;
+    background-color: #FFDEBF;
+}
+.blockTopAnimeNote>a>div>img{
+    width: 125px;
+    height: 150px;
+}
+
+.blockTopAnimeNote p {
+    color : white;
+    font-size: 2em;
+    position: relative;
+    top : 25px;
+}
 /*.block>a>div>div{
     display: inline-block;
 }*/
