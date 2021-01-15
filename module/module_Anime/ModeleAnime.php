@@ -15,10 +15,12 @@ class ModeleAnime extends ConnexionBD{
 	}
 
 
-	public function test($id){
+	public function VerifAnimeDansListe($id){
+		 if(isset($_SESSION['idUtilisateur'])){
 		$req = self::$bdd->prepare("SELECT idAnime FROM liste WHERE idUtilisateur = ? AND idAnime= ?");
 		$req->execute(array($_SESSION['idUtilisateur'],$id));
 		return $req->fetchAll();
+	}
 	}
 
 

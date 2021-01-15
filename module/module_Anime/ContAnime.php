@@ -14,7 +14,7 @@ class ContAnime{
 	}
 
 	public function detailAnime($id){//detailAnime
-		$this->vue->afficheAnime($this->modele->getAnime($id),$this->modele->getGenre($id),$this->modele->getCommentaire($id),$this->modele->getListe($id),$this->modele->test($id));
+		$this->vue->afficheAnime($this->modele->getAnime($id),$this->modele->getGenre($id),$this->modele->getCommentaire($id),$this->modele->getListe($id),$this->modele->VerifAnimeDansListe($id));
 	}
     
     public function insererCommentaire($idAnime){
