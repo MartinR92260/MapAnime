@@ -25,7 +25,12 @@ input.button-center {
 
 @media all and (max-width: 400px) {
     .formulaire {
-        width: 50%;
-        height: 50%;
+        width: 150%;
+        height: 30%;
+        margin-top: 40px;
+        margin-left: 400px;
+    }
+    input.button-center {
+        margin-left:660px;
     }
 }
