@@ -32,7 +32,7 @@
                         echo "<a href=\"index.php?module=Connexion&action=deconnexion\"><input type=\"button\" name=\"deconnecter\" value=\"Logout\" class=\"log\"/></a>";
                     }
                     else{
-                        echo "<a href=\"index.php?module=Connexion\"><input type=\"button\" name=\"connecter\" value=\"Login\" class=\"log\"/></a>";
+                        echo "<a href=\"index.php?module=Connexion&action=form\"><input type=\"button\" name=\"connecter\" value=\"Login\" class=\"log\"/></a>";
                         echo "<a href=\"index.php?module=Connexion&action=formInscription\"><input type=\"button\" name=\"connecter\" value=\"Sign Up\" class=\"log\"/></a>";
                     }
                     ?>
