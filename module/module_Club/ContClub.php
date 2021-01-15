@@ -72,6 +72,7 @@ class ContClub{
 		$this->vue->afficheButtonRejoindre($this->modele->getIdClub($id));
 		$this->vue->afficheButtonQuitter($this->modele->getIdClub($id));
 		$this->vue->afficheNbAdherent($this->modele->getNbAdherent($id));
+		$this->vue->afficheUtilisateur($this->modele->getListeUtilisateur($id));
 	}
 }
 

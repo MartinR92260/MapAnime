@@ -5,7 +5,7 @@ include_once('./VueIndex.php');
 class VueClub extends VueIndex{
 
 	public function __construct(){
-        echo '<link rel="stylesheet" type="text/css" href="module/module_club/Clubcss.css"/>';
+        echo '<link rel="stylesheet" type="text/css" href="module/module_club/Club_css.css"/>';
     }
 
     public function afficheButtonRejoindre($idClub){
@@ -49,7 +49,7 @@ class VueClub extends VueIndex{
 			            	<div class=\"headerCommentaires\">"
 				            	.$key['pseudo'];
 				        if(isset($_SESSION['idUtilisateur'])){
-					        if ($key['idUtilisateur'] == $_SESSION['idUtilisateur']){
+					        if ($key['idUtilisateur'] == $_SESSION['idUtilisateur'] || $_SESSION['Admin'] == 1){
 					        	echo "<a href=\"index.php?module=Club&action=SupprimerCommentaire&id=".$key['idCommentaire']."\">   Supprimer</a>";
 					        }				    
 					    }
@@ -61,6 +61,22 @@ class VueClub extends VueIndex{
 			        }
 		    	echo "</div>";
 			}
+	}
+
+	public function afficheUtilisateur($utilisateurs) {
+			echo "<div class =\"DivUtilisateurs\">
+				<p>Liste des Adherents : </p>";
+				foreach($utilisateurs as $key) {
+					echo "<div class =\"users\">"
+					.$key['pseudo'];
+					if(isset($_SESSION['idUtilisateur'])){
+					    if ($_SESSION['Admin'] == 1){
+/*							echo"<a href=\"index.php?module=Club&action=Bannir&id=".$key['idUtilisateur']."\">Bannir</a>";*/
+						}
+					}
+					echo "</div>";
+				}
+				echo "</div>";
 	}
 
 }

@@ -28,6 +28,7 @@ main {
 	width : 190px;
 	margin-top: 30px;
 	padding : 10px;
+	height : 70px;
 }
 
 .NombreAdherent p{
@@ -69,6 +70,34 @@ main {
     padding: 2px;
     text-decoration: none;
     color : red;
+}
+
+/*.HeaderUtilisateurs {
+	position: relative;
+	top : 20px;
+	right: 12px;
+	border: solid 3px white;
+	width : 190px;
+	padding : 10px;
+}*/
+.DivUtilisateurs {
+	position: relative;
+	top : 20px;
+	right: 12px;
+	border: solid 3px white;
+	width : 190px;
+	padding : 10px;
+	color : #7CFC00;
+}
+
+.DivUtilisateurs a {
+	color : red;
+	text-decoration: none;
+	float:right;
+}
+
+.users {
+	padding : 10px;
 }
 
 /*
