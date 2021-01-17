@@ -18,6 +18,7 @@ $patron = new VueIndex();
                 case "Anime":
                 case "Club":
                 case "Recherche":
+                case "Ami":
                 case "Utilisateur":
                 case "Connexion":
                     include 'module/module_'.$module.'/Mod'.$module.'.php';

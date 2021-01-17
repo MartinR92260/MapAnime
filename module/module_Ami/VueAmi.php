@@ -8,7 +8,7 @@ class VueAmi extends VueIndex{
         echo '<link rel="stylesheet" type="text/css" href="module/module_Ami/VueAmi.css"/>';
     }
 
-    public function affichageDuProfilAmi($arrayAnime, $infoProfil){
+    public function affichageDuProfilAmi($arrayAnime, $infoProfil, $listeInfoAmis){
     	echo "<h1>profil de ".$infoProfil['0']['pseudo']." : </h1>";
         echo '<h2>Liste d\'anime</h2>';
         if ($arrayAnime){
@@ -22,6 +22,11 @@ class VueAmi extends VueIndex{
         else{
 			echo "La liste de votre ami est vide.";
 		}
+
+        echo '<h2>Liste d\'amis</h2>';
+        foreach ($listeInfoAmis as $ami) {
+            echo "<a href=\"index.php?module=Ami&action=afficheProfil&id=".$ami['idAmi']."\">".$ami['PhotoProfil'].$ami['pseudoAmi']."<br>"."</a>";
+        }
     }
 }
 ?>

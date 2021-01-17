@@ -16,7 +16,7 @@ class ContAmi{
 	}
 
 	public function profil($id){
-		$this->vue->affichageDuProfilAmi($this->modele->recupAnime($id),$this->modele->recupProfilAmi($id));
+		$this->vue->affichageDuProfilAmi($this->modele->recupAnime($id),$this->modele->recupProfilAmi($id),$this->modele->listeAmis($id));
 	}
 }
 

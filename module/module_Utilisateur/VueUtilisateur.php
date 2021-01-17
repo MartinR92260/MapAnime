@@ -8,12 +8,12 @@ class VueUtilisateur extends VueIndex{
         echo '<link rel="stylesheet" type="text/css" href="module/module_Utilisateur/VueUtilisateur.css"/>';
     }
 
-    public function affichageDuProfilUtilisateur($result){
+    public function affichageDuProfilUtilisateur($listeAnime,$listeInfoAmis){
     	echo "<h1>profil de ".$_SESSION['pseudo']." : </h1>";
         echo '<h2>Liste d\'anime</h2>';
-        if ($result){
+        if ($listeAnime){
             echo "<div>";
-    			foreach ($result as $anime) {
+    			foreach ($listeAnime as $anime) {
     				echo "<a href=\"index.php?module=Anime&action=Anime&id=".$anime['idAnime']."\">".$anime['nom']."</a>";
 				    echo '</br>';
     			}
