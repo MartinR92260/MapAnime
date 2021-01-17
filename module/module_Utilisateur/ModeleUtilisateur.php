@@ -57,6 +57,13 @@ class ModeleUtilisateur extends ConnexionBD{
     	$this->requestPrepare->execute($this->arg);
     	return $this->requestPrepare->fetch();
 	}
-}
 
+	public function listeAmis(){
+		$this->request = "SELECT idAmi,pseudoAmi,PhotoProfil FROM ami NATURAL JOIN avoir WHERE idUtilisateur=?";
+		$this->arg=array($_SESSION['idUtilisateur']);
+		$prepareRequest=self::$bdd->prepare($this->request);
+		$prepareRequest->execute($this->arg);
+		return $prepareRequest->fetchAll();
+	}
+}
 ?>

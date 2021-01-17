@@ -14,6 +14,10 @@ class ContAmi{
 		$this->vue = new VueAmi();
 		$this->vueIndex = new VueIndex();
 	}
+
+	public function profil($id){
+		$this->vue->affichageDuProfilAmi($this->modele->recupAnime($id),$this->modele->recupProfilAmi($id));
+	}
 }
 
 ?>

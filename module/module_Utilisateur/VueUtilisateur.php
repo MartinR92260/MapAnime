@@ -22,6 +22,10 @@ class VueUtilisateur extends VueIndex{
         else{
 			echo "Votre liste est vide. N'ésitez pas a la remplir !";
 		}
+        echo '<h2>Liste d\'amis</h2>';
+        foreach ($listeInfoAmis as $ami) {
+            echo "<a href=\"index.php?module=Ami&action=afficheProfil&id=".$ami['idAmi']."\">".$ami['PhotoProfil'].$ami['pseudoAmi']."<br>"."</a>";
+        }
 
         if($_SESSION['Admin']==1){
             echo "<h1>Interface d'administrateur : </h1>";

@@ -8,20 +8,20 @@ class ModAmi{
 
 	public function __construct(){
 		$this->controleur = new ContAmi();
-		if( isset($_SESSION['idAmi']) ){
-			if( isset($_GET['action']) ){
-				$choix=htmlspecialchars($_GET['action']);
-				switch($choix){
-					case "":
-					break;
-					default:
-					?>
-						<script type="text/javascript"> 
-        					alert("Action Inexistante"); 
- 		 				</script>
- 		 			<?php
-					break;
-				}
+		if( isset($_GET['action']) ){
+			$choix=htmlspecialchars($_GET['action']);
+			switch($choix){
+				case "afficheProfil":
+					$id=htmlspecialchars($_GET['id']);
+					$this->controleur->profil($id);
+				break;
+				default:
+				?>
+					<script type="text/javascript"> 
+        				alert("Action Inexistante"); 
+ 		 			</script>
+ 		 		<?php
+				break;
 			}
 		}
 	}
