@@ -79,7 +79,6 @@ class VueRecherche extends VueIndex{
 		echo "</div>";
 	}
 
-<<<<<<< Updated upstream
 
 public function afficheTopAnimeNote($result){
 		$count=0;
@@ -118,22 +117,10 @@ public function afficheTopAnimeNote($result){
 				echo "<div class=\"col-8\">";
 			       	echo "Nom : ".$key['nomClub']."<br/>";
 			       	echo "Description :</br>".$key['SUBSTRING(DescriptionClub,1,255)']."...</br>";
-=======
-	public function affListeClub($result){
-		echo "<div class=\"block\">";
-    	foreach ($result as $key) {
-    		echo "<a href=\"index.php?module=Club&action=Club&id=".$key['idClub']."\">";
-			echo "<div>"; //75d2ed
-				echo "<div class=\"col-9\">";
-			       	echo "Nom : ".$key['nomClub']."<br/>";
-			       	echo "Description :</br>".$key['SUBSTRING(DescriptionClub,1,255)']."...</br>";
-			       	echo "Nombre d'adherents : ".$key['nbUtilisateur']."<br/>";
->>>>>>> Stashed changes
 		       	echo "</div>";
 			echo "</div>";
 			echo "</a>";
 		}
-<<<<<<< Updated upstream
 		echo "<hr class = \"bas\">";
 		echo "<div class = \"divAjout\">";
 		echo "<a href=\"index.php?module=Club&action=AjoutClub\">Ajouter un club</a>";
@@ -169,9 +156,6 @@ public function afficheTopAnimeNote($result){
 		echo "<hr class = \"bas\">";
 		echo "</div>";
 	
-=======
-		echo "</div>";
->>>>>>> Stashed changes
 	}
 }
 ?>

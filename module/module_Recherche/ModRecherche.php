@@ -19,7 +19,6 @@ class ModRecherche{
 					break;
 				case "anime":
 					$this->controleur->listeDesAnime();
-					/*$this->controleur->listeAnimeRecommander();*/
 					break;
 				case "topAnime":
 					$this->controleur->topDesAnime();
@@ -36,9 +35,6 @@ class ModRecherche{
 					break;
 				case "parNomUser":
 					$this->controleur->rechercheParUser();
-					break;
-				case "club":
-					$this->controleur->listeDesClub();
 					break;
 				default:
 					?>
