@@ -23,6 +23,10 @@ class ModUtilisateur{
                     case "afficheProfil":
                     	$this->controleur->profil();
                     break;
+                   case "afficheOtherProfil":
+                   		$id=htmlspecialchars($_GET['id']);
+                    	$this->controleur->profilOther($id);
+                    break;
 					default:
 					?>
 						<script type="text/javascript"> 

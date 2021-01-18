@@ -9,7 +9,7 @@ class VueUtilisateur extends VueIndex{
     }
 
     public function affichageDuProfilUtilisateur($listeAnime,$listeInfoAmis){
-    	echo "<h1>profil de ".$_SESSION['pseudo']." : </h1>";
+        echo "<h1>profil de ".$_SESSION['pseudo']." : </h1>";
         echo '<h2>Liste d\'anime</h2>';
         if ($listeAnime){
             echo "<div>";
@@ -30,6 +30,28 @@ class VueUtilisateur extends VueIndex{
         if($_SESSION['Admin']==1){
             echo "<h1>Interface d'administrateur : </h1>";
             echo "<a href=\"index.php?module=Anime&action=AjoutAnime\">Ajouter un anime</a>";
+        }
+    }
+
+        public function affichageDuProfilDeAutreUtilisateur($id, $listeAnime,$listeInfoAmis){
+        foreach($id as $key) {
+            echo "<h1>profil de ".$key['pseudo']." : </h1>";
+        }
+        echo '<h2>Liste d\'anime</h2>';
+        if ($listeAnime){
+            echo "<div>";
+                foreach ($listeAnime as $anime) {
+                    echo "<a href=\"index.php?module=Anime&action=Anime&id=".$anime['idAnime']."\">".$anime['nom']."</a>";
+                    echo '</br>';
+                }
+            echo "</div>";
+        }
+        else{
+            echo "Votre liste est vide. N'ésitez pas a la remplir !";
+        }
+        echo '<h2>Liste d\'amis</h2>';
+        foreach ($listeInfoAmis as $ami) {
+            echo "<a href=\"index.php?module=Ami&action=afficheProfil&id=".$ami['idAmi']."\">".$ami['PhotoProfil'].$ami['pseudoAmi']."<br>"."</a>";
         }
     }
 

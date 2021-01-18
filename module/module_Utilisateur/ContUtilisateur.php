@@ -28,6 +28,10 @@ class ContUtilisateur{
     public function profil(){
 		$this->vue->affichageDuProfilUtilisateur($this->modele->requestListe(),$this->modele->listeAmis());
 	}
+
+	public function profilOther($id){
+		$this->vue->affichageDuProfilDeAutreUtilisateur($this->modele->getIdUser($id), $this->modele->requestListeDeAutreUtilisateur($id),$this->modele->listeAmisDeAutreUtilisateur($id));
+	}
 }
 
 ?>

@@ -41,9 +41,32 @@ class ContRecherche{
 	public function listeDesClub(){
 		$this->vue->afficheListeClub($this->modele->listeClub());
 	}
+<<<<<<< Updated upstream
 /*
 	public function listeAnimeRecommander(){
 		$this->vue->afficheAnimeRecommander($this->modele->listeAnimeRecommancer($this->modele->listeGenreAnimeUtilisateur($this->modele->listeAnimeUtilisateur())));
 	}*/
+=======
+
+	public function formRechercheUtilisateur(){
+		$this->vue->rechercherUser();
+	}
+
+	public function rechercheParUser(){
+		$nomSaisie=htmlspecialchars($_POST['nomSaisie']);
+		$this->vue->afficheListeUser($this->modele->searchNomUser($nomSaisie));
+	}
+<<<<<<< Updated upstream
+=======
+
+	public function listeDesClub(){
+		$_POST['club']='default';
+		$this->vue->affListeClub($this->modele->listeClub());
+	}
+    
+}
+>>>>>>> Stashed changes
+
+>>>>>>> Stashed changes
 }
 ?>

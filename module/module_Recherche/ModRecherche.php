@@ -31,6 +31,15 @@ class ModRecherche{
 				case "club":
 					$this->controleur->listeDesClub();
 					break;
+				case "rechercheUtilisateur":
+					$this->controleur->formRechercheUtilisateur();
+					break;
+				case "parNomUser":
+					$this->controleur->rechercheParUser();
+					break;
+				case "club":
+					$this->controleur->listeDesClub();
+					break;
 				default:
 					?>
 						<script type="text/javascript"> 

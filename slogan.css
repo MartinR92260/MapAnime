@@ -31,7 +31,7 @@ nav {
 }
 
 .droite {
-	margin-left: 1500px;
+	margin-left: 1300px;
 	position : relative;
 	top : 10px;
 }
@@ -71,7 +71,7 @@ footer p {
 	}
 
 	.droite {
-		margin-left: 800px;
+		margin-left: 500px;
 	}
 	nav {
 		width : 400%;

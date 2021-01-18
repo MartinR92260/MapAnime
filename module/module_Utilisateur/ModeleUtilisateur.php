@@ -65,5 +65,29 @@ class ModeleUtilisateur extends ConnexionBD{
 		$prepareRequest->execute($this->arg);
 		return $prepareRequest->fetchAll();
 	}
+
+	public function requestListeDeAutreUtilisateur($id){
+		$this->request = 'SELECT idAnime,nom FROM utilisateur NATURAL JOIN liste NATURAL JOIN anime WHERE idUtilisateur=?';
+		$this->arg = array($id);
+		$this->requestPrepare = self::$bdd->prepare($this->request);
+		$this->requestPrepare->execute($this->arg);
+		return $this->requestPrepare->fetchAll();
+	}
+
+		public function listeAmisDeAutreUtilisateur($id){
+		$this->request = "SELECT idAmi,pseudoAmi,PhotoProfil FROM ami NATURAL JOIN avoir WHERE idUtilisateur=?";
+		$this->arg=array($id);
+		$prepareRequest=self::$bdd->prepare($this->request);
+		$prepareRequest->execute($this->arg);
+		return $prepareRequest->fetchAll();
+	}
+
+	public function getIdUser($id) {
+		$this->request = "SELECT idUtilisateur, pseudo FROM Utilisateur WHERE idUtilisateur = ?";
+        $this->arg = array($id);
+		$this->requestPrepare = self::$bdd->prepare($this->request);
+		$this->requestPrepare->execute($this->arg);
+		return $this->requestPrepare->fetchAll();
+	}
 }
 ?>

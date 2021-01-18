@@ -7,7 +7,7 @@ echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">";
 class VueRecherche extends VueIndex{
 
 	public function __construct(){
-        echo '<link rel="stylesheet" type="text/css" href="module/module_Recherche/VueRecherchecss.css"/>';
+        echo '<link rel="stylesheet" type="text/css" href="module/module_Recherche/Vue_Recherchecss.css"/>';
     }
 
 	public function rechercher($result){ 
@@ -79,6 +79,7 @@ class VueRecherche extends VueIndex{
 		echo "</div>";
 	}
 
+<<<<<<< Updated upstream
 
 public function afficheTopAnimeNote($result){
 		$count=0;
@@ -117,16 +118,60 @@ public function afficheTopAnimeNote($result){
 				echo "<div class=\"col-8\">";
 			       	echo "Nom : ".$key['nomClub']."<br/>";
 			       	echo "Description :</br>".$key['SUBSTRING(DescriptionClub,1,255)']."...</br>";
+=======
+	public function affListeClub($result){
+		echo "<div class=\"block\">";
+    	foreach ($result as $key) {
+    		echo "<a href=\"index.php?module=Club&action=Club&id=".$key['idClub']."\">";
+			echo "<div>"; //75d2ed
+				echo "<div class=\"col-9\">";
+			       	echo "Nom : ".$key['nomClub']."<br/>";
+			       	echo "Description :</br>".$key['SUBSTRING(DescriptionClub,1,255)']."...</br>";
+			       	echo "Nombre d'adherents : ".$key['nbUtilisateur']."<br/>";
+>>>>>>> Stashed changes
 		       	echo "</div>";
 			echo "</div>";
 			echo "</a>";
 		}
+<<<<<<< Updated upstream
 		echo "<hr class = \"bas\">";
 		echo "<div class = \"divAjout\">";
 		echo "<a href=\"index.php?module=Club&action=AjoutClub\">Ajouter un club</a>";
 		echo "</div>";
 		echo "</div>";
             
+	}
+
+	public function rechercherUser(){ 
+		?>
+        <form action="index.php?module=Recherche&action=parNomUser" method="POST">
+        		Rechercher un utilisateur <br>
+				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="nomSaisie"><br>
+				<input type="submit" value="Lancer la recherche">
+			</form>
+		<?php 
+	}
+
+	public function afficheListeUser($result){
+		echo "<div class=\"blockUser\">";
+		echo '<p>Utilisateur</p>';
+		echo "<hr class = \"haut\">";
+    	foreach ($result as $key ) {
+    		if ($key['idUtilisateur'] != $_SESSION['idUtilisateur']) {
+    		echo "<a href=\"index.php?module=Utilisateur&action=afficheOtherProfil&id=".$key['idUtilisateur']."\">";
+				echo "<div class=\"col-9\">";
+			       	echo "Pseudo : ".$key['pseudo']."<br/>";
+		       	echo "</div>";
+			echo "</a>";
+		}
+		}
+
+		echo "<hr class = \"bas\">";
+		echo "</div>";
+	
+=======
+		echo "</div>";
+>>>>>>> Stashed changes
 	}
 }
 ?>

@@ -218,7 +218,10 @@
     background-color: white;
     padding : 20px;
     width: 1200px;
-    height : 150px;
+    height : 20px;
+    position: relative;
+    top : 2px;
+    right: 150px;
     vertical-align: middle;
 }
 
@@ -242,8 +245,6 @@
 .blockUser p {
     color : white;
     font-size: 2em;
-    position: relative;
-    top : 25px;
 }
 /*
 */
