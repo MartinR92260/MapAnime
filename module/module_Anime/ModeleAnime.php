@@ -111,22 +111,32 @@ class ModeleAnime extends ConnexionBD{
         }
     }
 
-    /*getFav*/
+    
     
     public function insertionCommentaire($idAnime){
+
+    	
+    	$date=date("Y-m-d");
+    	$heure=date("H:i:s");
+    	
         $req = self::$bdd->prepare("INSERT INTO commentaire VALUES (default, ?, ?, ?, ?, ?, ?)");
-        $result=$req->execute(array($_SESSION['idUtilisateur'], $idAnime,NULL, $_POST['commentaireV2'],NULL,NULL));//2 dernier null = date et heure
-        /*echo date('l j F Y, H:i');*/
+        $result=$req->execute(array($_SESSION['idUtilisateur'], $idAnime,NULL, $_POST['commentaireV2'],$date,$heure));
         return $result;
     }
 
     public function suppressionCommentaire($idAnime){
+    	    	header('Location:index.php');
+
     	$req = self::$bdd->prepare("DELETE FROM commentaire WHERE idCommentaire LIKE ?");
         $result=$req->execute(array( $idAnime));
         return $result;
     }
 
     public function suppressionAnime($idAnime){
+
+    	header('Location:index.php');
+
+
     	$req = self::$bdd->prepare("DELETE FROM anime WHERE idAnime = ?");
         $result=$req->execute(array($idAnime));
         return $result;
@@ -134,6 +144,9 @@ class ModeleAnime extends ConnexionBD{
    
 
     	public function modifNote($id){
+
+    	header('Location:index.php');
+
 		$idUtilisateur = $_SESSION['idUtilisateur'];
 		$newNote=$_POST['noteSelec'];
 		$this->request = 'UPDATE  liste SET note=? WHERE idUtilisateur=? AND idAnime=?';
@@ -144,6 +157,9 @@ class ModeleAnime extends ConnexionBD{
 	}
 
 	public function modifLEtat($id) {
+
+    	header('Location:index.php');
+
 
 		$idUtilisateur = $_SESSION['idUtilisateur'];
 		$newEtat=$_POST['etatSelec'];
