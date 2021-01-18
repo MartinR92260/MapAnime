@@ -10,7 +10,7 @@ class ModeleClub extends ConnexionBD{
 	}
 
     public function rejoindreClub($id) {
-        $req = self::$bdd->prepare("INSERT INTO possede VALUES (?,?, 0)");
+        $req = self::$bdd->prepare("INSERT INTO possede VALUES (?,?)");
         $req->execute(array($_SESSION['idUtilisateur'], $id));
         return $req->fetchAll();
     }
@@ -22,7 +22,7 @@ class ModeleClub extends ConnexionBD{
     }
 
     public function getNbAdherent($id) {
-        $req = self::$bdd->prepare("SELECT count('idUtilisateur') AS nbUtilisateur FROM possede where idClub = ? AND Ban = 0");
+        $req = self::$bdd->prepare("SELECT count('idUtilisateur') AS nbUtilisateur FROM possede where idClub = ?");
         $req->execute(array($id)); 
         return $req->fetchAll();
     }
@@ -59,7 +59,7 @@ class ModeleClub extends ConnexionBD{
     }
 
     public function getListeUtilisateur($id) {
-        $req = self::$bdd->prepare("SELECT * FROM utilisateur NATURAL JOIN possede where idClub = ? AND Ban = 0");
+        $req = self::$bdd->prepare("SELECT * FROM utilisateur NATURAL JOIN possede where idClub = ?");
         $req->execute(array($id)); 
         return $req->fetchAll();
     }
