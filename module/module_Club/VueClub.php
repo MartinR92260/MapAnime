@@ -5,7 +5,7 @@ include_once('./VueIndex.php');
 class VueClub extends VueIndex{
 
 	public function __construct(){
-        echo '<link rel="stylesheet" type="text/css" href="module/module_club/Club_css.css"/>';
+        echo '<link rel="stylesheet" type="text/css" href="module/module_club/VueClub_css.css"/>';
     }
 
     public function afficheButtonRejoindre($idClub){
@@ -28,8 +28,22 @@ class VueClub extends VueIndex{
 		}
 	}
 
+	public function afficheSupprClub($id) {
+		foreach ($id as $key) {
+						if ($_SESSION['Admin'] == 1){
+			echo "<a href=\"index.php?action=SupprClub&module=Club&id=".$key['idClub']."\">Supprimer le club définitivement</a>";
+			}
+		}
+	}
+
 	public 	function afficheCommentaire($commentaires, $club){
 		foreach($club as $key) {
+
+			if ($_SESSION['Admin'] == 1){
+				echo"<div class=\"Suppr\">
+				<a href=\"index.php?action=SupprClub&module=Club&id=".$key['idClub']."\">Supprimer le club définitivement</a>";
+				echo"</div>";
+			}
 	        echo"<div class=\"FormCommentaires\">
 		        <form action=\"index.php?action=AjouterCommentaire&module=Club&id=".$key['idClub']."\" method=\"post\">
 		        <label for=\"commentaire\">
@@ -63,20 +77,32 @@ class VueClub extends VueIndex{
 			}
 	}
 
-	public function afficheUtilisateur($utilisateurs) {
+	public function afficheUtilisateur($utilisateurs, $club) {
 			echo "<div class =\"DivUtilisateurs\">
 				<p>Liste des Adherents : </p>";
-				foreach($utilisateurs as $key) {
-					echo "<div class =\"users\">"
-					.$key['pseudo'];
-					if(isset($_SESSION['idUtilisateur'])){
-					    if ($_SESSION['Admin'] == 1){
-/*							echo"<a href=\"index.php?module=Club&action=Bannir&id=".$key['idUtilisateur']."\">Bannir</a>";*/
+				foreach($club as $clubs) {
+					foreach($utilisateurs as $key) {
+						echo "<div class =\"users\">"
+						.$key['pseudo'];
+						if(isset($_SESSION['idUtilisateur'])){
+						    if ($_SESSION['Admin'] == 1){
+								echo"<a href=\"index.php?module=Club&action=Bannir&idUser=".$key['idUtilisateur']."&idClub=".$key['idClub']."\">Bannir</a>";
+							}
 						}
+						echo "</div>";
 					}
-					echo "</div>";
-				}
-				echo "</div>";
+			}
+			echo "</div>";
+	}
+
+	public function formulaireClub(){
+		echo '<form action="index.php?action=AjoutEnCours&module=Club" method="post">
+				<label>Entrer le nom du club: </label><br/>
+			 	<input type="text" name="nomClub" required><br/>
+			 	<label>Entrer la description : </label><br/>
+				<input type="text" name="DescriptionClub" required><br/> 
+				<input type="submit" value="Ajouter">
+			</form>';
 	}
 
 }

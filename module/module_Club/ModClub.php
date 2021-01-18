@@ -31,6 +31,21 @@ class ModClub{
 					$id=htmlspecialchars($_GET['id']);
 					$this->cont->supprimerCommentaire($id);
 				break;
+				case "AjoutClub":
+					$this->cont->AjouterClub();
+				break;
+				case "AjoutEnCours":
+					$this->cont->InsertionClub();
+				break;
+				case "SupprClub":
+					$idClub=htmlspecialchars($_GET['id']);
+					$this->cont->SuppressionClub($idClub);
+				break;
+				case "Bannir":
+					$idUser=htmlspecialchars($_GET['idUser']);
+					$idClub=htmlspecialchars($_GET['idClub']);
+					$this->cont->banUser($idClub, $idUser);
+				break;
 				default :
 					?>
 						<script type="text/javascript"> 

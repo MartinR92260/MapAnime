@@ -23,6 +23,7 @@ class ContClub{
         		alert("Vous devez être connecté pour rejoindre ce club"); 
  		 	</script>
  		<?php
+
 	    }
 	}
 
@@ -72,8 +73,26 @@ class ContClub{
 		$this->vue->afficheButtonRejoindre($this->modele->getIdClub($id));
 		$this->vue->afficheButtonQuitter($this->modele->getIdClub($id));
 		$this->vue->afficheNbAdherent($this->modele->getNbAdherent($id));
-		$this->vue->afficheUtilisateur($this->modele->getListeUtilisateur($id));
+		$this->vue->afficheUtilisateur($this->modele->getListeUtilisateur($id), $this->modele->getIdClub($id));
 	}
+
+	public function AjouterClub(){
+		$this->vue->formulaireClub();
+	}
+
+	public function InsertionClub(){
+    	$this->vue->result($this->modele->insertClub());
+	}
+
+	public function SuppressionClub($idClub){
+		$this->vue->result($this->modele->suppressionClub($idClub));
+	}
+
+	public function banUser($id) {
+		$this->modele->bannir($id, $id);
+		$this->detailClub($id);
+	}
+
 }
 
 ?>

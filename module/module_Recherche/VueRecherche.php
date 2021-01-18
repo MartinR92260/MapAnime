@@ -7,7 +7,7 @@ echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">";
 class VueRecherche extends VueIndex{
 
 	public function __construct(){
-        echo '<link rel="stylesheet" type="text/css" href="module/module_Recherche/Recherchecss.css"/>';
+        echo '<link rel="stylesheet" type="text/css" href="module/module_Recherche/VueRecherchecss.css"/>';
     }
 
 	public function rechercher($result){ 
@@ -122,7 +122,11 @@ public function afficheTopAnimeNote($result){
 			echo "</a>";
 		}
 		echo "<hr class = \"bas\">";
+		echo "<div class = \"divAjout\">";
+		echo "<a href=\"index.php?module=Club&action=AjoutClub\">Ajouter un club</a>";
 		echo "</div>";
+		echo "</div>";
+            
 	}
 }
 ?>

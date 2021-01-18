@@ -96,6 +96,23 @@
     top : 25px;
 }
 
+.divAjout {
+    border: solid 1px white;
+    margin-left: 1350px;
+    width : 300px;
+    height : 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top : 210px;
+}
+
+.divAjout a{
+    color : red;
+    font-size: 1.3em;
+}
+
 /*
 ----------------------------------------
 */
@@ -254,7 +271,19 @@
         width : 1305px;
     }
 
-    .blockClub{
-        width : 1390px;
+    .blockClub>a>div{
+        width : 1000px;
     }
+
+    .divAjout {
+    border: solid 1px white;
+    margin-left: 1150px;
+    width : 300px;
+    height : 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top : 210px;
+}
 }
