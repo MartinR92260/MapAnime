@@ -96,7 +96,11 @@ class VueAnime extends VueIndex{
 
 							<input type="submit" value="Valider" />
 
+
+
 						</form>';
+
+
 
 						echo'<form action=index.php?action=modifEtat&module=Anime&id='.$key['idAnime'].' method="post">
 
@@ -175,7 +179,11 @@ class VueAnime extends VueIndex{
 				        	echo "<a href=\"index.php?action=DelCommentaire&module=Anime&id=".$key['idCommentaire']."\">Supprimer</a>";
 				        }				    
 				    }
-			        echo "</div><p>".$key['contenu']."</p></div>";
+				
+
+			         echo "</div><p>".$key['contenu']."</p>
+			          <p>".$key['Date']."</p>
+			          <p>".$key['Heure']."</p></div>";
 		        }
 	    	echo "</div>";
 		}
