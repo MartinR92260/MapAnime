@@ -41,6 +41,9 @@ class ContRecherche{
 	public function listeDesClub(){
 		$this->vue->afficheListeClub($this->modele->listeClub());
 	}
-
+/*
+	public function listeAnimeRecommander(){
+		$this->vue->afficheAnimeRecommander($this->modele->listeAnimeRecommancer($this->modele->listeGenreAnimeUtilisateur($this->modele->listeAnimeUtilisateur())));
+	}*/
 }
 ?>

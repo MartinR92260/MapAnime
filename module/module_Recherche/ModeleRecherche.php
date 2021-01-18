@@ -75,5 +75,31 @@ class ModeleRecherche extends ConnexionBD{
 		$prepareRequest->execute();
 		return $prepareRequest->fetchAll();
 	}
+	/*
+	public function listeGenreAnimeUtilisateur($listeAnime){
+		for($i=0 ; $i<intval(count($listeAnime['idAnime'])) ; $i++){
+			if(isset($this->request)){
+				$this->request=$this->request.' AND idGenre IN (SELECT idGenre FROM etre WHERE idAnime=?)';
+				array_push($this->arg,$listeAnime['idAnime'][$i]);
+			}else{
+				$this->request = "SELECT idGenre FROM etre WHERE idAnime=?";
+				$this->arg=array($listeAnime['idAnime']);
+			}
+		}
+		$this->requestPrepare=self::$bdd->prepare($this->request);
+		$this->requestPrepare->execute($this->arg);
+		$listeGenre = $this->requestPrepare->fetchAll();
+		foreach ($listeGenre as $genre) {
+			
+		}
+	}
+
+	public function listeAnimeUtilisateur(){
+		$this->request = "SELECT idAnime FROM liste WHERE idUtilisateur=?";
+		$this->arg=array($_SESSION['idUtilisateur']);
+		$this->requestPrepare=self::$bdd->prepare($this->request);
+		$this->requestPrepare->execute($this->arg);
+		return $this->requestPrepare->fetchAll();
+	}*/
 } 
 ?>

@@ -19,6 +19,7 @@ class ModRecherche{
 					break;
 				case "anime":
 					$this->controleur->listeDesAnime();
+					/*$this->controleur->listeAnimeRecommander();*/
 					break;
 				case "topAnime":
 					$this->controleur->topDesAnime();
