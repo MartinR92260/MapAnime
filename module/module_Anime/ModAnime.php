@@ -13,7 +13,7 @@ switch($menu){
 	case "Anime":
 		if(isset($_GET['id'])){
 			$idAnime=htmlspecialchars($_GET['id']);
-			$cont->detailAnime($idAnime);//detailAnime
+			$cont->detailAnime($idAnime);
 		}
 		break;
     case "AddCommentaire":
@@ -33,6 +33,14 @@ switch($menu){
 	case "SupprAnime":
 		$idAnime=htmlspecialchars($_GET['id']);
 		$cont->SuppresionAnime($idAnime);
+		break;
+	case "modifLaNote":
+		$idAnime=htmlspecialchars($_GET['id']);
+		$cont->modifLaNote($idAnime);
+		break;
+	case "modifEtat":
+		$idAnime=htmlspecialchars($_GET['id']);
+		$cont->modifEtat($idAnime);
 		break;
 	default :
 	   	?>

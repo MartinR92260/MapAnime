@@ -42,6 +42,15 @@ class ContAnime{
 	public function SuppresionAnime($idAnime){
 		$this->vue->result($this->modele->suppressionAnime($idAnime));
 	}
+	public function modifLaNote($id){
+		$this->modele->modifNote($id);
+	}
+
+	public function modifEtat($id){
+		$this->modele->modifLEtat($id);
+	}
+
+	
 }
 
 ?>

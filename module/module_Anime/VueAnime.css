@@ -2,6 +2,7 @@
     width: 400px;
     height: 500px;
 }
+
 .infoAnime{
     width: 50%;
     display: inline-block;
@@ -9,25 +10,15 @@
     padding-left: 10px;
 }
 
-.Anime{
-	background-color: #082740;
-	color:white;
-
-
-}
-
 .Anime h1 {
     font-size: 32px;
-
 }
-
 
 .Anime h2 {
     font-size: 24px;
     padding-top: 10px;
     padding-bottom: 10px;
     text-decoration: underline;
-   
 }
 
 .Anime h3 {
@@ -59,39 +50,9 @@
     float:right;
     font-size: 14px;
     padding: 2px;
-    text-decoration: none;
-    color : red;
 }
 
 
 .commentaire p {
     padding-left: 10px;
-}
-
-
-.synAnime {
-
-font-size: 14px;
-  
-
-}
-
-
-.test a{
-
-font-size: 18px;
-color : red;
-text-decoration: none;
-
-}
-
-
-/*
-*/
-
-@media all and (max-width: 400px) {
-
-    .Anime {
-        width : 1420px;
-    }
 }

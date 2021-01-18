@@ -131,6 +131,28 @@ class ModeleAnime extends ConnexionBD{
         $result=$req->execute(array($idAnime));
         return $result;
     }
+   
+
+    	public function modifNote($id){
+		$idUtilisateur = $_SESSION['idUtilisateur'];
+		$newNote=$_POST['noteSelec'];
+		$this->request = 'UPDATE  liste SET note=? WHERE idUtilisateur=? AND idAnime=?';
+		$this->arg = array($newNote,$idUtilisateur,$id);
+		$this->requestPrepare = self::$bdd->prepare($this->request);
+		$this->requestPrepare->execute($this->arg);
+		
+	}
+
+	public function modifLEtat($id) {
+
+		$idUtilisateur = $_SESSION['idUtilisateur'];
+		$newEtat=$_POST['etatSelec'];
+		$this->request = 'UPDATE  liste SET etat=? WHERE idUtilisateur=? AND idAnime=?';
+		$this->arg = array($newEtat,$idUtilisateur,$id);
+		$this->requestPrepare = self::$bdd->prepare($this->request);
+		$this->requestPrepare->execute($this->arg);
+		
+	}
 }
 
 ?>
