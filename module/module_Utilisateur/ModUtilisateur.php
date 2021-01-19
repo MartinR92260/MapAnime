@@ -27,6 +27,10 @@ class ModUtilisateur{
                    		$id=htmlspecialchars($_GET['id']);
                     	$this->controleur->profilOther($id);
                     break;
+                    case "afficheProfilAmi":
+						$id=htmlspecialchars($_GET['id']);
+						$this->controleur->profilAmi($id);
+					break;
 					default:
 					?>
 						<script type="text/javascript"> 
