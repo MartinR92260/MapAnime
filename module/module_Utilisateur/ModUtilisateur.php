@@ -27,9 +27,13 @@ class ModUtilisateur{
                    		$id=htmlspecialchars($_GET['id']);
                     	$this->controleur->profilOther($id);
                     break;
-                    case "afficheProfilAmi":
-						$id=htmlspecialchars($_GET['id']);
-						$this->controleur->profilAmi($id);
+					case "ajoutAmi":
+						$idAmi=htmlspecialchars($_GET['id']);
+						$this->controleur->ajouterListeAmi($idAmi);
+					break;
+					case "supprAmi":
+						$idAmi=htmlspecialchars($_GET['id']);
+                        $this->controleur->supprimerListeAmi($idAmi);
 					break;
 					default:
 					?>

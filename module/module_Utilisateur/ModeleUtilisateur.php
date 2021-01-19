@@ -15,7 +15,7 @@ class ModeleUtilisateur extends ConnexionBD{
 
 	public function requestListe(){
 		$idUtilisateur = $_SESSION['idUtilisateur'];
-		$this->request = 'SELECT idAnime,nom, ImageAnime FROM utilisateur NATURAL JOIN liste NATURAL JOIN anime WHERE idUtilisateur=?';
+		$this->request = 'SELECT idAnime,nom FROM utilisateur NATURAL JOIN liste NATURAL JOIN anime WHERE idUtilisateur=?';
 		$this->arg = array($idUtilisateur);
 		$this->requestPrepare = self::$bdd->prepare($this->request);
 		$this->requestPrepare->execute($this->arg);
@@ -89,5 +89,20 @@ class ModeleUtilisateur extends ConnexionBD{
 		$this->requestPrepare->execute($this->arg);
 		return $this->requestPrepare->fetchAll();
 	}
+
+	public function addTolisteAmi($id){
+		//Insert
+		$this->request = 'INSERT INTO avoir VALUES(?,?)';
+		$this->arg = array($_SESSION['idUtilisateur'],$id);
+		$this->requestPrepare = self::$bdd->prepare($this->request);
+		$this->requestPrepare->execute($this->arg);
+	}
+    
+    public function delTolisteAmi($id){
+        $this->request = 'DELETE FROM avoir WHERE idUtilisateur=? AND idAmi=?';
+        $this->arg = array($_SESSION['idUtilisateur'],$id);
+        $this->requestPrepare = self::$bdd->prepare($this->request);
+		return $this->requestPrepare->execute($this->arg);
+    }
 }
 ?>

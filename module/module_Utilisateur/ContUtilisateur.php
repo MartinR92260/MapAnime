@@ -30,12 +30,15 @@ class ContUtilisateur{
 	}
 
 	public function profilOther($id){
-		$this->vue->affichageDuProfilDeAutreUtilisateur($this->modele->getIdUser($id), $this->modele->requestListeDeAutreUtilisateur($id),$this->modele->listeAmisDeAutreUtilisateur($id));
+		$this->vue->affichageDuProfilDeAutreUtilisateur($this->modele->getIdUser($id), $this->modele->requestListeDeAutreUtilisateur($id),$this->modele->listeAmisDeAutreUtilisateur($id),$this->modele->listeAmis());
 	}
 
-	public function profilAmi($id){
-		$this->vue->affichageDuProfilAmi($this->modele->requestListeDeAutreUtilisateur($id),$this->modele->getIdUser($id),$this->modele->listeAmisDeAutreUtilisateur($id));
+	public function ajouterListeAmi($id){
+		$this->modele->addTolisteAmi($id);
+	}
+
+	public function supprimerListeAmi($id){
+		$this->modele->delTolisteAmi($id);
 	}
 }
-
 ?>
