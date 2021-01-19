@@ -15,6 +15,7 @@ $patron = new VueIndex();
                 $module=htmlspecialchars($_GET['module']);
             }
             switch($module){
+                case "Administrateur":
                 case "Anime":
                 case "Club":
                 case "Recherche":
