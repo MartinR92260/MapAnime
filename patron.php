@@ -27,7 +27,11 @@
                 </div>
                 
                 <div class="droite">
-                    <a href="index.php?module=Recherche&action=rechercheUtilisateur"><input type="button" value = "Search User..." class="add"/></a>
+                    <?php
+                    if (isset($_SESSION['idUtilisateur'])) {
+                    echo "<a href=\"index.php?module=Recherche&action=rechercheUtilisateur\"><input type=\"button\" value =\"Search User...\" class=\"add\"/></a>";
+                    }
+                    ?>
                     <a href="index.php?module=Recherche&action=recherche"><input type="button" value = "Search Anime..." class="add"/></a>
                     <?php
                     if (isset($_SESSION['idUtilisateur'])) {
