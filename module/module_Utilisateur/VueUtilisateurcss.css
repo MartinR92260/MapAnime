@@ -1,7 +1,6 @@
 main {
 	padding : 20px;
-	/*background-color: #082740;*/
-	min-height: 1200px;
+	background-color: #082740;
 }
 
 h1 {
@@ -14,6 +13,7 @@ h1 {
 	margin-left: 1200px;
 	position : absolute;
 	top : 130px;
+	background-color: white;
 }
 .Admin h1{
 	padding-left : 30px;
@@ -28,11 +28,13 @@ h1 {
 	display: flex;
     align-items: center;
     justify-content: center;
+    background-color: white;
 }
 
 .Anime {
 	width : 550px;
 	border: solid 2px black;
+	background-color: white;
 }
 
 .Anime h2{
@@ -40,6 +42,8 @@ h1 {
 	display: flex;
     align-items: center;
     justify-content: center;
+    background-color: white;
+
 }
 
 .Anime a {
@@ -62,7 +66,8 @@ h1 {
 	width : 500px;
 	margin-left: 600px;
 	position : absolute;
-	top : 189px;
+	top : 188px;
+	background-color: white;
 }
 
 .Ami h2{
@@ -70,20 +75,24 @@ h1 {
 	display: flex;
     align-items: center;
     justify-content: center;
+    background-color: white;
 }
 
 .Ami a {
 	text-decoration: none;
-	border: solid 1px black;
 	color : black;
 	font-size: 1.1em;
-	width : 100px;
+
+}
+
+.Ami h4 {
 	display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 200px;
-
+    position : relative;
+	top : 20px;
 }
+
 
 #imageAnime {
 	width : 80px;
@@ -94,8 +103,19 @@ h1 {
 .DivAnime {
 	border: solid 1px black;
 	min-height : 75px;
+	background-color: white;
 }
 
 .DivAnime:hover {
+	background-color: #FFDEBF;
+}
+
+.DivAmi {
+	border: solid 1px black;
+	min-height : 75px;
+	background-color: white;
+}
+
+.DivAmi:hover {
 	background-color: #FFDEBF;
 }

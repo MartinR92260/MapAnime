@@ -28,8 +28,9 @@ class VueUtilisateur extends VueIndex{
         echo "<div class =\"Ami\">";
         echo '<h2>Liste d\'amis</h2>';
         foreach ($listeInfoAmis as $ami) {
-            echo "<a href=\"index.php?module=Utilisateur&action=afficheOtherProfil&id=".$ami['idAmi']."\">".$ami['PhotoProfil'].$ami['pseudoAmi']."<br>"."</a>";
-            echo '</br>';
+            echo "<div class =\"DivAmi\">";
+            echo "<a href=\"index.php?module=Utilisateur&action=afficheOtherProfil&id=".$ami['idAmi']."\">".$ami['PhotoProfil']."<h4>" .$ami['pseudoAmi']."</h4><br>"."</a>";
+            echo "</div>";
         }
         echo "</div>";
 
@@ -43,7 +44,7 @@ class VueUtilisateur extends VueIndex{
 
     public function affichageDuProfilDeAutreUtilisateur($id, $listeAnime,$listeInfoAmis,$listeAmiUtilisateur){
         foreach($id as $key) {
-            echo "<h1>profil de ".$key['pseudo']." : </h1>";
+            echo "<h1>Profil de ".$key['pseudo']." : </h1>";
         }
 
         if($_SESSION['idUtilisateur']!=$id['0']['idUtilisateur']){
@@ -61,22 +62,29 @@ class VueUtilisateur extends VueIndex{
             }
         }
 
+        echo "<div class =\"Anime\">";
         echo '<h2>Liste d\'anime</h2>';
         if ($listeAnime){
-            echo "<div>";
                 foreach ($listeAnime as $anime) {
-                    echo "<a href=\"index.php?module=Anime&action=Anime&id=".$anime['idAnime']."\">".$anime['nom']."</a>";
+                    echo "<div class =\"DivAnime\">";
+                    echo "<a href=\"index.php?module=Anime&action=Anime&id=".$anime['idAnime']."\"><img src=./images/Anime/".$anime['ImageAnime']." id=\"imageAnime\"/><h4>". $anime['nom']."</h4></a>";
                     echo '</br>';
+                    echo "</div>";
                 }
             echo "</div>";
         }
         else{
             echo "Votre liste est vide. N'ésitez pas a la remplir !";
         }
+
+        echo "<div class =\"Ami\">";
         echo '<h2>Liste d\'amis</h2>';
         foreach ($listeInfoAmis as $ami) {
-            echo "<a href=\"index.php?module=Utilisateur&action=afficheOtherProfil&id=".$ami['idAmi']."\">".$ami['PhotoProfil'].$ami['pseudoAmi']."<br>"."</a>";
+            echo "<div class =\"DivAmi\">";
+            echo "<a href=\"index.php?module=Utilisateur&action=afficheOtherProfil&id=".$ami['idAmi']."\">".$ami['PhotoProfil']."<h4>" .$ami['pseudoAmi']."</h4><br>"."</a>";
+            echo "</div>";
         }
-    }
+        echo "</div>";
+        }
 }
 ?>
