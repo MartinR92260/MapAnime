@@ -67,7 +67,7 @@ class ModeleUtilisateur extends ConnexionBD{
 	}
 
 	public function requestListeDeAutreUtilisateur($id){
-		$this->request = 'SELECT idAnime,nom FROM utilisateur NATURAL JOIN liste NATURAL JOIN anime WHERE idUtilisateur=?';
+		$this->request = 'SELECT idAnime,nom,ImageAnime FROM utilisateur NATURAL JOIN liste NATURAL JOIN anime WHERE idUtilisateur=?';
 		$this->arg = array($id);
 		$this->requestPrepare = self::$bdd->prepare($this->request);
 		$this->requestPrepare->execute($this->arg);
