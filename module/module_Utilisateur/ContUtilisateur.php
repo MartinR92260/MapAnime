@@ -34,7 +34,7 @@ class ContUtilisateur{
 	}
 
 	public function profilAmi($id){
-		$this->vue->affichageDuProfilAmi($this->modele->recupAnimeAmi($id),$this->modele->recupProfilAmi($id),$this->modele->listeAmisDami($id));
+		$this->vue->affichageDuProfilAmi($this->modele->requestListeDeAutreUtilisateur($id),$this->modele->getIdUser($id),$this->modele->listeAmisDeAutreUtilisateur($id));
 	}
 }
 
