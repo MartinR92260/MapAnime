@@ -16,7 +16,7 @@ class ModeleAnime extends ConnexionBD{
 
 
 	public function VerifAnimeDansListe($id){
-		 if(isset($_SESSION['idUtilisateur'])){
+		if(isset($_SESSION['idUtilisateur'])){
 		$req = self::$bdd->prepare("SELECT idAnime FROM liste WHERE idUtilisateur = ? AND idAnime= ?");
 		$req->execute(array($_SESSION['idUtilisateur'],$id));
 		return $req->fetchAll();
@@ -44,16 +44,6 @@ class ModeleAnime extends ConnexionBD{
 		}else{
 			$synopsis = NULL;
 		}
-		/*if(!empty($_POST['note'])){
-			$note = $_POST['note'];
-		}else{
-			$note = NULL;
-		}*///Bizzare de mettre la note de l'anime
-		/*if(!empty($_POST['nbVolume'])){
-			$nbVolume = $_POST['nbVolume'];
-		}else{
-			$nbVolume = NULL;
-		}*/
 		if(!empty($_POST['nbSaisons'])){
 			$nbSaisons = $_POST['nbSaisons'];
 		}else{
@@ -64,18 +54,6 @@ class ModeleAnime extends ConnexionBD{
 		}else{
 			$nbEpisodes = NULL;
 		}
-		
-		/*if(!empty($_POST['Auteur'])){
-			$AuteurListe = self::getAuteur($_POST['Auteur']);
-			if(empty($AuteurListe)){
-				$AuteurListe=self::createAuteur($_POST['Auteur']);
-			}
-			foreach ($AuteurListe as $key){
-				$Auteur = $key['idAuteur'];
-			}
-		}else{
-			$Auteur = NULL;
-		}*/
 		/*if(!empty($_POST['Studio'])){
 			$StudioListe = self::getStudio($_POST['Studio']);
 			if(empty($StudioListe)){
@@ -156,6 +134,8 @@ class ModeleAnime extends ConnexionBD{
 		
 	}
 
+
+
 	public function modifLEtat($id) {
 
     	header('Location:index.php');
@@ -169,6 +149,81 @@ class ModeleAnime extends ConnexionBD{
 		$this->requestPrepare->execute($this->arg);
 		
 	}
+
+	public function noteGenerale($id) {
+
+
+		$req = self::$bdd->prepare("SELECT  note FROM liste WHERE idAnime=?");
+		$req->execute(array($id));
+		return $req->fetchAll();
+
+	}
+
+
+
+	public function updateNoteG($id,$req) {
+
+		$add=0;
+		$countt=0;
+
+		$res=array_column($req, 'note');//Transformation en tableau a 1 ligne
+
+	
+		foreach ($res as $value) {
+		if($value>=0 && $value!=NULL){
+		$countt	++;
+		$add=$value+$add;
+		}	
+
+		}
+
+
+		$noteG=$add/$countt;
+
+		$this->request = 'UPDATE  anime SET NoteG=? WHERE idAnime=?';
+		$this->arg = array($noteG,$id);
+		$this->requestPrepare = self::$bdd->prepare($this->request);
+		$this->requestPrepare->execute($this->arg);
+
+		
+
+	}
+
+	
+
+
+
+	/*public function updateNoteG($id) {
+
+		$req = self::$bdd->prepare("SELECT  note FROM liste WHERE idAnime=?");
+		$req->execute(array($id));
+		$req->fetchAll();
+
+		var_dump($req);
+
+		$add=0;
+		$countt=0;
+
+		$res=array_column($req, 'note');//Transformation en tableau a 1 ligne
+
+	
+		foreach ($res as $value) {
+		$countt	++;
+		$add=$value+$add;
+
+		}
+
+
+		$noteG=$add/$countt;
+
+		$this->request = 'UPDATE  anime SET NoteG=? WHERE idAnime=?';
+		$this->arg = array($noteG,$id);
+		$this->requestPrepare = self::$bdd->prepare($this->request);
+		$this->requestPrepare->execute($this->arg);
+
+		
+
+	}*/
 }
 
 ?>

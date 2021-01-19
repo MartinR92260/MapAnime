@@ -115,12 +115,12 @@ class VueAnime extends VueIndex{
                     }
                     
                     else{
-                    	echo "<a href=\"index.php?module=Utilisateur&action=ajoutListe&id=".$key['idAnime']."\">Ajouter a la liste</a>" ."<br>";
+                    	echo "<a href=\"index.php?module=Utilisateur&action=ajoutListe&id=".$key['idAnime']."\">Ajouter de la liste</a>" ."<br>";
                     }
 					
 
 				    if ($_SESSION['Admin'] == 1){
-				        echo "<a href=\"index.php?action=SupprAnime&module=Anime&id=".$key['idAnime']."\">Supprimer</a>";
+				        echo "<a href=\"index.php?action=SupprAnime&module=Anime&id=".$key['idAnime']."\">Supprimer Anime du site</a>";
 				    }				    
 				    	
 				}
