@@ -24,7 +24,7 @@ class ModeleRecherche extends ConnexionBD{
 
 	public function searchGenre($expr=NULL){
 		$expr="%".$expr."%";
-		$this->request='SELECT DISTINCT idAnime,nom,ImageAnime,SUBSTRING(synopsis,1,255) FROM anime NATURAL JOIN etre NATURAL JOIN genre WHERE nom LIKE ?';
+		$this->request='SELECT DISTINCT idAnime,nom,ImageAnime,SUBSTRING(synopsis,1,255) FROM anime NATURAL JOIN etre NATURAL JOIN genre WHERE nomGenre LIKE ?';
 		$this->arg=array($expr);
 		$this->queryMaker($expr);
 		$this->requestPrepare=self::$bdd->prepare($this->request);
@@ -33,10 +33,19 @@ class ModeleRecherche extends ConnexionBD{
 	}
 
 	private function queryMaker($expr=NULL){
-		if(0<count($_POST['Genre'])){
-			for($i=0 ; $i<intval(count($_POST['Genre'])) ; $i++){
-				$this->request=$this->request.' AND idAnime IN (SELECT idAnime FROM etre WHERE idGenre = ?)';
-				array_push($this->arg,$_POST['Genre'][$i]);
+		if(empty($_POST['Genre'])) {
+			?>
+				<script type="text/javascript"> 
+        		alert("Vous devez sélectionner au moins un genre !"); 
+ 		 		</script>
+ 		 	<?php
+		}
+		else {
+			if(0<count($_POST['Genre'])){
+				for($i=0 ; $i<intval(count($_POST['Genre'])) ; $i++){
+					$this->request=$this->request.' AND idAnime IN (SELECT idAnime FROM etre WHERE idGenre = ?)';
+					array_push($this->arg,$_POST['Genre'][$i]);
+				}
 			}
 		}
 	}
@@ -63,7 +72,7 @@ class ModeleRecherche extends ConnexionBD{
 	}
 
 	public function topAnimeNote(){
-		$this->request = "SELECT idAnime,nom,ImageAnime,SUBSTRING(synopsis,1,255),noteG FROM Anime ORDER BY  NoteG DESC ";
+		$this->request = "SELECT idAnime,nom,ImageAnime,SUBSTRING(synopsis,1,155),noteG FROM Anime ORDER BY  NoteG DESC ";
 		$prepareRequest=self::$bdd->prepare($this->request);
 		$prepareRequest->execute();
 		return $prepareRequest->fetchAll();
