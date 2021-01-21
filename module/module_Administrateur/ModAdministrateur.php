@@ -12,9 +12,8 @@ class ModAdministrateur{
 			if( isset($_GET['action']) ){
 				$choix=htmlspecialchars($_GET['action']);
 				switch($choix){
-					case "":
-						$idAmi=htmlspecialchars($_GET['id']);
-                        $this->controleur->supprimerListeAmi($idAmi);
+					case "affichePanel":
+                        $this->controleur->affichePanel();
 					break;
 					default:
 					?>

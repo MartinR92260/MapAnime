@@ -22,6 +22,9 @@
                     <?php
                     if (isset($_SESSION['idUtilisateur'])) {
                         echo "<a href=\"index.php?module=Utilisateur&action=afficheProfil\" class=\"col-auto\">Profil</a>";
+                        if ($_SESSION['Admin']==1) {
+                        	echo "<a href=\"index.php?module=Administrateur&action=affichePanel\" class=\"col-auto\">Interface Admin</a>";
+                        }
                     }
                     ?>
                 </div>
