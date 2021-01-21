@@ -63,7 +63,7 @@ class ModeleRecherche extends ConnexionBD{
 	}
 
 	public function topAnimeNote(){
-		$this->request = "SELECT idAnime,nom,ImageAnime,SUBSTRING(synopsis,1,155),noteG FROM Anime ORDER BY  NoteG DESC ";
+		$this->request = "SELECT idAnime,nom,ImageAnime,SUBSTRING(synopsis,1,255),noteG FROM Anime ORDER BY  NoteG DESC ";
 		$prepareRequest=self::$bdd->prepare($this->request);
 		$prepareRequest->execute();
 		return $prepareRequest->fetchAll();

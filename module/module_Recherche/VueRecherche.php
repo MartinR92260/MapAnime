@@ -65,7 +65,7 @@ class VueRecherche extends VueIndex{
 				echo "<img src=./images/Anime/".$key['ImageAnime']." class=\"col-3\">";
 				echo "<div class=\"col-9\">";
 			       	echo "Nom : ".$key['nom']."<br/><br/>";
-			       	echo "Nombre de Personen ayant cet anime dans leur liste : ".$key['Popularite']."</br></br>";
+			       	echo "Nombre de Personne ayant cet anime dans leur liste : ".$key['Popularite']."</br></br>";
 			       	echo "Description :</br>".$key['SUBSTRING(synopsis,1,255)']."...</br>";
 		       	echo "</div>";
 			echo "</div>";
@@ -94,7 +94,7 @@ public function afficheTopAnimeNote($result){
 				echo "<div class=\"col-9\">";
 			       	echo "Nom : ".$key['nom']."<br/><br/>";
 			       	echo "Note :".$key['noteG']."/20</br></br>";
-			       	echo "Description :</br>".$key['SUBSTRING(synopsis,1,155)']."...</br>";
+			       	echo "Description :</br>".$key['SUBSTRING(synopsis,1,255)']."...</br>";
 
 		       	echo "</div>";
 			echo "</div>";
