@@ -7,7 +7,7 @@ echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">";
 class VueRecherche extends VueIndex{
 
 	public function __construct(){
-        echo '<link rel="stylesheet" type="text/css" href="module/module_Recherche/Vue_Recherchecss.css"/>';
+        echo '<link rel="stylesheet" type="text/css" href="module/module_Recherche/Recherche.css"/>';
     }
 
 	public function rechercher($result){ 
