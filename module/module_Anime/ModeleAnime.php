@@ -2,7 +2,11 @@
 
 require_once("./ConnexionBD.php"); 
 
+
+
+
 class ModeleAnime extends ConnexionBD{
+
 
 	public function __construct(){
 		parent::initConnexion();
@@ -33,7 +37,7 @@ class ModeleAnime extends ConnexionBD{
     }
 
 	public function insertAnime(){
-		$req = self::$bdd->prepare("INSERT INTO Anime VALUES (default,?,?,?,?,?,?,?,?)");
+		$req = self::$bdd->prepare("INSERT INTO Anime VALUES (default,?,?,?,?,?,?,?)");
 		if(!empty($_POST['nom'])){
 			$nom = $_POST['nom'];
 		}else{
@@ -54,18 +58,10 @@ class ModeleAnime extends ConnexionBD{
 		}else{
 			$nbEpisodes = NULL;
 		}
-		/*if(!empty($_POST['Studio'])){
-			$StudioListe = self::getStudio($_POST['Studio']);
-			if(empty($StudioListe)){
-				$StudioListe=self::createStudio($_POST['Studio']);
-			}
-			foreach ($StudioListe as $key){
-				$Studio = $key['idStudio'];
-			}
-		}else {
-			$Studio = NULL;
-		}*/
-		$result = $req->execute(array($nom,NULL,$nbEpisodes,$nbSaisons,$synopsis,1,0,NULL));
+		
+
+
+		$result = $req->execute(array($nom,NULL,$nbEpisodes,$nbSaisons,$synopsis,NULL,NULL));
 		return $result;
 
 
@@ -191,39 +187,7 @@ class ModeleAnime extends ConnexionBD{
 
 	
 
-
-
-	/*public function updateNoteG($id) {
-
-		$req = self::$bdd->prepare("SELECT  note FROM liste WHERE idAnime=?");
-		$req->execute(array($id));
-		$req->fetchAll();
-
-		var_dump($req);
-
-		$add=0;
-		$countt=0;
-
-		$res=array_column($req, 'note');//Transformation en tableau a 1 ligne
-
 	
-		foreach ($res as $value) {
-		$countt	++;
-		$add=$value+$add;
-
-		}
-
-
-		$noteG=$add/$countt;
-
-		$this->request = 'UPDATE  anime SET NoteG=? WHERE idAnime=?';
-		$this->arg = array($noteG,$id);
-		$this->requestPrepare = self::$bdd->prepare($this->request);
-		$this->requestPrepare->execute($this->arg);
-
-		
-
-	}*/
 }
 
 ?>

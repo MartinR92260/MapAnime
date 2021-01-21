@@ -201,9 +201,12 @@ class VueAnime extends VueIndex{
 		 		<label>Entrer le nombre total d\'épisode : </label><br/>
 		 		<input type="number" min="0" name="nbEpisodes"><br/>   
 				<input type="submit" value="Ajouter">
+
 			</form>';
+
+	
+
 	}
 }
-/*<label>Entrer la note : </label><br/>
-		 		<input type="number" min="0" max="10" name="noteG" required><br/>*/
+
 ?>
