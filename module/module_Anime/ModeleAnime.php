@@ -185,35 +185,38 @@ class ModeleAnime extends ConnexionBD{
 
 	}
 
-	public function updateAnime(){
-		$req = self::$bdd->prepare("UPDATE  Anime SET nom=?,nbEpisodes=?,nbSaisons=? ");
-		if(!empty($_POST['nom'])){
-			$nom = $_POST['nom'];
-		}else{
-			$nom = default;
-		}		
-		if(!empty($_POST['nbSaisons'])){
-			$nbSaisons = $_POST['nbSaisons'];
-		}else{
-			$nbSaisons = default;
+	public function updateAnime($id){
+		$nom=$_POST['nom'];
+		$nbSaisons=$_POST['nbSaisons'];
+		$nbEpisodes=$_POST['nbEpisodes'];
+		if(!empty($_POST['nbSaisons']) && !empty($_POST['nbEpisodes']) && !empty($_POST['nom'])){
+			$req = self::$bdd->prepare("UPDATE anime SET nom=?,nbSaisons=?,nbEpisodes=? WHERE idAnime=?");
+			$req->execute(array($nom,$nbSaisons,$nbEpisodes,$id));
 		}
-		if(!empty($_POST['nbEpisodes'])){
-			$nbEpisodes = $_POST['nbEpisodes'];
-		}else{
-			$nbEpisodes = default;
+		elseif (!empty($_POST['nbSaisons']) && !empty($_POST['nbEpisodes'])) {
+			$req = self::$bdd->prepare("UPDATE anime SET nbSaisons=?,nbEpisodes=? WHERE idAnime=?");
+			$req->execute(array($nbSaisons,$nbEpisodes,$id));
 		}
-		
-
-
-		$result = $req->execute(array($nom,$nbEpisodes,$nbSaisons));
-		return $result;
-
-
+		elseif (!empty($_POST['nbEpisodes']) && !empty($_POST['nom'])) {
+			$req = self::$bdd->prepare("UPDATE Anime SET nom=?,nbEpisodes=? WHERE idAnime=?");
+			$req->execute(array($nom,$nbEpisodes,$id));
+		}
+		elseif (!empty($_POST['nbSaisons']) && !empty($_POST['nom'])) {
+			$req = self::$bdd->prepare("UPDATE Anime SET nom=?,nbSaisons=? WHERE idAnime=?");
+			$req->execute(array($nom,$nbSaisons,$id));
+		}
+		elseif (!empty($_POST['nom'])) {
+			$req = self::$bdd->prepare("UPDATE Anime SET nom=? WHERE idAnime=?");
+			$req->execute(array($nom,$id));
+		}
+		elseif (!empty($_POST['nbSaisons'])) {
+			$req = self::$bdd->prepare("UPDATE Anime SET nbSaisons=? WHERE idAnime=?");
+			$req->execute(array($nbSaisons,$id));
+		}
+		elseif (!empty($_POST['nbEpisodes'])) {
+			$req = self::$bdd->prepare("UPDATE Anime SET nbEpisodes=? WHERE idAnime=?");
+			$req->execute(array($nbEpisodes,$id));
+		}
 	}	
-
-	
-
-	
 }
-
 ?>

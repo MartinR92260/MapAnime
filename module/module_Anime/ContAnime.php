@@ -54,11 +54,12 @@ class ContAnime{
 	}
 
 	public function modifAnime($id){
-		$this->vue->result($this->modele->updateAnime($id));
-		
+		$this->vue->formulaireUpdateAnime($id);
 	}
 
-	
+	public function modifAnimeEnCours($id){
+		$this->modele->updateAnime($id);
+	}
 }
 
 ?>
