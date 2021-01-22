@@ -5,8 +5,15 @@ include_once('./VueIndex.php');
 class VueClub extends VueIndex{
 
 	public function __construct(){
-        echo '<link rel="stylesheet" type="text/css" href="module/module_club/VueClub_css.css"/>';
+        echo '<link rel="stylesheet" type="text/css" href="module/module_club/VueClub.css"/>';
     }
+    public function afficheImage($idClub) {
+    	foreach ($idClub as $id) {
+    		echo "<div class =\"Image\">
+    		<img src=./images/Club/".$id['ImageClub']." id=\"imageAnime\"/>";
+    		echo "</div>";
+		 }
+	}
 
     public function afficheButtonRejoindre($idClub){
     	foreach ($idClub as $id) {
@@ -49,7 +56,7 @@ class VueClub extends VueIndex{
 		        <label for=\"commentaire\">
                         <h2>Messages du Club : <h2>
 	            		</label>
-	            		<textarea name=\"comm\" placeholder=\"inserez votre commentaire\"></textarea><br/>
+	            		<textarea name=\"comm\" placeholder=\"inserez votre commentaire\" width = 100px;></textarea><br/>
                         <input type=\"submit\" value=\"valider\">
 	            	</form>
 	            </div> 
@@ -96,12 +103,14 @@ class VueClub extends VueIndex{
 	}
 
 	public function formulaireClub(){
-		echo '<form action="index.php?action=AjoutEnCours&module=Club" method="post">
+		echo '<form action="index.php?action=AjoutEnCours&module=Club" method="post" enctype="multipart/form-data">
 				<label>Entrer le nom du club: </label><br/>
 			 	<input type="text" name="nomClub" required><br/>
 			 	<label>Entrer la description : </label><br/>
 				<input type="text" name="DescriptionClub" required><br/> 
-				<input type="submit" value="Ajouter">
+				    <label>Image du Club:</label>
+				    <input type="file" name="ImageClub">
+				    <input type="submit" name="submit" value="Ajouter">
 			</form>';
 	}
 

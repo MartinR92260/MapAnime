@@ -65,7 +65,7 @@ class ModeleClub extends ConnexionBD{
     }
 
     public function insertClub(){
-        $req = self::$bdd->prepare("INSERT INTO Club VALUES (default,?,?,?)");
+        $req = self::$bdd->prepare("INSERT INTO Club VALUES (default,?,?,?,?)");
 
         if(!empty($_POST['nomClub'])){
             $nom = $_POST['nomClub'];
@@ -78,12 +78,56 @@ class ModeleClub extends ConnexionBD{
         }else{
             $synopsis = NULL;
         }
+
         $Grade = NULL;
 
-        $result = $req->execute(array($nom,$synopsis,$Grade));
+        $status = $statusMsg = ''; 
+        if(isset($_POST["submit"])){ 
+            $status = 'error'; 
+            if(!empty($_FILES["ImageClub"]["name"])) { 
+                $fileName = basename($_FILES["ImageClub"]["name"]); 
+                $fileType = pathinfo($fileName, PATHINFO_EXTENSION); 
+                 
+                $allowTypes = array('jpg','png','jpeg','gif');
+                if(in_array($fileType, $allowTypes)){ 
+                    $image = $_FILES['ImageClub']['tmp_name']; 
+                    $resultat = move_uploaded_file($_FILES['ImageClub']['tmp_name'],"./images/Club/".$fileName);
+                    if ($resultat) echo "Transfert réussi";
+                    $result = $req->execute(array($nom,$synopsis,$Grade, $fileName));
+
+                    if($result){ 
+                        $status = 'success'; 
+                        $statusMsg = "File uploaded successfully."; 
+                    }
+                    else{ 
+                        $statusMsg = "File upload failed, please try again.";
+                        $result = NULL;
+                    }  
+                }
+                else{ 
+                    $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.';
+                    $result = NULL; 
+                } 
+            }
+            else{ 
+                ?>
+                    <script type="text/javascript"> 
+                    alert("Vous devez mettre une image pour le club !"); 
+                    </script>
+                <?php
+                $result = NULL;
+            } 
+        }
+ 
+        echo $statusMsg;
         return $result;
     }
 
+    public function getClub($id){
+        $req = self::$bdd->prepare("SELECT DISTINCT * FROM club WHERE idClub = ?");
+        $req->execute(array($id));
+        return $req->fetchAll();
+    }
     public function suppressionClub($idClub){
         $req = self::$bdd->prepare("DELETE FROM club WHERE idClub = ?");
         $result=$req->execute(array($idClub));
