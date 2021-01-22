@@ -53,6 +53,11 @@ class ContAnime{
 		$this->modele->modifLEtat($id);
 	}
 
+	public function modifAnime($id){
+		$this->vue->result($this->modele->updateAnime($id));
+		
+	}
+
 	
 }
 

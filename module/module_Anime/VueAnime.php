@@ -207,6 +207,22 @@ class VueAnime extends VueIndex{
 	
 
 	}
+
+	public function formulaireUpdateAnime(){
+		echo '<form action="index.php?action=modifAnime&module=Anime" method="post">
+				<label>Entrer le titre : </label><br/>
+			 	<input type="text" name="nom" required><br/>
+			 	<label>Entrer le synopsis : </label><br/>
+				<input type="text" name="synopsis" required><br/>
+				
+				    <label>Entrer le nombre de saison : </label><br/>
+		 		<input type="number" min="0" name="nbSaisons"><br/>
+		 		<label>Entrer le nombre total d\'épisode : </label><br/>
+		 		<input type="number" min="0" name="nbEpisodes"><br/>   
+				<input type="submit" value="Ajouter">
+
+			</form>';
+
 }
 
 ?>

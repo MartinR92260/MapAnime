@@ -40,5 +40,24 @@ class ContUtilisateur{
 	public function supprimerListeAmi($id){
 		$this->modele->delTolisteAmi($id);
 	}
+
+	public function envoyerMessageAmi($id){
+		$this->vue->pageMesssage($this->modele->getIdUser($id),$this->modele->envoyerMessageAmi($id),$id,$this->modele->listeAmis(),$this->modele->getMessage($id),/*$this->modele->getRecepteurMessage($id),*/$this->modele->getPseudoSenderMessage($id));
+	}
+
+	
+
+	public function insererCommentaire($idAmi){
+	 
+	    	$this->modele->insertionCommentaire($idAmi);
+
+
+    }
+
+    
+
+   /* public function supprimerCommentaire($idAmi){
+    	$this->vue->result($this->modele->suppressionCommentaire($idAmi));
+    }*/
 }
 ?>

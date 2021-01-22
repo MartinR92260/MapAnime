@@ -185,6 +185,32 @@ class ModeleAnime extends ConnexionBD{
 
 	}
 
+	public function updateAnime(){
+		$req = self::$bdd->prepare("UPDATE  Anime SET nom=?,nbEpisodes=?,nbSaisons=? ");
+		if(!empty($_POST['nom'])){
+			$nom = $_POST['nom'];
+		}else{
+			$nom = default;
+		}		
+		if(!empty($_POST['nbSaisons'])){
+			$nbSaisons = $_POST['nbSaisons'];
+		}else{
+			$nbSaisons = default;
+		}
+		if(!empty($_POST['nbEpisodes'])){
+			$nbEpisodes = $_POST['nbEpisodes'];
+		}else{
+			$nbEpisodes = default;
+		}
+		
+
+
+		$result = $req->execute(array($nom,$nbEpisodes,$nbSaisons));
+		return $result;
+
+
+	}	
+
 	
 
 	

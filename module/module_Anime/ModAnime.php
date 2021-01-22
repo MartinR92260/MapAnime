@@ -42,6 +42,11 @@ switch($menu){
 		$idAnime=htmlspecialchars($_GET['id']);
 		$cont->modifEtat($idAnime);
 		break;
+	case "modifAnime":
+		$idAnime=htmlspecialchars($_GET['id']);
+		$cont->modifAnime($idAnime);
+		break;
+
 	default :
 	   	?>
 			<script type="text/javascript"> 

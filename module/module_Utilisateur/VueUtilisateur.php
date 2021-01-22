@@ -30,6 +30,7 @@ class VueUtilisateur extends VueIndex{
         foreach ($listeInfoAmis as $ami) {
             echo "<div class =\"DivAmi\">";
             echo "<a href=\"index.php?module=Utilisateur&action=afficheOtherProfil&id=".$ami['idAmi']."\">".$ami['PhotoProfil']."<h4>" .$ami['pseudoAmi']."</h4><br>"."</a>";
+             echo "<a href=\"index.php?module=Utilisateur&action=envoyerMessage&id=".$ami['idAmi']."\">EnvoyerMesage</h4><br>"."</a>";
             echo "</div>";
         }
         echo "</div>";
@@ -59,7 +60,7 @@ class VueUtilisateur extends VueIndex{
             echo "</div>";
         }
         else{
-            echo "Votre liste est vide. N'ésitez pas a la remplir !";
+            echo "Votre liste est vide. N'hésitez pas a la remplir !";
         }
 
         echo "<div class =\"Ami\">";
@@ -67,6 +68,7 @@ class VueUtilisateur extends VueIndex{
         foreach ($listeInfoAmis as $ami) {
             echo "<div class =\"DivAmi\">";
             echo "<a href=\"index.php?module=Utilisateur&action=afficheOtherProfil&id=".$ami['idAmi']."\">".$ami['PhotoProfil']."<h4>" .$ami['pseudoAmi']."</h4><br>"."</a>";
+
             echo "</div>";
         }
         echo "</div>";
@@ -88,5 +90,70 @@ class VueUtilisateur extends VueIndex{
             echo "</div>";
         }
 }
+
+    public function pageMesssage($idUtilisateur,$message,$idAmi,$listeInfoAmi,$getMessage/*,$recepteur*/,$pseudoEnvoyeur){
+    	
+	   	foreach($listeInfoAmi as $key) {
+	   		if($key['idAmi']==$idAmi){//$idAmi=id ami du mec sur qui on clique
+
+        echo '<h2>Liste des messages envoyé a : '.$key['pseudoAmi']."</h4>";
+
+       }
+   		}
+
+
+	   		foreach($getMessage as $mess) {
+
+		   		foreach($pseudoEnvoyeur as $user) {
+
+		   			/*if($mess['idAmi']==$idAmi && $mess['idUtilisateur']==$_SESSION['idUtilisateur']  ){
+		   				echo":".$_SESSION['pseudo'].":".$mess['contenu']."</br>";
+		  		 	}
+
+		  		 	else if($mess['idAmi']==$_SESSION['idUtilisateur'] && $mess['idUtilisateur']==$idAmi) {
+		  		 		echo":".$user['pseudo'].":".$mess['contenu']."</br>";
+
+		  		 	}
+		  		 */
+
+		  		 	if($mess['idUtilisateur']==$_SESSION['idUtilisateur']) {
+		  		 		echo":".$_SESSION['pseudo'].":".$mess['contenu']."-"
+		  		 		.$mess['Heure']."<p>"
+		  		 		.$mess['Date']."</p>";
+		  		 	}
+
+		  		 	else{
+		  		 		echo":".$user['pseudo'].":".$mess['contenu']." 
+			          	-".$mess['Heure']."
+			         	<p>".$mess['Date']."</p>";
+
+		  		 	}
+
+		   		}
+		   					   	
+	   		}
+
+
+	   		
+	   			echo"<div class=\"form-commentaire\">
+	            	<form action=\"index.php?action=AddCommentaire&module=Utilisateur&id=".$idAmi."\" method=\"post\">
+	            		<label for=\"message\">
+                        <h2>Envoyer un message : <h2>
+	            		</label>
+	            		<textarea name=\"commentaireV22\" placeholder=\"inserez votre message\"></textarea><br/>
+                        <input type=\"submit\" value=\"valider\">
+	            	</form>
+	            </div> 
+	        </div>";
+
+	
+	
+ 			
+
+
+    }
+
+
+
 }
 ?>

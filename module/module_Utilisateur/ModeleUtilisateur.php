@@ -104,5 +104,62 @@ class ModeleUtilisateur extends ConnexionBD{
         $this->requestPrepare = self::$bdd->prepare($this->request);
 		return $this->requestPrepare->execute($this->arg);
     }
+
+    public function envoyerMessageAmi($id){
+		$this->request = "SELECT idAmi, contenu FROM message WHERE idAmi = ?";
+        $this->arg = array($id);
+		$this->requestPrepare = self::$bdd->prepare($this->request);
+		$this->requestPrepare->execute($this->arg);
+		return $this->requestPrepare->fetchAll();   
+	}
+	public function getMessage($id) {
+        $this->request = "SELECT * FROM message  WHERE idAmi = ? AND idUtilisateur=?  OR idAmi=? AND idUtilisateur=?";
+       	$this->arg=array($id,$_SESSION['idUtilisateur'],$_SESSION['idUtilisateur'],$id);//1->2 ou 2->1
+        $this->requestPrepare = self::$bdd->prepare($this->request);
+        $this->requestPrepare->execute($this->arg);
+		return $this->requestPrepare->fetchAll();   
+    }
+
+    public function getRecepteurMessage($id) {
+        $this->request = "SELECT idAmi FROM message  WHERE idUtilisateur = ?  ";
+       	$this->arg=array($id);
+        $this->requestPrepare = self::$bdd->prepare($this->request);
+        $this->requestPrepare->execute($this->arg);
+		return $this->requestPrepare->fetchAll();   
+}
+
+public function getPseudoSenderMessage($id) {//Afficher pseudo du mec sur qui on clique :/
+
+/*        $this->request = "SELECT pseudo,idUtilisateur FROM Utilisateur  NATURAL JOIN message WHERE idUtilisateur = ?  ";
+*/  
+		$this->request = "SELECT pseudo FROM Utilisateur  WHERE idUtilisateur = ?  ";
+
+     	$this->arg=array($id);
+        $this->requestPrepare = self::$bdd->prepare($this->request);
+        $this->requestPrepare->execute($this->arg);
+		return $this->requestPrepare->fetchAll();   
+}
+
+
+public function insertionCommentaire($idAmi){
+
+    	$date=date("Y-m-d");
+    	$heure=date("H:i:s");
+    	
+        $req = self::$bdd->prepare("INSERT INTO message VALUES (default, ?, ?, ?, ?, ?)");
+        $result=$req->execute(array($_SESSION['idUtilisateur'], $idAmi, $_POST['commentaireV22'],$date,$heure));
+        return $result;
+    }
+
+/*public function suppressionCommentaire($idAmi){
+    	    	header('Location:index.php');
+
+    	$req = self::$bdd->prepare("DELETE FROM message WHERE idMessage LIKE ?");
+        $result=$req->execute(array( $idAmi));
+        return $result;
+    }*/
+
+
+
 }
 ?>
