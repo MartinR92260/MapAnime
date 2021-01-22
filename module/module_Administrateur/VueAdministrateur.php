@@ -8,9 +8,19 @@ class VueAdministrateur extends VueIndex{
         echo '<link rel="stylesheet" type="text/css" href="module/module_Administrateur/VueAdministrateur.css"/>';
     }
 
+    public function formulaireGenre(){
+    echo '<form action="index.php?action=ajoutGenreEnCours&module=Administrateur" method="post">
+        <h6>Ajouter un genre</h6>
+        <label>Entrer le nom : </label><br/>
+        <input type="text" name="nom" required><br/>   
+        <input type="submit" value="Ajouter">
+      </form>';
+  }
+
     public function affichePanel($infoAnimes,$infoUsers,$infoClubs,$infoComs,$infoGenres){
 ?>
-    	<h1>Animes</h1>
+    <h1>Animes</h1>
+    <a href="index.php?module=Anime&action=AjoutAnime" class="col-auto">Ajouter un anime</a></br>
 
 		<input type="text" id="animeTriId" onkeyup="animeTriParId()" placeholder="Entrer l'id.." title="Tri par id">
 		<input type="text" id="animeTriNom" onkeyup="animeTriParNom()" placeholder="Entrer le nom.." title="Tri par nom">
@@ -30,7 +40,7 @@ class VueAdministrateur extends VueIndex{
     			<td>".$anime['nom']."</td>
     			<td>".$anime['nbEpisodes']."</td>
     			<td>".$anime['nbSaisons']."</td>
-    			<td><a href=\"index.php?module=Utilisateur&action=afficheProfil\" class=\"col-auto\">Modifier</a> </br> <a href=\"index.php?module=Utilisateur&action=afficheProfil\" class=\"col-auto\">Supprimer</a></td>
+    			<td><a href=\"index.php?module=Anime&action=modifAnime&id=".$anime['idAnime']."\" class=\"col-auto\">Modifier</a> </br> <a href=\"index.php?module=Anime&action=SupprAnime&id=".$anime['idAnime']."\" class=\"col-auto\">Supprimer</a></td>
   			</tr>";
 		
   				}
@@ -76,6 +86,68 @@ class VueAdministrateur extends VueIndex{
 		}
 		</script>
 
+    <h1>Genres</h1>
+    <a href="index.php?module=Administrateur&action=ajoutGenre" class="col-auto">Ajouter un genre</a></br>
+
+    <input type="text" id="genreTriId" onkeyup="genreTriParId()" placeholder="Entrer l'id.." title="Tri par id">
+    <input type="text" id="genreTriNom" onkeyup="genreTriParNom()" placeholder="Entrer le nom.." title="Tri par nom">
+
+    <table id="genreMyTable">
+        <tr class="header">
+          <th style="width:50px;">Id</th>
+          <th style="width:300px;">Nom</th>
+          <th style="width:100px;">Options</th>
+        </tr>
+<?php
+      foreach($infoGenres as $genre){
+        echo "<tr>
+          <td>".$genre['idGenre']."</td>
+          <td>".$genre['nomGenre']."</td>
+          <td><a href=\"index.php?module=Utilisateur&action=afficheProfil&id=".$genre['idGenre']."\" class=\"col-auto\">Modifier</a> </br> <a href=\"index.php?module=Utilisateur&action=afficheProfil&id=".$genre['idGenre']."\" class=\"col-auto\">Supprimer</a></td>
+        </tr>";
+    
+          }
+?>
+      </table>
+      <script>
+      function genreTriParId() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("genreTriId");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("genreMyTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+            }
+          }       
+      }
+    }
+
+    function genreTriParNom() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("genreTriNom");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("genreMyTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[1];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+            }
+          }       
+      }
+    }
+    </script>
 		
 		<h1>Utilisateurs</h1>
 
@@ -98,7 +170,7 @@ class VueAdministrateur extends VueIndex{
     			<td>".$user['pseudo']."</td>
     			<td>".$user['Email']."</td>
     			<td>".$user['Admin']."</td>
-    			<td><a href=\"index.php?module=Utilisateur&action=afficheProfil\" class=\"col-auto\">Modifier</a> </br> <a href=\"index.php?module=Utilisateur&action=afficheProfil\" class=\"col-auto\">Supprimer</a></td>
+    			<td><a href=\"index.php?module=Utilisateur&action=afficheProfil&id=".$user['idUtilisateur']."\" class=\"col-auto\">Modifier</a> </br> <a href=\"index.php?module=Utilisateur&action=afficheProfil&id=".$user['idUtilisateur']."\" class=\"col-auto\">Supprimer</a></td>
   			</tr>";
 		
   				}
@@ -179,7 +251,7 @@ class VueAdministrateur extends VueIndex{
         echo "<tr>
           <td>".$club['idClub']."</td>
           <td>".$club['nomClub']."</td>
-          <td><a href=\"index.php?module=Utilisateur&action=afficheProfil\" class=\"col-auto\">Modifier</a> </br> <a href=\"index.php?module=Utilisateur&action=afficheProfil\" class=\"col-auto\">Supprimer</a></td>
+          <td><a href=\"index.php?module=Utilisateur&action=afficheProfil&id=".$club['idClub']."\" class=\"col-auto\">Modifier</a> </br> <a href=\"index.php?module=Utilisateur&action=afficheProfil&id=".$club['idClub']."\" class=\"col-auto\">Supprimer</a></td>
         </tr>";
     
           }
@@ -254,7 +326,7 @@ class VueAdministrateur extends VueIndex{
           <td>".$com['contenu']."</td>
           <td>".$com['Date']."</td>
           <td>".$com['Heure']."</td>
-          <td><a href=\"index.php?module=Utilisateur&action=afficheProfil\" class=\"col-auto\">Modifier</a> </br> <a href=\"index.php?module=Utilisateur&action=afficheProfil\" class=\"col-auto\">Supprimer</a></td>
+          <td><a href=\"index.php?module=Utilisateur&action=afficheProfil&id=".$com['idCommentaire']."\" class=\"col-auto\">Modifier</a> </br> <a href=\"index.php?module=Utilisateur&action=afficheProfil&id=".$com['idCommentaire']."\" class=\"col-auto\">Supprimer</a></td>
         </tr>";
     
           }
@@ -345,68 +417,6 @@ class VueAdministrateur extends VueIndex{
       tr = table.getElementsByTagName("tr");
       for (i = 0; i < tr.length; i++) {
           td = tr[i].getElementsByTagName("td")[4];
-          if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-              } else {
-                tr[i].style.display = "none";
-            }
-          }       
-      }
-    }
-    </script>
-
-    <h1>Genres</h1>
-
-    <input type="text" id="genreTriId" onkeyup="genreTriParId()" placeholder="Entrer l'id.." title="Tri par id">
-    <input type="text" id="genreTriNom" onkeyup="genreTriParNom()" placeholder="Entrer le nom.." title="Tri par nom">
-
-    <table id="genreMyTable">
-        <tr class="header">
-          <th style="width:50px;">Id</th>
-          <th style="width:300px;">Nom</th>
-          <th style="width:100px;">Options</th>
-        </tr>
-<?php
-      foreach($infoGenres as $genre){
-        echo "<tr>
-          <td>".$genre['idGenre']."</td>
-          <td>".$genre['nomGenre']."</td>
-          <td><a href=\"index.php?module=Utilisateur&action=afficheProfil\" class=\"col-auto\">Modifier</a> </br> <a href=\"index.php?module=Utilisateur&action=afficheProfil\" class=\"col-auto\">Supprimer</a></td>
-        </tr>";
-    
-          }
-?>
-      </table>
-      <script>
-      function genreTriParId() {
-      var input, filter, table, tr, td, i, txtValue;
-      input = document.getElementById("genreTriId");
-      filter = input.value.toUpperCase();
-      table = document.getElementById("genreMyTable");
-      tr = table.getElementsByTagName("tr");
-      for (i = 0; i < tr.length; i++) {
-          td = tr[i].getElementsByTagName("td")[0];
-          if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-              } else {
-                tr[i].style.display = "none";
-            }
-          }       
-      }
-    }
-
-    function genreTriParNom() {
-      var input, filter, table, tr, td, i, txtValue;
-      input = document.getElementById("genreTriNom");
-      filter = input.value.toUpperCase();
-      table = document.getElementById("genreMyTable");
-      tr = table.getElementsByTagName("tr");
-      for (i = 0; i < tr.length; i++) {
-          td = tr[i].getElementsByTagName("td")[1];
           if (td) {
             txtValue = td.textContent || td.innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {

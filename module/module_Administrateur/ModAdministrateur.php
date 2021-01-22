@@ -15,6 +15,12 @@ class ModAdministrateur{
 					case "affichePanel":
                         $this->controleur->affichePanel();
 					break;
+					case "ajoutGenre":
+                        $this->controleur->ajoutGenre();
+					break;
+					case "ajoutGenreEnCours":
+                        $this->controleur->insertionGenre();
+					break;
 					default:
 					?>
 						<script type="text/javascript"> 

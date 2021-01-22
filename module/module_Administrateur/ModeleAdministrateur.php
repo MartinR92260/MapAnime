@@ -47,5 +47,15 @@ class ModeleAdministrateur extends ConnexionBD{
 		$prepareRequest->execute();
 		return $prepareRequest->fetchAll();
 	}
+
+	public function insertGenre(){
+		$req = self::$bdd->prepare("INSERT INTO genre VALUES (default,?)");
+		if(!empty($_POST['nom'])){
+			$nom = $_POST['nom'];
+		}else{
+			$nom = NULL;
+		}
+		$req->execute(array($nom));
+	}
 }
 ?>
