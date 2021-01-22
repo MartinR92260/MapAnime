@@ -52,11 +52,11 @@ class ModeleClub extends ConnexionBD{
         return $req->fetchAll();
     }
 
-    public function getIdClub($id) {
+/*    public function getIdClub($id) {
         $req = self::$bdd->prepare("SELECT idClub FROM Club where idClub = ?");
         $req->execute(array($id)); 
         return $req->fetchAll();
-    }
+    }*/
 
     public function getListeUtilisateur($id) {
         $req = self::$bdd->prepare("SELECT * FROM utilisateur NATURAL JOIN possede where idClub = ?");
@@ -79,11 +79,10 @@ class ModeleClub extends ConnexionBD{
             $synopsis = NULL;
         }
 
-        $Grade = NULL;
+        $Gerant = $_SESSION['idUtilisateur'];
 
-        $status = $statusMsg = ''; 
         if(isset($_POST["submit"])){ 
-            $status = 'error'; 
+/*            $status = 'error';*/ 
             if(!empty($_FILES["ImageClub"]["name"])) { 
                 $fileName = basename($_FILES["ImageClub"]["name"]); 
                 $fileType = pathinfo($fileName, PATHINFO_EXTENSION); 
@@ -92,20 +91,30 @@ class ModeleClub extends ConnexionBD{
                 if(in_array($fileType, $allowTypes)){ 
                     $image = $_FILES['ImageClub']['tmp_name']; 
                     $resultat = move_uploaded_file($_FILES['ImageClub']['tmp_name'],"./images/Club/".$fileName);
-                    if ($resultat) echo "Transfert réussi";
-                    $result = $req->execute(array($nom,$synopsis,$Grade, $fileName));
+                    $result = $req->execute(array($nom,$synopsis,$Gerant, $fileName));
 
                     if($result){ 
-                        $status = 'success'; 
-                        $statusMsg = "File uploaded successfully."; 
+                        ?>
+                            <script type="text/javascript"> 
+                            alert("Le club a bien été créer, Felicitation!"); 
+                            </script>
+                        <?php
                     }
                     else{ 
-                        $statusMsg = "File upload failed, please try again.";
+                        ?>
+                            <script type="text/javascript"> 
+                            alert("L'importation de l'image du Club a échoué, Veuillez réessayer!!"); 
+                            </script>
+                        <?php
                         $result = NULL;
                     }  
                 }
-                else{ 
-                    $statusMsg = 'Sorry, only JPG, JPEG, PNG, & GIF files are allowed to upload.';
+                else{
+                    ?>
+                        <script type="text/javascript"> 
+                        alert("Les seules formats supportés sont : JPG, JPEG, PNG, & GIF!"); 
+                        </script>
+                    <?php
                     $result = NULL; 
                 } 
             }
@@ -118,8 +127,6 @@ class ModeleClub extends ConnexionBD{
                 $result = NULL;
             } 
         }
- 
-        echo $statusMsg;
         return $result;
     }
 

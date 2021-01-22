@@ -70,11 +70,11 @@ class ContClub{
 
     public function detailClub($id) {
     	$this->vue->afficheImage($this->modele->getClub($id));
-		$this->vue->afficheCommentaire($this->modele->getCommentaire($id), $this->modele->getIdClub($id));
-		$this->vue->afficheButtonRejoindre($this->modele->getIdClub($id));
-		$this->vue->afficheButtonQuitter($this->modele->getIdClub($id));
+		$this->vue->afficheCommentaire($this->modele->getCommentaire($id), $this->modele->getClub($id));
+		$this->vue->afficheButtonRejoindre($this->modele->getClub($id));
+		$this->vue->afficheButtonQuitter($this->modele->getClub($id));
 		$this->vue->afficheNbAdherent($this->modele->getNbAdherent($id));
-		$this->vue->afficheUtilisateur($this->modele->getListeUtilisateur($id), $this->modele->getIdClub($id));	
+		$this->vue->afficheUtilisateur($this->modele->getListeUtilisateur($id), $this->modele->getClub($id));	
 	}
 
 	public function AjouterClub(){

@@ -4,10 +4,13 @@ main {
 }
 .FormCommentaires {
 	padding : 30px;
-	margin-left: 50px;
+	margin-left: 300px;
 	color : white;
 }
-
+.FormCommentaires textarea {
+	min-height: 120px;
+	min-width: 350px;
+}
 .PosterCommentaire {
 	margin-left: 1000px;
 	padding : 20px;
@@ -38,9 +41,9 @@ main {
 }
 
 .Rejoindre {
-	margin-left: 1450px;
 	position : absolute;
 	top : 180px;
+	left : 1500px;
 }
 
 .headerCommentaires {
@@ -95,14 +98,15 @@ main {
 	color : red;
 	text-decoration: none;
 	float:right;
+	margin : 10px;
 }
 
-.users {
+/*.users {
 	padding : 10px;
 }
-
+*/
 .Suppr {
-	margin-left: 1500px;
+	margin-left: 1465px;
 	position: absolute;
 	top : 130px;
 }
@@ -112,10 +116,42 @@ main {
 	font-size: 1.3em;
 }
 
-form {
-	color : white;
+.Image {
+	position: absolute;
+	top : 130px;
+	left : 90px;
+}
+.Image img{
+	width : 180px;
+}
+
+.Formulaire {
+    width: 33%;
+    height: 33%;
+    background-color: lightgray;
+    border-radius: 40px;
+    padding: 3%;
+    text-align: center;
+    margin-left: 550px;
+    position : relative;
+    top : 50px;
+}
+
+.Formulaire form {
+	color : black;
 	font-size: 1.2em;
 }
+
+.Formulaire input {
+    width: 100%;
+    margin: 5px;
+}
+
+.FormulaireImage input{
+	margin-top: 5px;
+	width : 250px;
+}
+
 
 
 /*

@@ -10,23 +10,25 @@ class VueRecherche extends VueIndex{
         echo '<link rel="stylesheet" type="text/css" href="module/module_Recherche/VueRecherche.css"/>';
     }
 
-	public function rechercher($result){ 
+	public function rechercher($result){
+	echo "<div class=\"formulaireGenre\">"; 
 		?>
         <form action="index.php?module=Recherche&action=parNom" method="POST">
-        		Rechercer un anime<br>
+        		Rechercher un anime par nom<br>
 				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="nomSaisie"><br>
 				<input type="submit" value="Lancer la recherche">
 			</form>
 			<form action="index.php?module=Recherche&action=parGenre" method="POST">
-				Genre<br>
+				Rechercher un anime par genre : 
 		<?php
 				foreach ($result as $tuple) {
-				    echo "<input type=\"checkbox\" name=\"Genre[]\" value=\"".intval($tuple['idGenre'])."\">".$tuple['NomGenre']."</br>";	
+				    echo "<input type=\"checkbox\" name=\"Genre[]\" value=\"".intval($tuple['idGenre'])."\">".$tuple['NomGenre'];	
 				}
 		?>
 				<input type="submit" value="Lancer la recherche">
 			</form>
 		<?php 
+		echo "</div>";
 	}
 
 	public function afficheListeAnime($result){
@@ -125,22 +127,26 @@ public function afficheTopAnimeNote($result){
 			echo "</div>";
 			echo "</a>";
 		}
-		echo "<hr class = \"bas\">";
-		echo "<div class = \"divAjout\">";
-		echo "<a href=\"index.php?module=Club&action=AjoutClub\">Ajouter un club</a>";
-		echo "</div>";
-		echo "</div>";
+		if(isset($_SESSION['idUtilisateur'])){
+			echo "<hr class = \"bas\">";
+			echo "<div class = \"divAjout\">";
+			echo "<a href=\"index.php?module=Club&action=AjoutClub\">Ajouter un club</a>";
+			echo "</div>";
+			echo "</div>";
+		}
             
 	}
 
 	public function rechercherUser(){ 
+		echo "<div class=\"formulaireUser\">";
 		?>
         <form action="index.php?module=Recherche&action=parNomUser" method="POST">
         		Rechercher un utilisateur <br>
 				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="nomSaisie"><br>
 				<input type="submit" value="Lancer la recherche">
 			</form>
-		<?php 
+		<?php
+		echo "</div>";
 	}
 
 	public function afficheListeUser($result){

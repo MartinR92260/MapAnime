@@ -5,7 +5,7 @@ include_once('./VueIndex.php');
 class VueClub extends VueIndex{
 
 	public function __construct(){
-        echo '<link rel="stylesheet" type="text/css" href="module/module_club/VueClub.css"/>';
+        echo '<link rel="stylesheet" type="text/css" href="module/module_club/Vue_Club.css"/>';
     }
     public function afficheImage($idClub) {
     	foreach ($idClub as $id) {
@@ -35,21 +35,22 @@ class VueClub extends VueIndex{
 		}
 	}
 
-	public function afficheSupprClub($id) {
+/*	public function afficheSupprClub($id) {
 		foreach ($id as $key) {
-						if ($_SESSION['Admin'] == 1){
+		if ($_SESSION['Admin'] == 1){
 			echo "<a href=\"index.php?action=SupprClub&module=Club&id=".$key['idClub']."\">Supprimer le club définitivement</a>";
 			}
 		}
-	}
+	}*/
 
 	public 	function afficheCommentaire($commentaires, $club){
 		foreach($club as $key) {
-
-			if ($_SESSION['Admin'] == 1){
-				echo"<div class=\"Suppr\">
-				<a href=\"index.php?action=SupprClub&module=Club&id=".$key['idClub']."\">Supprimer le club définitivement</a>";
-				echo"</div>";
+			if(isset($_SESSION['idUtilisateur'])){
+				if ($key['Gerant'] == $_SESSION['idUtilisateur']){
+					echo"<div class=\"Suppr\">
+					<a href=\"index.php?action=SupprClub&module=Club&id=".$key['idClub']."\">Supprimer le club définitivement</a>";
+					echo"</div>";
+				}
 			}
 	        echo"<div class=\"FormCommentaires\">
 		        <form action=\"index.php?action=AjouterCommentaire&module=Club&id=".$key['idClub']."\" method=\"post\">
@@ -70,9 +71,11 @@ class VueClub extends VueIndex{
 			            	<div class=\"headerCommentaires\">"
 				            	.$key['pseudo'];
 				        if(isset($_SESSION['idUtilisateur'])){
-					        if ($key['idUtilisateur'] == $_SESSION['idUtilisateur'] || $_SESSION['Admin'] == 1){
-					        	echo "<a href=\"index.php?module=Club&action=SupprimerCommentaire&id=".$key['idCommentaire']."\">   Supprimer</a>";
-					        }				    
+				        	foreach($club as $id) {
+						        if ($key['idUtilisateur']  == $_SESSION['idUtilisateur'] || $id['Gerant'] == $_SESSION['idUtilisateur'] ){
+						        	echo "<a href=\"index.php?module=Club&action=SupprimerCommentaire&id=".$key['idCommentaire']."\">   Supprimer</a>";
+						        }
+						    }			    
 					    }
 				        echo "<div class =\"headerDetails\">"
 					        .$key['Date']
@@ -87,31 +90,33 @@ class VueClub extends VueIndex{
 	public function afficheUtilisateur($utilisateurs, $club) {
 			echo "<div class =\"DivUtilisateurs\">
 				<p>Liste des Adherents : </p>";
-				foreach($club as $clubs) {
+				foreach($club as $id) {
 					foreach($utilisateurs as $key) {
 						echo "<div class =\"users\">"
 						.$key['pseudo'];
-						if(isset($_SESSION['idUtilisateur'])){
-						    if ($_SESSION['Admin'] == 1){
+/*						    if ($id['Gerant'] == $_SESSION['idUtilisateur']) {
 								echo"<a href=\"index.php?module=Club&action=Bannir&idUser=".$key['idUtilisateur']."&idClub=".$key['idClub']."\">Bannir</a>";
-							}
+							}*/
 						}
 						echo "</div>";
 					}
-			}
 			echo "</div>";
 	}
 
 	public function formulaireClub(){
-		echo '<form action="index.php?action=AjoutEnCours&module=Club" method="post" enctype="multipart/form-data">
+		echo "<div class =\"Formulaire\">";
+		 echo '<form action="index.php?action=AjoutEnCours&module=Club" method="post" enctype="multipart/form-data">
 				<label>Entrer le nom du club: </label><br/>
 			 	<input type="text" name="nomClub" required><br/>
 			 	<label>Entrer la description : </label><br/>
 				<input type="text" name="DescriptionClub" required><br/> 
-				    <label>Image du Club:</label>
-				    <input type="file" name="ImageClub">
-				    <input type="submit" name="submit" value="Ajouter">
+				    <label>Image du Club:</label>';
+				    echo "<div class =\"FormulaireImage\">";
+				    echo '<input type="file" name="ImageClub">';
+				    echo "</div>";
+				    echo '<input type="submit" name="submit" value="Ajouter">
 			</form>';
+		echo "</div>";
 	}
 
 }
