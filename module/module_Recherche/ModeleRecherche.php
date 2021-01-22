@@ -79,9 +79,7 @@ class ModeleRecherche extends ConnexionBD{
 	}
 
 	public function listeClub(){
-		$this->request = "SELECT idClub,nomClub, SUBSTRING(DescriptionClub,1,255) FROM Club";
-				/*SELECT Club.idClub,nomClub, SUBSTRING(DescriptionClub,1,255), image FROM Club INNER JOIN images ON Club.idClub = images.idClub;
-		*/
+		$this->request = "SELECT idClub,nomClub,ImageClub, DescriptionClub FROM Club";
 		$prepareRequest=self::$bdd->prepare($this->request);
 		$prepareRequest->execute();
 		return $prepareRequest->fetchAll();

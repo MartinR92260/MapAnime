@@ -7,7 +7,7 @@ echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">";
 class VueRecherche extends VueIndex{
 
 	public function __construct(){
-        echo '<link rel="stylesheet" type="text/css" href="module/module_Recherche/Recherche.css"/>';
+        echo '<link rel="stylesheet" type="text/css" href="module/module_Recherche/VueRecherche.css"/>';
     }
 
 	public function rechercher($result){ 
@@ -117,9 +117,10 @@ public function afficheTopAnimeNote($result){
     	foreach ($result as $key) {
     		echo "<a href=\"index.php?module=Club&action=Club&id=".$key['idClub']."\">";
 			echo "<div>"; //75d2ed
-				echo "<div class=\"col-8\">";
-			       	echo "Nom : ".$key['nomClub']."<br/>";
-			       	echo "Description :</br>".$key['SUBSTRING(DescriptionClub,1,255)']."...</br>";
+			echo "<img src=./images/Club/".$key['ImageClub']." class=\"col-3\">";
+				echo "<div class=\"col-9\">";
+			       	echo "Nom : ".$key['nomClub']."<br/><br/>";
+			       	echo "Description :</br>".$key['DescriptionClub']."</br>";
 		       	echo "</div>";
 			echo "</div>";
 			echo "</a>";
