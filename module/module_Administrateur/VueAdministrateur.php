@@ -8,7 +8,7 @@ class VueAdministrateur extends VueIndex{
         echo '<link rel="stylesheet" type="text/css" href="module/module_Administrateur/VueAdministrateur.css"/>';
     }
 
-    public function affichePanel($infoAnimes,$infoUsers){
+    public function affichePanel($infoAnimes,$infoUsers,$infoClubs,$infoComs,$infoGenres){
 ?>
     	<h1>Animes</h1>
 
@@ -162,6 +162,262 @@ class VueAdministrateur extends VueIndex{
 			}
 		}
 		</script>
+
+    <h1>Clubs</h1>
+
+    <input type="text" id="clubTriId" onkeyup="clubTriParId()" placeholder="Entrer l'id.." title="Tri par id">
+    <input type="text" id="clubTriNom" onkeyup="clubTriParNom()" placeholder="Entrer le nom.." title="Tri par nom">
+
+    <table id="clubMyTable">
+        <tr class="header">
+          <th style="width:50px;">Id</th>
+          <th style="width:300px;">Nom</th>
+          <th style="width:100px;">Options</th>
+        </tr>
+<?php
+      foreach($infoClubs as $club){
+        echo "<tr>
+          <td>".$club['idClub']."</td>
+          <td>".$club['nomClub']."</td>
+          <td><a href=\"index.php?module=Utilisateur&action=afficheProfil\" class=\"col-auto\">Modifier</a> </br> <a href=\"index.php?module=Utilisateur&action=afficheProfil\" class=\"col-auto\">Supprimer</a></td>
+        </tr>";
+    
+          }
+?>
+      </table>
+      <script>
+      function clubTriParId() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("clubTriId");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("clubMyTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+            }
+          }       
+      }
+    }
+
+    function clubTriParNom() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("clubTriNom");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("clubMyTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[1];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+            }
+          }       
+      }
+    }
+    </script>
+
+    <h1>Commentaires</h1>
+
+    <input type="text" id="comTriIdCom" onkeyup="comTriParIdCom()" placeholder="Entrer l'id.." title="Tri par idCommentaire">
+    <input type="text" id="comTriIdUser" onkeyup="comTriParIdUser()" placeholder="Entrer l'id.." title="Tri par idUtilisateur">
+    <input type="text" id="comTriIdAnime" onkeyup="comTriParIdAnime()" placeholder="Entrer l'id.." title="Tri par idAnime">
+    <input type="text" id="comTriIdClub" onkeyup="comTriParIdClub()" placeholder="Entrer l'id.." title="Tri par idClub">
+    <input type="text" id="comTriIdCont" onkeyup="comTriParIdCont()" placeholder="Entrer le contenu.." title="Tri par contenu">
+
+    <table id="comMyTable">
+        <tr class="header">
+          <th style="width:100px;">IdCommentaire</th>
+          <th style="width:100px;">IdUtilisateur</th>
+          <th style="width:100px;">IdAnime</th>
+          <th style="width:100px;">IdClub</th>
+          <th style="width:300px;">Contenu</th>
+          <th style="width:100px;">Date</th>
+          <th style="width:100px;">Heure</th>
+          <th style="width:100px;">Options</th>
+        </tr>
+<?php
+      foreach($infoComs as $com){
+        echo "<tr>
+          <td>".$com['idCommentaire']."</td>
+          <td>".$com['idUtilisateur']."</td>
+          <td>".$com['idAnime']."</td>
+          <td>".$com['idClub']."</td>
+          <td>".$com['contenu']."</td>
+          <td>".$com['Date']."</td>
+          <td>".$com['Heure']."</td>
+          <td><a href=\"index.php?module=Utilisateur&action=afficheProfil\" class=\"col-auto\">Modifier</a> </br> <a href=\"index.php?module=Utilisateur&action=afficheProfil\" class=\"col-auto\">Supprimer</a></td>
+        </tr>";
+    
+          }
+?>
+      </table>
+      <script>
+      function comTriParIdCom() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("comTriIdCom");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("comMyTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+            }
+          }       
+      }
+    }
+
+    function comTriParIdUser() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("comTriIdUser");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("comMyTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[1];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+            }
+          }       
+      }
+    }
+
+    function comTriParIdAnime() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("comTriIdAnime");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("comMyTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[2];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+            }
+          }       
+      }
+    }
+
+    function comTriParIdClub() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("comTriIdClub");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("comMyTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[3];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+            }
+          }       
+      }
+    }
+
+    function comTriParIdCont() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("comTriIdCont");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("comMyTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[4];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+            }
+          }       
+      }
+    }
+    </script>
+
+    <h1>Genres</h1>
+
+    <input type="text" id="genreTriId" onkeyup="genreTriParId()" placeholder="Entrer l'id.." title="Tri par id">
+    <input type="text" id="genreTriNom" onkeyup="genreTriParNom()" placeholder="Entrer le nom.." title="Tri par nom">
+
+    <table id="genreMyTable">
+        <tr class="header">
+          <th style="width:50px;">Id</th>
+          <th style="width:300px;">Nom</th>
+          <th style="width:100px;">Options</th>
+        </tr>
+<?php
+      foreach($infoGenres as $genre){
+        echo "<tr>
+          <td>".$genre['idGenre']."</td>
+          <td>".$genre['nomGenre']."</td>
+          <td><a href=\"index.php?module=Utilisateur&action=afficheProfil\" class=\"col-auto\">Modifier</a> </br> <a href=\"index.php?module=Utilisateur&action=afficheProfil\" class=\"col-auto\">Supprimer</a></td>
+        </tr>";
+    
+          }
+?>
+      </table>
+      <script>
+      function genreTriParId() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("genreTriId");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("genreMyTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+            }
+          }       
+      }
+    }
+
+    function genreTriParNom() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("genreTriNom");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("genreMyTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[1];
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+            }
+          }       
+      }
+    }
+    </script>
 <?php
     }
 }

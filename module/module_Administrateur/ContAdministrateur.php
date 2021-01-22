@@ -16,7 +16,7 @@ class ContAdministrateur{
 	}
 
 	public function affichePanel(){
-		$this->vue->affichePanel($this->modele->infoAnimes(),$this->modele->infoUsers());
+		$this->vue->affichePanel($this->modele->infoAnimes(),$this->modele->infoUsers(),$this->modele->infoClubs(),$this->modele->infoComs(),$this->modele->infoGenres());
 	}
 }
 ?>
