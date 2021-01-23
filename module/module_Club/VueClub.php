@@ -78,7 +78,7 @@ class VueClub extends VueIndex{
 						    }			    
 					    }
 				        echo "<div class =\"headerDetails\">"
-					        .$key['Date']
+					        .$key['Date']."<br>"
 					        .$key['Heure'];
 				        echo "</div>
 				        <p>".$key['contenu']."</p></div>";

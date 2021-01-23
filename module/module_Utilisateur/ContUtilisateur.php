@@ -30,7 +30,7 @@ class ContUtilisateur{
 	}
 
 	public function profilOther($id){
-		$this->vue->affichageDuProfilDeAutreUtilisateur($this->modele->getIdUser($id), $this->modele->requestListeDeAutreUtilisateur($id),$this->modele->listeAmisDeAutreUtilisateur($id),$this->modele->listeAmis());
+		$this->vue->affichageDuProfilDeAutreUtilisateur($this->modele->getUser($id), $this->modele->requestListeDeAutreUtilisateur($id),$this->modele->listeAmisDeAutreUtilisateur($id),$this->modele->listeAmis());
 	}
 
 	public function ajouterListeAmi($id){
@@ -42,7 +42,7 @@ class ContUtilisateur{
 	}
 
 	public function envoyerMessageAmi($id){
-		$this->vue->pageMesssage($this->modele->getIdUser($id),$this->modele->envoyerMessageAmi($id),$id,$this->modele->listeAmis(),$this->modele->getMessage($id),/*$this->modele->getRecepteurMessage($id),*/$this->modele->getPseudoSenderMessage($id));
+		$this->vue->pageMesssage($this->modele->getUser($id),$this->modele->envoyerMessageAmi($id),$id,$this->modele->listeAmis(),$this->modele->getMessage($id),/*$this->modele->getRecepteurMessage($id),*/$this->modele->getPseudoSenderMessage($id));
 	}
 
 	

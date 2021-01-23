@@ -5,12 +5,13 @@ include_once('./VueIndex.php');
 class VueUtilisateur extends VueIndex{
 
     public function __construct(){
-        echo '<link rel="stylesheet" type="text/css" href="module/module_Utilisateur/Vue_Utilisateurcss.css"/>';
+        echo '<link rel="stylesheet" type="text/css" href="module/module_Utilisateur/Utilisateur.css"/>';
     }
 
     public function affichageDuProfilUtilisateur($listeAnime,$listeInfoAmis){
         echo "<h1>Profil de ".$_SESSION['pseudo']." : </h1>";
-        echo "<div class =\"Anime\">";
+/*        echo "<img src=./images/Profil/".$_SESSION['PhotoProfil']. "</img>";*/
+        echo "<div class =\"DivMyAnime\">";
         echo '<h2>Liste d\'anime</h2>';
         if ($listeAnime){
                 foreach ($listeAnime as $anime) {
@@ -24,13 +25,16 @@ class VueUtilisateur extends VueIndex{
         else{
             echo "Votre liste est vide. N'ésitez pas a la remplir !";
         }
+        echo "</div>";
 
-        echo "<div class =\"Ami\">";
+        echo "<div class =\"DivMyAmi\">";
         echo '<h2>Liste d\'amis</h2>';
         foreach ($listeInfoAmis as $ami) {
             echo "<div class =\"DivAmi\">";
-            echo "<a href=\"index.php?module=Utilisateur&action=afficheOtherProfil&id=".$ami['idAmi']."\">".$ami['PhotoProfil']."<h4>" .$ami['pseudoAmi']."</h4><br>"."</a>";
-             echo "<a href=\"index.php?module=Utilisateur&action=envoyerMessage&id=".$ami['idAmi']."\">EnvoyerMesage</h4><br>"."</a>";
+            echo "<a href=\"index.php?module=Utilisateur&action=afficheOtherProfil&id=".$ami['idAmi']."\"><img src=./images/Profil/".$ami['PhotoProfil']." id=\"PhotoProfil\"/><h4>" .$ami['pseudoAmi']."</h4><br>"."</a></img>";
+            echo "<div class =\"DivAmiMess\">";
+             echo "<a href=\"index.php?module=Utilisateur&action=envoyerMessage&id=".$ami['idAmi']."\">Envoyer un Message</h4><br>"."</a>";
+            echo "</div>";
             echo "</div>";
         }
         echo "</div>";
@@ -46,6 +50,7 @@ class VueUtilisateur extends VueIndex{
     public function affichageDuProfilDeAutreUtilisateur($id, $listeAnime,$listeInfoAmis,$listeAmiUtilisateur){
         foreach($id as $key) {
             echo "<h1>Profil de ".$key['pseudo']." : </h1>";
+
         }
 
         echo "<div class =\"Anime\">";
@@ -67,8 +72,10 @@ class VueUtilisateur extends VueIndex{
         echo '<h2>Liste d\'amis</h2>';
         foreach ($listeInfoAmis as $ami) {
             echo "<div class =\"DivAmi\">";
-            echo "<a href=\"index.php?module=Utilisateur&action=afficheOtherProfil&id=".$ami['idAmi']."\">".$ami['PhotoProfil']."<h4>" .$ami['pseudoAmi']."</h4><br>"."</a>";
-
+            echo "<a href=\"index.php?module=Utilisateur&action=afficheOtherProfil&id=".$ami['idAmi']."\"><img src=./images/Profil/".$ami['PhotoProfil']." id=\"PhotoProfil\"/><h4>" .$ami['pseudoAmi']."</h4><br>"."</a></img>";
+            echo "<div class =\"DivAmiMess\">";
+             echo "<a href=\"index.php?module=Utilisateur&action=envoyerMessage&id=".$ami['idAmi']."\">Envoyer un Message</h4><br>"."</a>";
+            echo "</div>";
             echo "</div>";
         }
         echo "</div>";
@@ -88,6 +95,9 @@ class VueUtilisateur extends VueIndex{
                 echo "<a href=\"index.php?module=Utilisateur&action=ajoutAmi&id=".$id['0']['idUtilisateur']."\">Ajouter en ami</a>" ."<br>";
             }
             echo "</div>";
+        }
+        foreach($id as $key) {
+            echo "<img src=./images/Profil/".$key['PhotoProfil']." id=\"Photo\"/>";
         }
 }
 

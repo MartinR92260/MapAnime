@@ -110,7 +110,7 @@ class ModeleAnime extends ConnexionBD{
 	
     
     public function getCommentaire($id) {
-        $req = self::$bdd->prepare("SELECT * FROM Commentaire NATURAL JOIN Anime NATURAL JOIN Utilisateur WHERE idAnime = ?");
+        $req = self::$bdd->prepare("SELECT * FROM Commentaire NATURAL JOIN Anime NATURAL JOIN Utilisateur WHERE idAnime = ? ORDER BY Date,Heure");
          $req->execute(array($id));
 		return $req->fetchAll();
     }

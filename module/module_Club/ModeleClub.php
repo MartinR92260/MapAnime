@@ -10,7 +10,7 @@ class ModeleClub extends ConnexionBD{
 	}
 
     public function rejoindreClub($id) {
-        $req = self::$bdd->prepare("INSERT INTO possede VALUES (?,?, 0)");
+        $req = self::$bdd->prepare("INSERT INTO possede VALUES (?,?)");
         $req->execute(array($_SESSION['idUtilisateur'], $id));
         return $req->fetchAll();
     }
@@ -28,8 +28,10 @@ class ModeleClub extends ConnexionBD{
     }
 
     public function posterCommentaire($id){
+        $date=date("Y-m-d");
+        $heure=date("H:i:s");
         $req = self::$bdd->prepare("INSERT INTO commentaire VALUES (default, ?, ?, ?, ?, ?, ?)");
-        $result=$req->execute(array($_SESSION['idUtilisateur'], NULL, $id, $_POST['comm'],NULL,NULL));
+        $result=$req->execute(array($_SESSION['idUtilisateur'], NULL, $id, $_POST['comm'],$date,$heure));
         return $result;
     }
 
@@ -40,7 +42,7 @@ class ModeleClub extends ConnexionBD{
     }
 
     public function getCommentaire($id) {
-        $req = self::$bdd->prepare("SELECT * FROM Commentaire NATURAL JOIN possede NATURAL JOIN Utilisateur WHERE Commentaire.idClub = ?");
+        $req = self::$bdd->prepare("SELECT * FROM Commentaire NATURAL JOIN possede NATURAL JOIN Utilisateur WHERE Commentaire.idClub = ? ORDER BY Date,Heure ");
         $req->execute(array($id));
         return $req->fetchAll();
     }

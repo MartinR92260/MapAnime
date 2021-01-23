@@ -82,8 +82,8 @@ class ModeleUtilisateur extends ConnexionBD{
 		return $prepareRequest->fetchAll();
 	}
 
-	public function getIdUser($id) {
-		$this->request = "SELECT idUtilisateur, pseudo FROM Utilisateur WHERE idUtilisateur = ?";
+	public function getUser($id) {
+		$this->request = "SELECT DISTINCT * FROM Utilisateur WHERE idUtilisateur = ?";
         $this->arg = array($id);
 		$this->requestPrepare = self::$bdd->prepare($this->request);
 		$this->requestPrepare->execute($this->arg);

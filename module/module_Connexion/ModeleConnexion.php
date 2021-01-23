@@ -66,11 +66,52 @@ class ModeleConnexion extends ConnexionBD {
         }
 
         else{
-            $bd = self::$bdd->prepare('INSERT into Utilisateur values(default,?,?,NULL,NULL,2)');
-            $bd->execute(array($pseudo,$mdp));
+            $bd = self::$bdd->prepare('INSERT into Utilisateur values(default,?,?,NULL,?,2)');
+            if(isset($_POST["submit"])){ 
+                if(!empty($_FILES["ImageProfil"]["name"])) { 
+                    $fileName = basename($_FILES["ImageProfil"]["name"]); 
+                    $fileType = pathinfo($fileName, PATHINFO_EXTENSION); 
+                     
+                    $allowTypes = array('jpg','png','jpeg','gif');
+                    if(in_array($fileType, $allowTypes)){ 
+                        $image = $_FILES['ImageProfil']['tmp_name']; 
+                        $resultat = move_uploaded_file($_FILES['ImageProfil']['tmp_name'],"./images/Profil/".$fileName);
+                        $bd->execute(array($pseudo,$mdp, $fileName));
+
+                        if($bd){ 
+                            ?>
+                                <script type="text/javascript"> 
+                                alert("Le club a bien été créer, Felicitation!"); 
+                                </script>
+                            <?php
+                        }
+                        else{ 
+                            ?>
+                                <script type="text/javascript"> 
+                                alert("L'importation de l'image du Club a échoué, Veuillez réessayer!!"); 
+                                </script>
+                            <?php
+                        }  
+                    }
+                    else{
+                        ?>
+                            <script type="text/javascript"> 
+                            alert("Les seules formats supportés sont : JPG, JPEG, PNG, & GIF!"); 
+                            </script>
+                        <?php
+                    } 
+                }
+                else{ 
+                    ?>
+                        <script type="text/javascript"> 
+                        alert("Vous devez mettre une image pour votre compte !"); 
+                        </script>
+                    <?php
+                }
             return true;
         }
     }
+}
 }
 
 ?>

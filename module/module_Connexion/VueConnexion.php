@@ -30,7 +30,7 @@ class VueConnexion extends VueIndex{//!!!!!
 
     function afficheFormInscription(){
         echo '<center>
-        <form action="index.php?action=inscription&module=Connexion" method="post">
+        <form action="index.php?action=inscription&module=Connexion" method="post" enctype="multipart/form-data">
             <div class="formulaire">
                 <h1>Inscription</h1>
                 <label>Entrer votre pseudo : </label></br>
@@ -39,10 +39,15 @@ class VueConnexion extends VueIndex{//!!!!!
                 <input type="password" name="mdp" placeholder="Mot de passe" required></br>
                 <label>Confirmer votre mot de passe : </label></br>
                 <input type="password" name="mdp2" placeholder="Mot de passe" required></br>
-            </div>
-            <input class="button-center" type="submit" value="Inscription">
-        </form>
-        </center>';
+                    <label>Image de Profil:</label>';
+                    echo "<div class =\"FormulaireImage\">";
+                    echo '<input type="file" name="ImageProfil">';
+                    echo "</div>";
+                    echo '<input type="submit" name="submit" value="Inscription">
+            </form>
+            </center>';
+        echo "</div>";
+        ;
 	}
 }
 ?>
