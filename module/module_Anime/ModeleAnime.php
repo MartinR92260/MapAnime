@@ -21,7 +21,7 @@ class ModeleAnime extends ConnexionBD{
 
 	public function VerifAnimeDansListe($id){
 		if(isset($_SESSION['idUtilisateur'])){
-		$req = self::$bdd->prepare("SELECT idAnime FROM liste WHERE idUtilisateur = ? AND idAnime= ?");
+		$req = self::$bdd->prepare("SELECT idAnime,note,etat FROM liste WHERE idUtilisateur = ? AND idAnime= ?");
 		$req->execute(array($_SESSION['idUtilisateur'],$id));
 		return $req->fetchAll();
 	}

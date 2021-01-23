@@ -51,6 +51,10 @@ class VueAnime extends VueIndex{
 		   			echo '/20';
 		   					echo "<br/>
 
+
+
+
+		   
 				<h2> Nombre de personne ayant cette Animé dans leurs liste :</h2>".$key['Popularite']."
 
 
@@ -101,6 +105,27 @@ class VueAnime extends VueIndex{
 						</form>';
 
 
+			
+
+
+				foreach($idAnime as $idA) {	
+
+			
+
+				if(!$idAnime==NULL){
+					
+		   			echo" Votre Note: "
+		   			.$idA['note'];
+		   			echo '/20';
+		   			echo "<br/>";
+
+		   			echo" Etat: "
+		   			.$idA['etat'];
+		   			echo "<br/>";
+
+
+		   		}
+				}	
 
 						echo'<form action=index.php?action=modifEtat&module=Anime&id='.$key['idAnime'].' method="post">
 
@@ -119,9 +144,7 @@ class VueAnime extends VueIndex{
                     }
 					
 
-				    if ($_SESSION['Admin'] == 1){
-				        echo "<a href=\"index.php?action=SupprAnime&module=Anime&id=".$key['idAnime']."\">Supprimer Anime du site</a>";
-				    }				    
+				   		    
 				    	
 				}
 			
