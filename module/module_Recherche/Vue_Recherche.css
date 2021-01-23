@@ -5,6 +5,8 @@ main {
 .block{
     background-color: #082740;
     padding:20px 20px 20px 20px;
+    width : 1200px;
+    margin-left: 260px;
 }
 .block>a>div{
     background-color: white;
@@ -56,6 +58,8 @@ main {
 .blockClub{
     background-color: #082740;
     padding:20px 20px 20px 20px;
+    width: 1200px;
+    margin-left: 260px;
 }
 .blockClub>a>div{
     background-color: white;
@@ -102,14 +106,14 @@ main {
 
 .divAjout {
     border: solid 1px white;
-    margin-left: 1350px;
+    margin-left: 940px;
     width : 300px;
     height : 50px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    top : 210px;
+    top : 140px;
 }
 
 .divAjout a{

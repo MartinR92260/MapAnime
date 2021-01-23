@@ -92,6 +92,12 @@ class ModeleRecherche extends ConnexionBD{
 		return $prepareRequest->fetchAll();
     }
 
+    public function getUser($id) {
+        $req = self::$bdd->prepare("SELECT idUtilisateur,pseudo,Email FROM Utilisateur WHERE idUtilisateur = ?");
+        $req->execute(array($id));
+        return $req->fetchAll();
+    }
+
     public function searchNomUser($expr=NULL){
 		$expr="%".$expr."%";
 		$this->request='SELECT DISTINCT idUtilisateur,pseudo,Email FROM Utilisateur WHERE pseudo LIKE ?';

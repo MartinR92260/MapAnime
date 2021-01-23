@@ -5,7 +5,7 @@ include_once('./VueIndex.php');
 class VueAnime extends VueIndex{
 
 	public function __construct(){
-		echo '<link rel="stylesheet" type="text/css" href="module/module_Anime/csspls.css"/>';
+		echo '<link rel="stylesheet" type="text/css" href="module/module_Anime/Anime.css"/>';
 	}
 
     public function afficheAnime($arrayAnime,$arrayGenre,$arrayCommentaires,$arrayListe,$idAnime){
@@ -190,22 +190,24 @@ class VueAnime extends VueIndex{
 	}
 
 	public function formulaireAnime(){
-		echo '<form action="index.php?action=AjoutEnCours&module=Anime" method="post">
+		echo "<div class =\"Formulaire\">";
+		echo '<form action="index.php?action=AjoutEnCours&module=Anime" method="post"enctype="multipart/form-data">
 				<label>Entrer le titre : </label><br/>
 			 	<input type="text" name="nom" required><br/>
 			 	<label>Entrer le synopsis : </label><br/>
 				<input type="text" name="synopsis" required><br/>
-				
-				    <label>Entrer le nombre de saison : </label><br/>
+				<label>Entrer le nombre de saison : </label><br/>
 		 		<input type="number" min="0" name="nbSaisons"><br/>
 		 		<label>Entrer le nombre total d\'épisode : </label><br/>
 		 		<input type="number" min="0" name="nbEpisodes"><br/>   
-				<input type="submit" value="Ajouter">
+					<label>Image de Anime:</label>';
+				    echo "<div class =\"FormulaireImage\">";
+				    echo '<input type="file" name="ImageAnime">';
+				    echo "</div>";
+				    echo '<input type="submit" name="submit" value="Ajouter">
 
 			</form>';
-
-	
-
+			echo "</div>";
 	}
 
 	public function formulaireUpdateAnime($id){

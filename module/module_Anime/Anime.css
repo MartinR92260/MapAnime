@@ -1,8 +1,12 @@
+main {
+    background-color: #082740;
+    min-height: 450px;
+}
+
 #imageAnime{
     width: 400px;
     height: 500px;
 }
-
 .infoAnime{
     width: 50%;
     display: inline-block;
@@ -10,15 +14,25 @@
     padding-left: 10px;
 }
 
+.Anime{
+	background-color: #082740;
+	color:white;
+
+
+}
+
 .Anime h1 {
     font-size: 32px;
+
 }
+
 
 .Anime h2 {
     font-size: 24px;
     padding-top: 10px;
     padding-bottom: 10px;
     text-decoration: underline;
+   
 }
 
 .Anime h3 {
@@ -55,4 +69,48 @@
 
 .commentaire p {
     padding-left: 10px;
+}
+
+
+.synAnime {
+
+font-size: 14px;
+  
+
+}
+
+
+.test a{
+
+font-size: 18px;
+color : red;
+text-decoration: none;
+
+}
+
+.Formulaire {
+    width: 33%;
+    height: 33%;
+    background-color: lightgray;
+    border-radius: 40px;
+    padding: 3%;
+    text-align: center;
+    margin-left: 550px;
+    position : relative;
+    top : 20px;
+}
+
+.Formulaire form {
+    color : black;
+    font-size: 1.2em;
+}
+
+.Formulaire input {
+    width: 100%;
+    margin: 5px;
+}
+
+.FormulaireImage input{
+    margin-top: 5px;
+    width : 250px;
 }

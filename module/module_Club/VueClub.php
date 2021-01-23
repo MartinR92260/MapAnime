@@ -5,7 +5,7 @@ include_once('./VueIndex.php');
 class VueClub extends VueIndex{
 
 	public function __construct(){
-        echo '<link rel="stylesheet" type="text/css" href="module/module_club/Vue_Club.css"/>';
+        echo '<link rel="stylesheet" type="text/css" href="module/module_club/VueClub.css"/>';
     }
     public function afficheImage($idClub) {
     	foreach ($idClub as $id) {
@@ -92,13 +92,15 @@ class VueClub extends VueIndex{
 				<p>Liste des Adherents : </p>";
 				foreach($club as $id) {
 					foreach($utilisateurs as $key) {
-						echo "<div class =\"users\">"
-						.$key['pseudo'];
-/*						    if ($id['Gerant'] == $_SESSION['idUtilisateur']) {
-								echo"<a href=\"index.php?module=Club&action=Bannir&idUser=".$key['idUtilisateur']."&idClub=".$key['idClub']."\">Bannir</a>";
-							}*/
+						echo $key['pseudo'];
+						echo "<div class =\"DivUtilisateursBan\">";
+						if(isset($_SESSION['idUtilisateur'])){
+						    if ($id['Gerant'] == $_SESSION['idUtilisateur']) {
+								echo "<a href=\"index.php?module=Club&action=Bannir&idUser=".$key['idUtilisateur']."&idClub=".$key['idClub']."\">Bannir</a>";
+								echo "</div>";
+							}
 						}
-						echo "</div>";
+						}
 					}
 			echo "</div>";
 	}

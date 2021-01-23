@@ -10,7 +10,7 @@ class ModeleClub extends ConnexionBD{
 	}
 
     public function rejoindreClub($id) {
-        $req = self::$bdd->prepare("INSERT INTO possede VALUES (?,?)");
+        $req = self::$bdd->prepare("INSERT INTO possede VALUES (?,?, 0)");
         $req->execute(array($_SESSION['idUtilisateur'], $id));
         return $req->fetchAll();
     }

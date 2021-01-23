@@ -58,13 +58,52 @@ class ModeleAnime extends ConnexionBD{
 		}else{
 			$nbEpisodes = NULL;
 		}
-		
+		if(isset($_POST["submit"])){ 
+            if(!empty($_FILES["ImageAnime"]["name"])) { 
+                $fileName = basename($_FILES["ImageAnime"]["name"]); 
+                $fileType = pathinfo($fileName, PATHINFO_EXTENSION); 
+                 
+                $allowTypes = array('jpg','png','jpeg','gif');
+                if(in_array($fileType, $allowTypes)){ 
+                    $image = $_FILES['ImageAnime']['tmp_name']; 
+                    $resultat = move_uploaded_file($_FILES['ImageAnime']['tmp_name'],"./images/Anime/".$fileName);
+                    $result = $req->execute(array($nom,$fileName,$nbEpisodes,$nbSaisons,$synopsis,NULL,NULL));
 
-
-		$result = $req->execute(array($nom,NULL,$nbEpisodes,$nbSaisons,$synopsis,NULL,NULL));
+                    if($result){ 
+                        ?>
+                            <script type="text/javascript"> 
+                            alert("L'animé a bien été créer!"); 
+                            </script>
+                        <?php
+                    }
+                    else{ 
+                        ?>
+                            <script type="text/javascript"> 
+                            alert("L'importation de l'image du l'animé a échoué, Veuillez réessayer!!"); 
+                            </script>
+                        <?php
+                        $result = NULL;
+                    }  
+                }
+                else{
+                    ?>
+                        <script type="text/javascript"> 
+                        alert("Les seules formats supportés sont : JPG, JPEG, PNG, & GIF!"); 
+                        </script>
+                    <?php
+                    $result = NULL; 
+                } 
+            }
+            else{ 
+                ?>
+                    <script type="text/javascript"> 
+                    alert("Vous devez mettre une image pour l'anime!"); 
+                    </script>
+                <?php
+                $result = NULL;
+            } 
+        }
 		return $result;
-
-
 	}	
 
 	
