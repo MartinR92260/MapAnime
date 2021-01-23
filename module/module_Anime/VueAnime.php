@@ -191,7 +191,7 @@ class VueAnime extends VueIndex{
 
 	public function formulaireAnime(){
 		echo "<div class =\"Formulaire\">";
-		echo '<form action="index.php?action=AjoutEnCours&module=Anime" method="post"enctype="multipart/form-data">
+		echo '<form action="index.php?action=AjoutEnCours&module=Anime" method="post" enctype="multipart/form-data">
 				<label>Entrer le titre : </label><br/>
 			 	<input type="text" name="nom" required><br/>
 			 	<label>Entrer le synopsis : </label><br/>
@@ -211,7 +211,8 @@ class VueAnime extends VueIndex{
 	}
 
 	public function formulaireUpdateAnime($id){
-		echo "<form action=\"index.php?action=modifAnimeEnCours&module=Anime&id=".$id."\" method=\"post\">
+		echo "<div class =\"Formulaire\">";
+		echo "<form action=\"index.php?action=modifAnimeEnCours&module=Anime&id=".$id."\" method=\"post\" enctype=\"multipart/form-data\">
 				<label>Entrer le titre : </label><br/>
 			 	<input type=\"text\" name=\"nom\"><br/>
 
@@ -220,10 +221,14 @@ class VueAnime extends VueIndex{
 
 		 		<label>Entrer le nombre total d'épisode : </label><br/>
 		 		<input type=\"number\" min=\"0\" name=\"nbEpisodes\"><br/>   
+					<label>Image de Anime:</label>";
+				    echo "<div class =\"FormulaireImage\">";
+				    echo '<input type="file" name="ImageAnime">';
+				    echo "</div>";
+				    echo '<input type="submit" name="submit" value="Ajouter">
 
-				<input type=\"submit\" value=\"Ajouter\">
-
-			</form>";
+			</form>';
+			echo "</div>";
 	}
 }
 

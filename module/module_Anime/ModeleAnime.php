@@ -58,6 +58,7 @@ class ModeleAnime extends ConnexionBD{
 		}else{
 			$nbEpisodes = NULL;
 		}
+
 		if(isset($_POST["submit"])){ 
             if(!empty($_FILES["ImageAnime"]["name"])) { 
                 $fileName = basename($_FILES["ImageAnime"]["name"]); 
@@ -228,10 +229,42 @@ class ModeleAnime extends ConnexionBD{
 		$nom=$_POST['nom'];
 		$nbSaisons=$_POST['nbSaisons'];
 		$nbEpisodes=$_POST['nbEpisodes'];
-		if(!empty($_POST['nbSaisons']) && !empty($_POST['nbEpisodes']) && !empty($_POST['nom'])){
+		if(isset($_POST["submit"])){ 
+	        if(!empty($_FILES["ImageAnime"]["name"])) { 
+	            $fileName = basename($_FILES["ImageAnime"]["name"]); 
+	            $fileType = pathinfo($fileName, PATHINFO_EXTENSION); 
+	                 
+	            $allowTypes = array('jpg','png','jpeg','gif');
+	            if(in_array($fileType, $allowTypes)){ 
+	                $image = $_FILES['ImageAnime']['tmp_name']; 
+	                $resultat = move_uploaded_file($_FILES['ImageAnime']['tmp_name'],"./images/Anime/".$fileName);
+
+            	}
+        	}
+        }
+
+		if(!empty($_POST['nbSaisons']) && !empty($_POST['nbEpisodes']) && !empty($_POST['nom'])&& !empty($_FILES["ImageAnime"]["name"])) {
+			$req = self::$bdd->prepare("UPDATE anime SET nom=?,nbSaisons=?,nbEpisodes=?, ImageAnime=? WHERE idAnime=?");
+			$req->execute(array($nom,$nbSaisons,$nbEpisodes,$fileName,$id));
+		}
+
+		elseif (!empty($_POST['nbSaisons']) && !empty($_POST['nbEpisodes']) && !empty($_POST['nom'])) {
 			$req = self::$bdd->prepare("UPDATE anime SET nom=?,nbSaisons=?,nbEpisodes=? WHERE idAnime=?");
 			$req->execute(array($nom,$nbSaisons,$nbEpisodes,$id));
 		}
+		elseif (!empty($_POST['nbSaisons']) && !empty($_POST['nbEpisodes']) && !empty($_FILES["ImageAnime"]["name"])) {
+			$req = self::$bdd->prepare("UPDATE anime SET nbSaisons=?,nbEpisodes=?, ImageAnime=? WHERE idAnime=?");
+			$req->execute(array($nbSaisons,$nbEpisodes,$fileName,$id));
+		}
+		elseif (!empty($_POST['nbSaisons']) && !empty($_POST['nom']) && !empty($_FILES["ImageAnime"]["name"])) {
+			$req = self::$bdd->prepare("UPDATE anime SET nom=?,nbSaisons=?, ImageAnime=? WHERE idAnime=?");
+			$req->execute(array($nom,$nbSaisons,$fileName,$id));
+		}
+		elseif (!empty($_POST['nbEpisodes']) && !empty($_POST['nom']) && !empty($_FILES["ImageAnime"]["name"])) {
+			$req = self::$bdd->prepare("UPDATE anime SET nom=?,nbEpisodes=?,ImageAnime=? WHERE idAnime=?");
+			$req->execute(array($nom,$nbEpisodes,$fileName,$id));
+		}
+
 		elseif (!empty($_POST['nbSaisons']) && !empty($_POST['nbEpisodes'])) {
 			$req = self::$bdd->prepare("UPDATE anime SET nbSaisons=?,nbEpisodes=? WHERE idAnime=?");
 			$req->execute(array($nbSaisons,$nbEpisodes,$id));
@@ -244,6 +277,19 @@ class ModeleAnime extends ConnexionBD{
 			$req = self::$bdd->prepare("UPDATE Anime SET nom=?,nbSaisons=? WHERE idAnime=?");
 			$req->execute(array($nom,$nbSaisons,$id));
 		}
+		elseif (!empty($_POST['nbSaisons']) && !empty($_FILES["ImageAnime"]["name"])) {
+			$req = self::$bdd->prepare("UPDATE Anime SET ImageAnime=?, nbSaisons=? WHERE idAnime=?");
+			$req->execute(array($fileName,$nbSaisons,$id));
+		}
+		elseif (!empty($_POST['nbEpisodes']) && !empty($_FILES["ImageAnime"]["name"])) {
+			$req = self::$bdd->prepare("UPDATE Anime SET nbEpisodes=?, ImageAnime=? WHERE idAnime=?");
+			$req->execute(array($nbEpisodes,$fileName,$id));
+		}
+		elseif (!empty($_POST['nom']) && !empty($_FILES["ImageAnime"]["name"])) {
+			$req = self::$bdd->prepare("UPDATE Anime SET nom=?, ImageAnime=? WHERE idAnime=?");
+			$req->execute(array($nom,$fileName,$id));
+		}
+
 		elseif (!empty($_POST['nom'])) {
 			$req = self::$bdd->prepare("UPDATE Anime SET nom=? WHERE idAnime=?");
 			$req->execute(array($nom,$id));
@@ -256,6 +302,10 @@ class ModeleAnime extends ConnexionBD{
 			$req = self::$bdd->prepare("UPDATE Anime SET nbEpisodes=? WHERE idAnime=?");
 			$req->execute(array($nbEpisodes,$id));
 		}
-	}	
-}
+		else if(!empty($_FILES["ImageAnime"]["name"])) { 
+				$req = self::$bdd->prepare("UPDATE Anime SET ImageAnime=? WHERE idAnime=?");
+				$req->execute(array($fileName,$id));
+		}
+	}
+}	
 ?>
