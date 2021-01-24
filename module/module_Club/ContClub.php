@@ -61,7 +61,7 @@ class ContClub{
 	    else {
 	   		?>
 				<script type="text/javascript"> 
-        			alert("Vous devez être adherent pour poster un message"); 
+        			alert("Vous devez être connecter pour poster un message"); 
  		 		</script>
  			<?php
  			$this->detailClub($id);

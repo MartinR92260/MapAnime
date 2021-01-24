@@ -34,13 +34,25 @@ input.button-center {
 */
 
 @media all and (max-width: 400px) {
+
+    nav {
+        width : 1580px;
+    }
+
+    footer {
+        width : 1580px;
+    }
+    main {
+        width : 1580px;
+    }
+
+    .droite {
+        margin-left: 1000px;
+    }
     .formulaire {
-        width: 150%;
+        width: 50%;
         height: 30%;
-        margin-top: 40px;
-        margin-left: 400px;
+        margin : auto;
     }
-    input.button-center {
-        margin-left:660px;
-    }
+
 }

@@ -7,7 +7,7 @@ echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">";
 class VueRecherche extends VueIndex{
 
 	public function __construct(){
-        echo '<link rel="stylesheet" type="text/css" href="module/module_Recherche/Vue_Recherche.css"/>';
+        echo '<link rel="stylesheet" type="text/css" href="module/module_Recherche/VueRecherche.css"/>';
     }
 
 	public function rechercher($result){
@@ -155,12 +155,15 @@ public function afficheTopAnimeNote($result){
 		echo "<hr class = \"haut\">";
     	foreach ($result as $key ) {
     		if ($key['idUtilisateur'] != $_SESSION['idUtilisateur']) {
-    		echo "<a href=\"index.php?module=Utilisateur&action=afficheOtherProfil&id=".$key['idUtilisateur']."\">";
-				echo "<div class=\"col-9\">";
-			       	echo "Pseudo : ".$key['pseudo']."<br/>";
-		       	echo "</div>";
+    		echo "<a href=\"index.php?module=Utilisateur&action=afficheOtherProfil&id=".$key['idUtilisateur']."\"</a>";
+    		}
+    		else {
+    			echo "<a href=\"http://localhost/MapAnime/index.php?module=Utilisateur&action=afficheProfil\"</a>";
+    		}
+			echo "<div class=\"col-9\">";
+			echo "Pseudo : ".$key['pseudo']."<br/>";
+		    echo "</div>";
 			echo "</a>";
-		}
 		}
 
 		echo "<hr class = \"bas\">";

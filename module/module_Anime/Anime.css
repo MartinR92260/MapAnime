@@ -129,12 +129,35 @@ text-decoration: none;
 
 @media all and (max-width: 400px) {
 
-    main {
-        width : 1600px;
+    nav {
+        width : 320%;
     }
 
+    .gauche {
+        position: relative;
+        right : 60px;
+    }
+    .gauche a {
+        font-size: 1.5em;
+    }
+    footer {
+        width : 320%;
+    }
+    main {
+        width : 1210px;
+    }
+    .droite {
+        margin-left: 800px;
+    }
+    footer {
+        margin-top: -15px;
+    }
     .headerCommentaire a {
         position : relative;
-        left: 1400px;
+        left: 800px;
+    }
+    .ListeCom {
+        width : 1000px;
+
     }
 }

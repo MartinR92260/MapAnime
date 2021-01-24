@@ -178,12 +178,23 @@ main {
 @media all and (max-width: 400px) {
 
     main {
-        width : 1420px;
+        width : 1560px;
+    }
+    nav {
+    	width : 405%;
+    }
+    footer {
+    	width : 405%;
     }
 
+    .droite {
+    	margin-left: 1000px;
+    }
     .Rejoindre {
     	width : 300px;
-    	margin-left: 850px;
+    	position: absolute;
+    	left : 1100px;
+    	top : 220px;
     }
 
     .Commentaires {
@@ -191,9 +202,20 @@ main {
     }
 
     .Suppr {
-	margin-left: 900px;
-	width : 300px;
-	position: absolute;
-	top : 130px;
-}
+		width : 300px;
+		position: relative;
+		top : 20px;
+		left : -400px;
+	}
+
+	.Modif {
+		width : 300px;
+		position: relative;
+		top : 40px;
+		left : -400px;
+	}
+	.headerCommentaires a {
+		position : relative;
+		left : 550px;
+	}
 }

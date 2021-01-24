@@ -5,7 +5,7 @@ include_once('./VueIndex.php');
 class VueAnime extends VueIndex{
 
 	public function __construct(){
-		echo '<link rel="stylesheet" type="text/css" href="module/module_Anime/VueAnime.css"/>';
+		echo '<link rel="stylesheet" type="text/css" href="module/module_Anime/Anime.css"/>';
 	}
 
     public function afficheAnime($arrayAnime,$arrayGenre,$arrayCommentaires,$arrayListe,$idAnime){

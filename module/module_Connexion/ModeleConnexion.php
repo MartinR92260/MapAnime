@@ -81,14 +81,14 @@ class ModeleConnexion extends ConnexionBD {
                         if($bd){ 
                             ?>
                                 <script type="text/javascript"> 
-                                alert("Le club a bien été créer, Felicitation!"); 
+                                alert("Votre Compte a bien été créer!"); 
                                 </script>
                             <?php
                         }
                         else{ 
                             ?>
                                 <script type="text/javascript"> 
-                                alert("L'importation de l'image du Club a échoué, Veuillez réessayer!!"); 
+                                alert("L'importation de l'image de votre profil a échoué, Veuillez réessayer!!"); 
                                 </script>
                             <?php
                         }  

@@ -5,7 +5,7 @@ include_once('./VueIndex.php');
 class VueClub extends VueIndex{
 
 	public function __construct(){
-        echo '<link rel="stylesheet" type="text/css" href="module/module_club/Club.css"/>';
+        echo '<link rel="stylesheet" type="text/css" href="module/module_club/VueClub.css"/>';
     }
     public function afficheImage($idClub) {
     	foreach ($idClub as $id) {
