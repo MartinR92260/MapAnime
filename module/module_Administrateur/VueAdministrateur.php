@@ -5,32 +5,37 @@ include_once('./VueIndex.php');
 class VueAdministrateur extends VueIndex{
 
   public function __construct(){
-    echo '<link rel="stylesheet" type="text/css" href="module/module_Administrateur/Vue_Administrateur.css"/>';
+    echo '<link rel="stylesheet" type="text/css" href="module/module_Administrateur/VueAdministrateur.css"/>';
   }
 
   public function formulaireUpdateUser($id){
+    echo "<div class =\"Formulaire\">";
     echo "<form action=\"index.php?module=Administrateur&action=modifUserEnCours&id=".$id."\" method=\"post\">
         <label>Entrer le num du role : </label><br/>
         <input type=\"text\" name=\"admin\" required><br/>
         <input type=\"submit\" value=\"Modifier\"> 
       </form>";
+    echo "</div>";
   }
 
   public function formulaireUpdateGenre($id){
+    echo "<div class =\"Formulaire\">";
     echo "<form action=\"index.php?module=Administrateur&action=modifGenreEnCours&id=".$id."\" method=\"post\">
         <label>Entrer le nom : </label><br/>
         <input type=\"text\" name=\"nom\" required><br/>
         <input type=\"submit\" value=\"Modifier\"> 
       </form>";
+      echo "</div>";
   }
 
     public function formulaireGenre(){
+    echo "<div class =\"Formulaire\">";
     echo "<form action=\"index.php?action=ajoutGenreEnCours&module=Administrateur\" method=\"post\">
-        <h6>Ajouter un genre</h6>
-        <label>Entrer le nom : </label><br/>
+        <label>Entrer le nom du nouveau genre : </label><br/>
         <input type=\"text\" name=\"nom\" required><br/>   
         <input type=\"submit\" value=\"Ajouter\">
       </form>";
+    echo "</div>";
   }
 
     public function affichePanel($infoAnimes,$infoUsers,$infoClubs,$infoComs,$infoGenres){

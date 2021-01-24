@@ -5,7 +5,7 @@ include_once('./VueIndex.php');
 class VueUtilisateur extends VueIndex{
 
     public function __construct(){
-        echo '<link rel="stylesheet" type="text/css" href="module/module_Utilisateur/Utilisateur.css"/>';
+        echo '<link rel="stylesheet" type="text/css" href="module/module_Utilisateur/Vue_Utilisateur.css"/>';
     }
 
 
@@ -104,27 +104,31 @@ class VueUtilisateur extends VueIndex{
 	   	foreach($listeInfoAmi as $key) {
 	   		if($key['idAmi']==$idAmi){//$idAmi=id ami du mec sur qui on clique
 
-        echo '<h2>Liste des messages envoyé a : '.$key['pseudoAmi']."</h4>";
+        echo '<h1>Liste des messages envoyé a : '.$key['pseudoAmi']."</h1>";
 
        }
    		}
 
-
+            echo "<div class =\"Mess\">";
 	   		foreach($getMessage as $mess) {
 
 		   		foreach($pseudoEnvoyeur as $user) {
 
 		   			
 		  		 	if($mess['idUtilisateur']==$_SESSION['idUtilisateur']) {
-		  		 		echo":".$_SESSION['pseudo'].":".$mess['contenu']."-"
-		  		 		.$mess['Heure']."<p>"
-		  		 		.$mess['Date']."</p>";
+                        echo "<div class =\"Moi\">";
+		  		 		echo":".$user['pseudo']." : ".$mess['Date']." ".$mess['Heure'];
+                     echo "<div class=\"DivContenu\">";
+                      echo "<p>".$mess['contenu']."</p></div>";
+                      echo "</div>";
 		  		 	}
-
+                    
 		  		 	else{
-		  		 		echo":".$user['pseudo'].":".$mess['contenu']." 
-			          	-".$mess['Heure']."
-			         	<p>".$mess['Date']."</p>";
+                        echo "<div class =\"LAutre\">";
+		  		 		echo":".$user['pseudo']." : ".$mess['Date']." ".$mess['Heure'];
+                     echo "<div class=\"DivContenu\">";
+                      echo "<p>".$mess['contenu']."</p></div>";
+                      echo "</div>";
 
 		  		 	}
 
@@ -133,17 +137,16 @@ class VueUtilisateur extends VueIndex{
 	   		}
 
 
+
 	   		
 	   			echo"<div class=\"form-commentaire\">
 	            	<form action=\"index.php?action=AddMessagee&module=Utilisateur&id=".$idAmi."\" method=\"post\">
-	            		<label for=\"message\">
-                        <h2>Envoyer un message : <h2>
-	            		</label>
 	            		<textarea name=\"commentaireV22\" placeholder=\"inserez votre message\"></textarea><br/>
                         <input type=\"submit\" value=\"valider\">
 	            	</form>
 	            </div> 
 	        </div>";
+            echo "</div>";
 
 
 	

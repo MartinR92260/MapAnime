@@ -197,3 +197,82 @@ h1 {
 	position : absolute;
 	top : 200px;
 }
+
+.Mess {
+	width: 60%;
+    background-color: lightgray;
+    border-radius: 40px;
+    padding: 3%;
+    margin-left: 270px;
+    font-size: 1.1em;
+}
+
+.form-commentaire textarea{
+	width : 50%;
+	height : 75px;
+	margin-top: 100px;
+	border-radius: 10px;
+	margin-left: 250px;
+}
+
+.form-commentaire input {
+	margin-left : 830px;
+	margin-top: -50px;
+	width  : 200px;
+	border-radius: 2px;
+}
+
+.Lautre {
+	position : relative;
+	left : 880px;
+}
+
+.DivContenu{
+	font-size: 1.1em;
+}
+
+.Mess p{
+	width : 200px;
+}
+
+/*
+*/
+
+@media all and (max-width: 400px) {
+
+    main {
+        width : 1550px;
+    }
+    nav {
+    	min-width : 415%;
+    }
+    footer {
+    	min-width : 415%;
+    }
+
+    .droite {
+    	position : relative;
+    	left : 500px;
+    }
+
+    .AjouterAmi {
+    	width : 300px;
+    }
+
+    .Mess {
+    	margin-left: 30px;
+    }
+
+    .form-commentaire textarea{
+		margin-left: 100px;
+	}
+
+	.form-commentaire input {
+		margin-left : 600px;
+	}
+
+	.Lautre {
+		position : relative;
+		left : 700px;
+	}
+}
