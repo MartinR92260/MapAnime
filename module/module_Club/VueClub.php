@@ -15,18 +15,25 @@ class VueClub extends VueIndex{
 		 }
 	}
 
-    public function afficheButtonRejoindre($idClub){
+    public function afficheButtonRejoindre($idClub,$dejaAd){
+    				echo "<div class =\"Rejoindre\">";
+
     	foreach ($idClub as $id) {
-			echo "<div class =\"Rejoindre\">
-			<a href=\"index.php?module=Club&action=Rejoindre&id=".$id['idClub']."\"><input type=\"button\" name=\"join\" value=\"Rejoindre le Club\" class=\"joinClub\"/></a>";
+				if($dejaAd==false){
+			echo"<a href=\"index.php?module=Club&action=Rejoindre&id=".$id['idClub']."\"><input type=\"button\" name=\"join\" value=\"Rejoindre le Club\" class=\"joinClub\"/></a>";
+				}
 		}
 	 }
 
-	public function afficheButtonQuitter($idClub){
+	public function afficheButtonQuitter($idClub,$dejaAd){
 		foreach ($idClub as $id) {
+				if($dejaAd==true){
 			echo "<a href=\"index.php?module=Club&action=Quitter&id=".$id['idClub']."\"><input type=\"button\" name=\"quit\" value=\"Quitter le Club\" class=\"quitClub\"/></a>";
+				}
+			
 		}
 	}
+	
 
 	public function afficheNbAdherent($nombre) {
 		foreach ($nombre as $nb) {
@@ -76,7 +83,7 @@ class VueClub extends VueIndex{
 				        if(isset($_SESSION['idUtilisateur'])){
 				        	foreach($club as $id) {
 						        if ($key['idUtilisateur']  == $_SESSION['idUtilisateur'] || $id['Gerant'] == $_SESSION['idUtilisateur'] ){
-						        	echo "<a href=\"index.php?module=Club&action=SupprimerCommentaire&id=".$key['idCommentaire']."\">   Supprimer</a>";
+						        	echo "<a href=\"index.php?module=Club&action=SupprimerCommentaire&idCo=".$key['idCommentaire']."&idClub=".$id['idClub']."\">   Supprimer</a>";
 						        }
 						    }			    
 					    }

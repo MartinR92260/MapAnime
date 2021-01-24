@@ -32,13 +32,11 @@ class ModeleClub extends ConnexionBD{
         $heure=date("H:i:s");
         $req = self::$bdd->prepare("INSERT INTO commentaire VALUES (default, ?, ?, ?, ?, ?, ?)");
         $result=$req->execute(array($_SESSION['idUtilisateur'], NULL, $id, $_POST['comm'],$date,$heure));
-        return $result;
     }
 
     public function retirerCommentaire($id){
         $req = self::$bdd->prepare("DELETE FROM Commentaire WHERE idCommentaire = ?");
         $result = $req->execute(array($id));
-        return $result;
     }
 
     public function getCommentaire($id) {
@@ -67,6 +65,8 @@ class ModeleClub extends ConnexionBD{
     }
 
     public function insertClub(){
+    	header('Location:index.php?module=Recherche&action=club');
+
         $req = self::$bdd->prepare("INSERT INTO Club VALUES (default,?,?,?,?)");
 
         if(!empty($_POST['nomClub'])){
@@ -138,6 +138,8 @@ class ModeleClub extends ConnexionBD{
         return $req->fetchAll();
     }
     public function suppressionClub($idClub){
+    	    	header('Location:index.php?module=Recherche&action=club');
+
         $req = self::$bdd->prepare("DELETE FROM club WHERE idClub = ?");
         $result=$req->execute(array($idClub));
         return $result;

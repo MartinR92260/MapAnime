@@ -1,0 +1,149 @@
+main {
+    background-color: #082740;
+    min-height: 300px;
+}
+
+main a {
+	color : black;
+	text-decoration: none;
+	color : red;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+h1 {
+	color : black;
+}
+
+hr{
+	padding-top: 10px;
+	margin-top: 20px;
+}
+
+th {
+	padding-top: 10px;
+	background-color: #f1f1f1;
+	padding-left: 10px;
+}
+
+td {
+	border: 1px solid black;
+	padding-left: 10px;
+}
+
+.Panel input {
+	margin-top: 10px;
+
+}
+
+#animeMyTable th {
+	text-align: left;
+	color : black;
+}
+#animeMyTable td {
+	color : black;
+	text-align: left;
+}
+
+#genreMyTable {
+	margin-left: 250px; 
+}
+#genreMyTable th {
+	text-align: left;
+	color : black;
+}
+#genreMyTable td {
+	color : black;
+	text-align: left;
+}
+
+#userMyTable th {
+	color : black;
+	text-align: left;
+}
+#userMyTable td {
+	text-align: left;
+	color : black;
+	text-align: left;
+}
+
+#clubMyTable {
+	margin-left: 250px; 
+}
+#clubMyTable th {
+	text-align: left;
+	color : black;
+}
+#clubMyTable td {
+	color : black;
+	text-align: left;
+}
+
+#comMyTable th {
+	text-align: left;
+	color : black;
+}
+#comMyTable td {
+	color : black;
+	text-align: left;
+}
+
+.Panel {
+	width : 50%;
+    background-color: lightgray;
+    border-radius: 40px;
+    padding: 3%;
+    text-align: center;
+    margin-left: 360px;
+    border: 1px solid #ddd;
+}
+
+.Formulaire {
+    width: 33%;
+    height: 10%;
+    background-color: lightgray;
+    border-radius: 40px;
+    padding: 3%;
+    text-align: center;
+    margin-left: 550px;
+    position : relative;
+    top : 50px;
+}
+
+.Formulaire form {
+    color : black;
+    font-size: 1.2em;
+}
+
+.Formulaire input {
+    width: 100%;
+    margin: 5px;
+}
+
+/*
+*/
+
+@media all and (max-width: 400px) {
+
+    main {
+        width : 1600px;
+    }
+    nav {
+    	min-width : 415%;
+    }
+    footer {
+    	min-width : 415%;
+    }
+
+    .droite {
+    	position : relative;
+    	left : 500px;
+    }
+
+    #genreMyTable {
+		margin-left: 175px; 
+	}
+	#clubMyTable {
+		margin-left: 175px; 
+	}
+}

@@ -10,8 +10,7 @@ class ModeleConnexion extends ConnexionBD {
     }
 
     public function verifConnexion() {
-/*        $mdp = hash('sha512', $_POST['mdp']);
-*/ 
+ 
             $mdp = $_POST['mdp'];
 
        if (!isset($_POST['pseudo']) || !isset($_POST['mdp'])) {
@@ -41,8 +40,7 @@ class ModeleConnexion extends ConnexionBD {
 
 
     public function inscription(){
-/*        $mdp = hash('sha512', $_POST['mdp']);//hash MotDePasse
-*/
+
         $mdp = $_POST['mdp'];
         $mdp2 = $_POST['mdp2'];
 

@@ -13,11 +13,10 @@ class ContAnime{
 		$this->vue = new VueAnime();
 	}
 
-	public function detailAnime($id){//detailAnime
+	public function detailAnime($id){
 		$this->modele->updateNoteG($id,$this->modele->noteGenerale($id));
 
 		$this->vue->afficheAnime($this->modele->getAnime($id),$this->modele->getGenre($id),$this->modele->getCommentaire($id),$this->modele->getListe($id),$this->modele->VerifAnimeDansListe($id));
-
 	}
     
     public function insererCommentaire($idAnime){
@@ -31,8 +30,7 @@ class ContAnime{
     }
 
     public function supprimerCommentaire($idCo,$idAnime){
-    	$this->modele->suppressionCommentaire($idCo,$idAnime);//If session -> Admin
-
+    	$this->modele->suppressionCommentaire($idCo,$idAnime);
     }
 
     public function InsertionAnime(){
