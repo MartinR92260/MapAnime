@@ -149,7 +149,7 @@ class VueUtilisateur extends VueIndex{
 		   			
 		  		 	if($mess['idUtilisateur']==$_SESSION['idUtilisateur']) {
                         echo "<div class =\"Moi\">";
-		  		 		echo":".$user['pseudo']." : ".$mess['Date']." ".$mess['Heure'];
+		  		 		echo":".$_SESSION['pseudo']." : ".$mess['Date']." ".$mess['Heure'];
                      echo "<div class=\"DivContenu\">";
                       echo "<p>".$mess['contenu']."</p></div>";
                       echo "</div>";
