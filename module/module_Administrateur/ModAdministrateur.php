@@ -21,6 +21,30 @@ class ModAdministrateur{
 					case "ajoutGenreEnCours":
                         $this->controleur->insertionGenre();
 					break;
+					case "modifGenre":
+						$id=htmlspecialchars($_GET['id']);
+                        $this->controleur->modifGenre($id);
+					break;
+					case "modifGenreEnCours":
+						$id=htmlspecialchars($_GET['id']);
+                        $this->controleur->modifGenreEnCours($id);
+					break;
+					case "supprGenre":
+						$id=htmlspecialchars($_GET['id']);
+						$this->controleur->supprGenre($id);
+					break;
+					case "modifUser":
+						$id=htmlspecialchars($_GET['id']);
+                        $this->controleur->modifUser($id);
+					break;
+					case "modifUserEnCours":
+						$id=htmlspecialchars($_GET['id']);
+                        $this->controleur->modifUserEnCours($id);
+					break;
+					case "supprUser":
+						$id=htmlspecialchars($_GET['id']);
+						$this->controleur->supprUser($id);
+					break;
 					default:
 					?>
 						<script type="text/javascript"> 
