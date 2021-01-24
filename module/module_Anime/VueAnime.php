@@ -45,11 +45,20 @@ class VueAnime extends VueIndex{
 					echo "<br/>
 
 
-		    	 <h2> NoteG :</h2>"
-
+		    	 <h2> NoteG :</h2>";
+		    	 if($key['NoteG']>0){
+		    	 	echo""
 		   			.$key['NoteG'];
 		   			echo '/20';
+		   			}
+
+		   			else{
+
+		   			echo 'ND/20';
+
+		   			}
 		   					echo "<br/>
+
 
 
 
@@ -113,7 +122,9 @@ class VueAnime extends VueIndex{
 			
 
 				if(!$idAnime==NULL){
-					
+
+					if($idA['note']>0){
+
 		   			echo" Votre Note: "
 		   			.$idA['note'];
 		   			echo '/20';
@@ -123,7 +134,18 @@ class VueAnime extends VueIndex{
 		   			.$idA['etat'];
 		   			echo "<br/>";
 
+		   			}
 
+		   			else {
+		   				echo" Votre Note: ";
+		   			echo 'ND/20';
+		   			echo "<br/>";
+
+		   			echo" Etat: "
+		   			.$idA['etat'];
+		   			echo "<br/>";
+
+		   			}
 		   		}
 				}	
 

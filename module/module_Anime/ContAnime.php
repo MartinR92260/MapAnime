@@ -14,6 +14,8 @@ class ContAnime{
 	}
 
 	public function detailAnime($id){//detailAnime
+		$this->modele->updateNoteG($id,$this->modele->noteGenerale($id));
+
 		$this->vue->afficheAnime($this->modele->getAnime($id),$this->modele->getGenre($id),$this->modele->getCommentaire($id),$this->modele->getListe($id),$this->modele->VerifAnimeDansListe($id));
 
 	}
@@ -46,12 +48,15 @@ class ContAnime{
 	}
 	public function modifLaNote($id){
 		$this->modele->modifNote($id);
-		$this->modele->updateNoteG($id,$this->modele->noteGenerale($id));
+		$this->detailAnime($id);
+
 
 	}
 
 	public function modifEtat($id){
 		$this->modele->modifLEtat($id);
+		$this->detailAnime($id);
+
 	}
 
 	public function modifAnime($id){

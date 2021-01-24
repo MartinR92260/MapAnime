@@ -157,7 +157,6 @@ class ModeleAnime extends ConnexionBD{
 
     	public function modifNote($id){
 
-    	header('Location:index.php');
 
 		$idUtilisateur = $_SESSION['idUtilisateur'];
 		$newNote=$_POST['noteSelec'];
@@ -172,7 +171,6 @@ class ModeleAnime extends ConnexionBD{
 
 	public function modifLEtat($id) {
 
-    	header('Location:index.php');
 
 
 		$idUtilisateur = $_SESSION['idUtilisateur'];
@@ -198,21 +196,27 @@ class ModeleAnime extends ConnexionBD{
 	public function updateNoteG($id,$req) {
 
 		$add=0;
-		$countt=0;
+		$count=0;
 
 		$res=array_column($req, 'note');//Transformation en tableau a 1 ligne
 
 	
 		foreach ($res as $value) {
 		if($value>=0 && $value!=NULL){
-		$countt	++;
+		$count	++;
 		$add=$value+$add;
 		}	
 
 		}
 
+		if($count>0){
+		$noteG=$add/$count;
+		}
 
-		$noteG=$add/$countt;
+		else{
+		$noteG=-1;
+		}
+
 
 		$this->request = 'UPDATE  anime SET NoteG=? WHERE idAnime=?';
 		$this->arg = array($noteG,$id);
