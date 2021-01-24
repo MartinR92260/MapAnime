@@ -39,9 +39,9 @@ class ModUtilisateur{
 						$idAmi=htmlspecialchars($_GET['id']);
                         $this->controleur->envoyerMessageAmi($idAmi,);
                         break;
-                    case "AddCommentaire":
+                    case "AddMessagee":
 						$id=htmlspecialchars($_GET['id']);
-				       $this->controleur->insererCommentaire($id);
+				       $this->controleur->insererMessage($id);
 				        break;
 					default:
 					?>

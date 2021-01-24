@@ -149,7 +149,7 @@ public function getPseudoSenderMessage($id) {//Afficher pseudo du mec sur qui on
 }
 
 
-public function insertionCommentaire($idAmi){
+public function insertionMessage($idAmi){
 
     	$date=date("Y-m-d");
     	$heure=date("H:i:s");

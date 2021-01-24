@@ -135,7 +135,7 @@ class VueUtilisateur extends VueIndex{
 
 	   		
 	   			echo"<div class=\"form-commentaire\">
-	            	<form action=\"index.php?action=AddCommentaire&module=Utilisateur&id=".$idAmi."\" method=\"post\">
+	            	<form action=\"index.php?action=AddMessagee&module=Utilisateur&id=".$idAmi."\" method=\"post\">
 	            		<label for=\"message\">
                         <h2>Envoyer un message : <h2>
 	            		</label>

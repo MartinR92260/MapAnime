@@ -47,19 +47,15 @@ class ContUtilisateur{
 
 	
 
-	public function insererCommentaire($idAmi){
+	public function insererMessage($idAmi){
 	 
-	    	$this->modele->insertionCommentaire($idAmi);
+	    	$this->modele->insertionMessage($idAmi);
 	    	$this->envoyerMessageAmi($idAmi);
 
 
 
     }
 
-    
-
-    public function supprimerCommentaire($idAmi){
-    	$this->vue->result($this->modele->suppressionCommentaire($idAmi));
-    }
+   
 }
 ?>
