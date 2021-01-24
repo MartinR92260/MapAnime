@@ -26,11 +26,11 @@ class ContUtilisateur{
 	}
     
     public function profil(){
-		$this->vue->affichageDuProfilUtilisateur($this->modele->requestListe(),$this->modele->listeAmis(),$this->modele->utili());
+		$this->vue->affichageDuProfilUtilisateur($this->modele->requestListe(),$this->modele->listeAmis(),$this->modele->utili(),$this->modele->getListeClub($_SESSION['idUtilisateur']));
 	}
 
 	public function profilOther($id){
-		$this->vue->affichageDuProfilDeAutreUtilisateur($this->modele->getUser($id), $this->modele->requestListeDeAutreUtilisateur($id),$this->modele->listeAmisDeAutreUtilisateur($id),$this->modele->listeAmis());
+		$this->vue->affichageDuProfilDeAutreUtilisateur($this->modele->getUser($id), $this->modele->requestListeDeAutreUtilisateur($id),$this->modele->listeAmisDeAutreUtilisateur($id),$this->modele->listeAmis(),$this->modele->getListeClub($id));
 	}
 
 	public function ajouterListeAmi($id){

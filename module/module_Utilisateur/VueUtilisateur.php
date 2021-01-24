@@ -10,7 +10,7 @@ class VueUtilisateur extends VueIndex{
 
 
 
-    public function affichageDuProfilUtilisateur($listeAnime,$listeInfoAmis,$photo){
+    public function affichageDuProfilUtilisateur($listeAnime,$listeInfoAmis,$photo,$listeClub){
         echo "<h1>Profil de ".$_SESSION['pseudo']." : </h1>";
         foreach ($photo as $key) {
         echo "<img src=./images/Profil/".$key['PhotoProfil']." id=\"Photo\"/>";
@@ -31,6 +31,17 @@ class VueUtilisateur extends VueIndex{
             echo "Votre liste est vide. N'ésitez pas a la remplir !";
         }
         echo "</div>";
+
+        echo '<h2>Liste de club</h2>';
+        if ($listeClub){
+                foreach ($listeClub as $club) {
+                    echo "<a href=\"index.php?module=Club&action=club&id=".$club['idClub']."\"><img src=./images/Club/".$club['ImageClub']." id=\"imageAnime\"/><h4>". $club['nomClub']."</h4></a>";
+                    echo "</div>";
+                }
+        }
+        else{
+            echo "Vous n'appartenez à aucun club!";
+        }
 
         echo "<div class =\"DivMyAmi\">";
         echo '<h2>Liste d\'amis</h2>';

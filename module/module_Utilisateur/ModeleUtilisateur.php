@@ -135,34 +135,31 @@ class ModeleUtilisateur extends ConnexionBD{
         $this->requestPrepare = self::$bdd->prepare($this->request);
         $this->requestPrepare->execute($this->arg);
 		return $this->requestPrepare->fetchAll();   
-}
+	}
 
-public function getPseudoSenderMessage($id) {//Afficher pseudo du mec sur qui on clique :/
-
-  
+	public function getPseudoSenderMessage($id) {//Afficher pseudo du mec sur qui on clique :/
 		$this->request = "SELECT pseudo FROM Utilisateur  WHERE idUtilisateur = ?  ";
-
      	$this->arg=array($id);
         $this->requestPrepare = self::$bdd->prepare($this->request);
         $this->requestPrepare->execute($this->arg);
 		return $this->requestPrepare->fetchAll();   
-}
+	}
 
 
-public function insertionMessage($idAmi){
-
+	public function insertionMessage($idAmi){
     	$date=date("Y-m-d");
     	$heure=date("H:i:s");
         $req = self::$bdd->prepare("INSERT INTO message VALUES (default, ?, ?, ?, ?, ?)");
         $result=$req->execute(array($_SESSION['idUtilisateur'], $idAmi, $_POST['commentaireV22'],$date,$heure));
-     
-   
         return $result;
-
     }
 
-
-
-
+    public function getListeClub($id){
+        $this->request = "SELECT idClub,nomClub,ImageClub FROM club NATURAL JOIN possede WHERE idUtilisateur=?";
+        $this->arg=array($id);
+        $this->requestPrepare = self::$bdd->prepare($this->request);
+        $this->requestPrepare->execute($this->arg);
+		return $this->requestPrepare->fetchAll(); 
+    }
 }
 ?>
