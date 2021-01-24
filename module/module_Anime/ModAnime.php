@@ -46,7 +46,10 @@ switch($menu){
 		$idAnime=htmlspecialchars($_GET['id']);
 		$cont->modifAnime($idAnime);
 		break;
-
+	case "modifAnimeEnCours":
+		$idAnime=htmlspecialchars($_GET['id']);
+		$cont->modifAnimeEnCours($idAnime);
+		break;
 	default :
 	   	?>
 			<script type="text/javascript"> 
