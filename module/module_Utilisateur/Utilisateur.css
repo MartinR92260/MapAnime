@@ -325,13 +325,13 @@ h1 {
 @media all and (max-width: 400px) {
 
     main {
-        width : 1550px;
+        width : 1900px;
     }
     nav {
-    	min-width : 415%;
+    	min-width : 505%;
     }
     footer {
-    	min-width : 415%;
+    	min-width : 505%;
     }
 
     .droite {

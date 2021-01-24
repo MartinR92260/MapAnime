@@ -38,7 +38,7 @@ class VueUtilisateur extends VueIndex{
         if ($listeClub){
                 foreach ($listeClub as $club) {
                     echo "<div class =\"DivClub\">";
-                    echo "<a href=\"index.php?module=Club&action=club&id=".$club['idClub']."\"><img src=./images/Club/".$club['ImageClub']." id=\"imageAnime\"/><h4>". $club['nomClub']."</h4></a>";
+                    echo "<a href=\"index.php?module=Club&action=Club&id=".$club['idClub']."\"><img src=./images/Club/".$club['ImageClub']." id=\"imageAnime\"/><h4>". $club['nomClub']."</h4></a>";
                     echo "</div>";
                 }
                 echo "</div>";
@@ -88,7 +88,7 @@ class VueUtilisateur extends VueIndex{
         if ($listeClub){
                 foreach ($listeClub as $club) {
                     echo "<div class =\"DivClub\">";
-                    echo "<a href=\"index.php?module=Club&action=club&id=".$club['idClub']."\"><img src=./images/Club/".$club['ImageClub']." id=\"imageAnime\"/><h4>". $club['nomClub']."</h4></a>";
+                    echo "<a href=\"index.php?module=Club&action=Club&id=".$club['idClub']."\"><img src=./images/Club/".$club['ImageClub']." id=\"imageAnime\"/><h4>". $club['nomClub']."</h4></a>";
                     echo "</div>";
                 }
                 echo "</div>";
