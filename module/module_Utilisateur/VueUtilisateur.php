@@ -5,7 +5,7 @@ include_once('./VueIndex.php');
 class VueUtilisateur extends VueIndex{
 
     public function __construct(){
-        echo '<link rel="stylesheet" type="text/css" href="module/module_Utilisateur/Vue_Utilisateur.css"/>';
+        echo '<link rel="stylesheet" type="text/css" href="module/module_Utilisateur/Utilisateur.css"/>';
     }
 
 
@@ -31,17 +31,22 @@ class VueUtilisateur extends VueIndex{
             echo "Votre liste est vide. N'ésitez pas a la remplir !";
         }
         echo "</div>";
+        echo "</div>";
 
+        echo "<div class =\"DivMyClub\">";
         echo '<h2>Liste de club</h2>';
         if ($listeClub){
                 foreach ($listeClub as $club) {
+                    echo "<div class =\"DivClub\">";
                     echo "<a href=\"index.php?module=Club&action=club&id=".$club['idClub']."\"><img src=./images/Club/".$club['ImageClub']." id=\"imageAnime\"/><h4>". $club['nomClub']."</h4></a>";
                     echo "</div>";
                 }
+                echo "</div>";
         }
         else{
             echo "Vous n'appartenez à aucun club!";
         }
+        echo "</div>";
 
         echo "<div class =\"DivMyAmi\">";
         echo '<h2>Liste d\'amis</h2>';
@@ -76,17 +81,22 @@ class VueUtilisateur extends VueIndex{
         else{
             echo "Votre liste est vide. N'hésitez pas a la remplir !";
         }
+        echo "</div>";
 
+        echo "<div class =\"Club\">";
         echo '<h2>Liste de club</h2>';
         if ($listeClub){
                 foreach ($listeClub as $club) {
+                    echo "<div class =\"DivClub\">";
                     echo "<a href=\"index.php?module=Club&action=club&id=".$club['idClub']."\"><img src=./images/Club/".$club['ImageClub']." id=\"imageAnime\"/><h4>". $club['nomClub']."</h4></a>";
                     echo "</div>";
                 }
+                echo "</div>";
         }
         else{
-            echo "Votre ami n'appartiens à aucun club!";
+            echo "Vous n'appartenez à aucun club!";
         }
+        echo "</div>";
 
         echo "<div class =\"Ami\">";
         echo '<h2>Liste d\'amis</h2>';
