@@ -8,30 +8,6 @@ h1 {
 	background-color: rgb(225,231,245);
 }
 
-.Admin {
-	border: solid 1px black;
-	width : 450px;
-	margin-left: 1200px;
-	position : absolute;
-	top : 130px;
-	background-color: white;
-}
-.Admin h1{
-	padding-left : 30px;
-
-}
-
-.Admin a {
-	text-decoration: none;
-	color : red;
-	font-size: 1.3em;
-	font-weight : bold;
-	display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-}
-
 .Anime {
 	width : 550px;
 	border: solid 2px black;

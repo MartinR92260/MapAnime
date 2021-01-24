@@ -5,7 +5,7 @@ include_once('./VueIndex.php');
 class VueAdministrateur extends VueIndex{
 
   public function __construct(){
-    echo '<link rel="stylesheet" type="text/css" href="module/module_Administrateur/VueAdministrateur.css"/>';
+    echo '<link rel="stylesheet" type="text/css" href="module/module_Administrateur/Vue_Administrateur.css"/>';
   }
 
   public function formulaireUpdateUser($id){
@@ -34,7 +34,9 @@ class VueAdministrateur extends VueIndex{
   }
 
     public function affichePanel($infoAnimes,$infoUsers,$infoClubs,$infoComs,$infoGenres){
+      echo "<div class =\"Panel\">";
 ?>
+
     <h1>Animes</h1>
     <a href="index.php?module=Anime&action=AjoutAnime" class="col-auto">Ajouter un anime</a></br>
 
@@ -102,7 +104,7 @@ class VueAdministrateur extends VueIndex{
 			}
 		}
 		</script>
-
+    <hr>
     <h1>Genres</h1>
     <a href="index.php?module=Administrateur&action=ajoutGenre" class="col-auto">Ajouter un genre</a></br>
 
@@ -164,7 +166,7 @@ class VueAdministrateur extends VueIndex{
       }
     }
     </script>
-		
+		<hr>
 		<h1>Utilisateurs</h1>
 
 		<input type="text" id="userTriId" onkeyup="userTriParId()" placeholder="Entrer l'id.." title="Tri par id">
@@ -249,7 +251,7 @@ class VueAdministrateur extends VueIndex{
 			}
 		}
 		</script>
-
+    <hr>
     <h1>Clubs</h1>
 
     <input type="text" id="clubTriId" onkeyup="clubTriParId()" placeholder="Entrer l'id.." title="Tri par id">
@@ -310,13 +312,13 @@ class VueAdministrateur extends VueIndex{
       }
     }
     </script>
-
+    <hr>
     <h1>Commentaires</h1>
 
-    <input type="text" id="comTriIdCom" onkeyup="comTriParIdCom()" placeholder="Entrer l'id.." title="Tri par idCommentaire">
-    <input type="text" id="comTriIdUser" onkeyup="comTriParIdUser()" placeholder="Entrer l'id.." title="Tri par idUtilisateur">
-    <input type="text" id="comTriIdAnime" onkeyup="comTriParIdAnime()" placeholder="Entrer l'id.." title="Tri par idAnime">
-    <input type="text" id="comTriIdClub" onkeyup="comTriParIdClub()" placeholder="Entrer l'id.." title="Tri par idClub">
+    <input type="text" id="comTriIdCom" onkeyup="comTriParIdCom()" placeholder="Entrer l'id du Commentaire.." title="Tri par idCommentaire">
+    <input type="text" id="comTriIdUser" onkeyup="comTriParIdUser()" placeholder="Entrer l'id de l'Utilisateur.." title="Tri par idUtilisateur">
+    <input type="text" id="comTriIdAnime" onkeyup="comTriParIdAnime()" placeholder="Entrer l'id de l'Anime.." title="Tri par idAnime">
+    <input type="text" id="comTriIdClub" onkeyup="comTriParIdClub()" placeholder="Entrer l'id du Club.." title="Tri par idClub">
     <input type="text" id="comTriIdCont" onkeyup="comTriParIdCont()" placeholder="Entrer le contenu.." title="Tri par contenu">
 
     <table id="comMyTable">
@@ -445,6 +447,7 @@ class VueAdministrateur extends VueIndex{
     }
     </script>
 <?php
+  echo "</div>";
     }
 }
 ?>

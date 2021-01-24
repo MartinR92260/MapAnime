@@ -141,9 +141,59 @@ class ModeleClub extends ConnexionBD{
         $req = self::$bdd->prepare("DELETE FROM club WHERE idClub = ?");
         $result=$req->execute(array($idClub));
         return $result;
+    }
+
+    public function updateClub($id){
+        $nomClub=$_POST['nomClub'];
+        $DescriptionClub=$_POST['DescriptionClub'];
+        if(isset($_POST["submit"])){ 
+            if(!empty($_FILES["ImageClub"]["name"])) { 
+                $fileName = basename($_FILES["ImageClub"]["name"]); 
+                $fileType = pathinfo($fileName, PATHINFO_EXTENSION); 
+                     
+                $allowTypes = array('jpg','png','jpeg','gif');
+                if(in_array($fileType, $allowTypes)){ 
+                    $image = $_FILES['ImageClub']['tmp_name']; 
+                    $resultat = move_uploaded_file($_FILES['ImageClub']['tmp_name'],"./images/Club/".$fileName);
+
+                }
+            }
+        }
+
+        if(!empty($_POST['DescriptionClub']) && !empty($_POST['nomClub'])&& !empty($_FILES["ImageClub"]["name"])) {
+            $req = self::$bdd->prepare("UPDATE Club SET nomClub=?,DescriptionClub=?, ImageClub=? WHERE idClub=?");
+            $req->execute(array($nomClub,$DescriptionClub,$fileName,$id));
+        }
+
+
+        elseif (!empty($_POST['DescriptionClub']) && !empty($_POST['nomClub'])) {
+            $req = self::$bdd->prepare("UPDATE Club SET nomClub=?,DescriptionClub=? WHERE idClub=?");
+            $req->execute(array($nomClub,$DescriptionClub,$id));
+        }
+        elseif (!empty($_POST['DescriptionClub']) && !empty($_FILES["ImageClub"]["name"])) {
+            $req = self::$bdd->prepare("UPDATE Club SET ImageClub=?, DescriptionClub=? WHERE idClub=?");
+            $req->execute(array($fileName,$DescriptionClub,$id));
+        }
+        elseif (!empty($_POST['nomClub']) && !empty($_FILES["ImageClub"]["name"])) {
+            $req = self::$bdd->prepare("UPDATE Club SET nomClub=?, ImageClub=? WHERE idClub=?");
+            $req->execute(array($nomClub,$fileName,$id));
+        }
+
+        elseif (!empty($_POST['nomClub'])) {
+            $req = self::$bdd->prepare("UPDATE Club SET nomClub=? WHERE idClub=?");
+            $req->execute(array($nomClub,$id));
+        }
+        elseif (!empty($_POST['DescriptionClub'])) {
+            $req = self::$bdd->prepare("UPDATE Club SET DescriptionClub=? WHERE idClub=?");
+            $req->execute(array($DescriptionClub,$id));
+        }
+        else if(!empty($_FILES["ImageClub"]["name"])) { 
+                $req = self::$bdd->prepare("UPDATE Club SET ImageClub=? WHERE idClub=?");
+                $req->execute(array($fileName,$id));
+        }
     }   
 
-    public function bannir($id, $ide) {
+/*    public function bannir($id, $ide) {
         $req = self::$bdd->prepare("UPDATE possede SET Ban = 1 WHERE idClub = ? AND idUtilisateur = ?");
         $req->execute(array($id, $ide));
         return $req->fetchAll();
@@ -153,7 +203,7 @@ class ModeleClub extends ConnexionBD{
         $req = self::$bdd->prepare("SELECT Ban FROM possede WHERE idClub = ? AND idUtilisateur = ?");
         $req->execute(array($id, $ide));
         return $req->fetchAll();
-    }
+    }*/
 }
 
 ?>

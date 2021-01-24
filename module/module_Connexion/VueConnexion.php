@@ -9,7 +9,7 @@ echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">";
 class VueConnexion extends VueIndex{//!!!!!
     public function __construct() {
          parent::__construct();
-         echo '<link rel="stylesheet" type="text/css" href="module/module_Connexion/VueConnexion.css"/>';
+         echo '<link rel="stylesheet" type="text/css" href="module/module_Connexion/Vue_Connexion.css"/>';
 
      }
 
@@ -22,8 +22,8 @@ class VueConnexion extends VueIndex{//!!!!!
                 <input type="text" name="pseudo"  placeholder="Pseudo" required></br>
                 <label>Entrer votre mot de passe : </label></br>
                 <input type="password" name="mdp" placeholder="Mot de passe" required></br>
-            </div>
             <input class="button-center" type="submit" value="Connexion">
+            </div>
         </form>
         </center>';
 	 }

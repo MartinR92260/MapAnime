@@ -25,6 +25,11 @@ input.button-center {
     display: block;
 }
 
+.FormulaireImage input{
+    margin-top: 5px;
+    width : 250px;
+}
+
 /*
 */
 

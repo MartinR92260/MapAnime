@@ -62,9 +62,11 @@ main {
     font-weight: bold;
 }
 .headerCommentaire a {
-    float:right;
     font-size: 14px;
-    padding: 2px;
+    text-decoration: none;
+    color : red;
+    position : relative;
+    left: 1650px;
 }
 
 
@@ -72,6 +74,11 @@ main {
     padding-left: 10px;
 }
 
+.DivDate p{
+    float:right;
+    position: relative;
+    top : -20px;
+}
 
 .synAnime {
 

@@ -5,7 +5,7 @@ include_once('./VueIndex.php');
 class VueAnime extends VueIndex{
 
 	public function __construct(){
-		echo '<link rel="stylesheet" type="text/css" href="module/module_Anime/Anime.css"/>';
+		echo '<link rel="stylesheet" type="text/css" href="module/module_Anime/VueAnime.css"/>';
 	}
 
     public function afficheAnime($arrayAnime,$arrayGenre,$arrayCommentaires,$arrayListe,$idAnime){
@@ -203,10 +203,10 @@ class VueAnime extends VueIndex{
 				        }				    
 				    }
 				
-
-			         echo "</div><p>".$key['contenu']."</p>
-			          <p>".$key['Date']."</p>
-			          <p>".$key['Heure']."</p></div>";
+			         echo "</div><p>".$key['contenu']."</p>";
+			         echo "<div class=\"DivDate\">
+			          <p>".$key['Date']."  ".$key['Heure']."</p></div>";
+			          echo "</div>";
 		        }
 	    	echo "</div>";
 		}
@@ -223,7 +223,7 @@ class VueAnime extends VueIndex{
 		 		<input type="number" min="0" name="nbSaisons"><br/>
 		 		<label>Entrer le nombre total d\'épisode : </label><br/>
 		 		<input type="number" min="0" name="nbEpisodes"><br/>   
-					<label>Image de Anime:</label>';
+					<label>Image de l\'Anime:</label>';
 				    echo "<div class =\"FormulaireImage\">";
 				    echo '<input type="file" name="ImageAnime">';
 				    echo "</div>";
@@ -244,7 +244,7 @@ class VueAnime extends VueIndex{
 
 		 		<label>Entrer le nombre total d'épisode : </label><br/>
 		 		<input type=\"number\" min=\"0\" name=\"nbEpisodes\"><br/>   
-					<label>Image de Anime:</label>";
+					<label>Image de l'Anime:</label>";
 				    echo "<div class =\"FormulaireImage\">";
 				    echo '<input type="file" name="ImageAnime">';
 				    echo "</div>";

@@ -41,11 +41,19 @@ class ModClub{
 					$idClub=htmlspecialchars($_GET['id']);
 					$this->cont->SuppressionClub($idClub);
 				break;
-				case "Bannir":
+				case "modifClub":
+					$idClub=htmlspecialchars($_GET['id']);
+					$this->cont->modifClub($idClub);
+				break;
+				case "modifClubEnCours":
+					$idClub=htmlspecialchars($_GET['id']);
+					$this->cont->modifClubEnCours($idClub);
+				break;
+/*				case "Bannir":
 					$idUser=htmlspecialchars($_GET['idUser']);
 					$idClub=htmlspecialchars($_GET['idClub']);
 					$this->cont->banUser($idClub, $idUser);
-				break;
+				break;*/
 				default :
 					?>
 						<script type="text/javascript"> 

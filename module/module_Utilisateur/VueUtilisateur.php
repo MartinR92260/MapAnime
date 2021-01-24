@@ -38,13 +38,6 @@ class VueUtilisateur extends VueIndex{
             echo "</div>";
         }
         echo "</div>";
-
-        echo "<div class =\"Admin\">";
-        if($_SESSION['Admin']==1){
-            echo "<h1>Interface d'administrateur : </h1>";
-            echo "<a href=\"index.php?module=Anime&action=AjoutAnime\">Ajouter un anime</a>";
-        }
-        echo "</div>";
     }
 
     public function affichageDuProfilDeAutreUtilisateur($id, $listeAnime,$listeInfoAmis,$listeAmiUtilisateur){

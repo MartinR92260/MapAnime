@@ -93,10 +93,18 @@ class ContClub{
 		$this->vue->result($this->modele->suppressionClub($idClub));
 	}
 
-	public function banUser($id) {
+	public function modifClub($id){
+		$this->vue->formulaireUpdateClub($id);
+	}
+
+	public function modifClubEnCours($id){
+		$this->modele->updateClub($id);
+	}
+
+/*	public function banUser($id) {
 		$this->modele->bannir($id, $id);
 		$this->detailClub($id);
-	}
+	}*/
 
 }
 

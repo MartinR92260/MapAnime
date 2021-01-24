@@ -5,7 +5,7 @@ include_once('./VueIndex.php');
 class VueClub extends VueIndex{
 
 	public function __construct(){
-        echo '<link rel="stylesheet" type="text/css" href="module/module_club/VueClub.css"/>';
+        echo '<link rel="stylesheet" type="text/css" href="module/module_club/Club.css"/>';
     }
     public function afficheImage($idClub) {
     	foreach ($idClub as $id) {
@@ -50,6 +50,9 @@ class VueClub extends VueIndex{
 					echo"<div class=\"Suppr\">
 					<a href=\"index.php?action=SupprClub&module=Club&id=".$key['idClub']."\">Supprimer le club définitivement</a>";
 					echo"</div>";
+					echo"<div class=\"Modif\">
+					<a href=\"index.php?action=modifClub&module=Club&id=".$key['idClub']."\">Modifier le club</a>";
+					echo"</div>";
 				}
 			}
 	        echo"<div class=\"FormCommentaires\">
@@ -77,12 +80,14 @@ class VueClub extends VueIndex{
 						        }
 						    }			    
 					    }
-				        echo "<div class =\"headerDetails\">"
-					        .$key['Date']."<br>"
-					        .$key['Heure'];
-				        echo "</div>
-				        <p>".$key['contenu']."</p></div>";
+					    echo "</div>";
+				        echo "<div class =\"headerDetails\">";
+			         echo "</div><p>".$key['contenu']."</p>";
+			         echo "<div class=\"DivDate\">
+			          <p>".$key['Date']."  ".$key['Heure']."</p></div>";
+			          echo "</div>";
 			        }
+		    	echo "</div>";
 		    	echo "</div>";
 			}
 	}
@@ -94,12 +99,12 @@ class VueClub extends VueIndex{
 					foreach($utilisateurs as $key) {
 						echo $key['pseudo'];
 						echo "<div class =\"DivUtilisateursBan\">";
-						if(isset($_SESSION['idUtilisateur'])){
+/*						if(isset($_SESSION['idUtilisateur'])){
 						    if ($id['Gerant'] == $_SESSION['idUtilisateur']) {
 								echo "<a href=\"index.php?module=Club&action=Bannir&idUser=".$key['idUtilisateur']."&idClub=".$key['idClub']."\">Bannir</a>";
 								echo "</div>";
 							}
-						}
+						}*/
 						}
 					}
 			echo "</div>";
@@ -119,6 +124,23 @@ class VueClub extends VueIndex{
 				    echo '<input type="submit" name="submit" value="Ajouter">
 			</form>';
 		echo "</div>";
+	}
+
+	public function formulaireUpdateClub($id){
+		echo "<div class =\"Formulaire\">";
+		echo "<form action=\"index.php?action=modifClubEnCours&module=Club&id=".$id."\" method=\"post\" enctype=\"multipart/form-data\">
+				<label>Entrer le nom du club : </label><br/>
+			 	<input type=\"text\" name=\"nomClub\"><br/>
+				<label>Entrer la description : </label><br/>
+			 	<input type=\"text\" name=\"DescriptionClub\"><br/>
+					<label>Image du Club:</label>";
+				    echo "<div class =\"FormulaireImage\">";
+				    echo '<input type="file" name="ImageClub">';
+				    echo "</div>";
+				    echo '<input type="submit" name="submit" value="Ajouter">
+
+			</form>';
+			echo "</div>";
 	}
 
 }

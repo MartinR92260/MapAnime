@@ -41,7 +41,7 @@ class VueRecherche extends VueIndex{
 			echo "<div>"; //75d2ed
 				echo "<img src=./images/Anime/".$key['ImageAnime']." class=\"col-3\">";
 				echo "<div class=\"col-9\">";
-			       	echo "Nom : ".$key['nom']."<br/>";
+			       	echo "Nom : ".$key['nom']."<br/><br/>";
 			       	echo "Description :</br>".$key['SUBSTRING(synopsis,1,255)']."...</br>";
 		       	echo "</div>";
 			echo "</div>";
