@@ -28,8 +28,8 @@ class ContAnime{
 	    }
     }
 
-    public function supprimerCommentaire($idCo){
-    	$this->modele->suppressionCommentaire($idCo);//If session -> Admin
+    public function supprimerCommentaire($idCo,$idAnime){
+    	$this->modele->suppressionCommentaire($idCo,$idAnime);//If session -> Admin
 
     }
 

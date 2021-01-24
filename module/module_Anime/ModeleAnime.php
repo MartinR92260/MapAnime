@@ -139,8 +139,8 @@ class ModeleAnime extends ConnexionBD{
         return $result;
     }
 
-    public function suppressionCommentaire($idComm){
-   	    	header('Location:index.php');
+    public function suppressionCommentaire($idComm,$idAnime){
+   	    	header('Location:index.php?module=Anime&action=Anime&id='.$idAnime.'');
 
     	$req = self::$bdd->prepare("DELETE FROM commentaire WHERE idCommentaire LIKE ?");
         $result=$req->execute(array( $idComm));

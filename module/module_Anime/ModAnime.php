@@ -21,8 +21,9 @@ switch($menu){
         $cont->insererCommentaire($idCo);
         break;
     case "DelCommentaire":
-    	$idCo=htmlspecialchars($_GET['id']);
-        $cont->supprimerCommentaire($idCo);
+    	$idCo=htmlspecialchars($_GET['idCo']);
+    	$idAnime=htmlspecialchars($_GET['idAnime']);
+        $cont->supprimerCommentaire($idCo,$idAnime);
     	break;
     case "AjoutAnime":
 		$cont->AjoutAnime();

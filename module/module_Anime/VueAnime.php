@@ -199,7 +199,7 @@ class VueAnime extends VueIndex{
 			            	.$key['pseudo'];
 			        if(isset($_SESSION['idUtilisateur'])){
 				        if ($key['idUtilisateur'] == $_SESSION['idUtilisateur'] || $_SESSION['Admin'] == 1){
-				        	echo "<a href=\"index.php?action=DelCommentaire&module=Anime&id=".$key['idCommentaire']."\">Supprimer</a>";
+				        	echo "<a href=\"index.php?action=DelCommentaire&module=Anime&idCo=".$key['idCommentaire']."&idAnime=".$idAnime['0']['idAnime']."\">Supprimer</a>";
 				        }				    
 				    }
 				
