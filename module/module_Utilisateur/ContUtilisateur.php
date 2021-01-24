@@ -26,7 +26,7 @@ class ContUtilisateur{
 	}
     
     public function profil(){
-		$this->vue->affichageDuProfilUtilisateur($this->modele->requestListe(),$this->modele->listeAmis());
+		$this->vue->affichageDuProfilUtilisateur($this->modele->requestListe(),$this->modele->listeAmis(),$this->modele->utili());
 	}
 
 	public function profilOther($id){

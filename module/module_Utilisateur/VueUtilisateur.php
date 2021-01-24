@@ -8,9 +8,14 @@ class VueUtilisateur extends VueIndex{
         echo '<link rel="stylesheet" type="text/css" href="module/module_Utilisateur/Utilisateur.css"/>';
     }
 
-    public function affichageDuProfilUtilisateur($listeAnime,$listeInfoAmis){
+
+
+    public function affichageDuProfilUtilisateur($listeAnime,$listeInfoAmis,$photo){
         echo "<h1>Profil de ".$_SESSION['pseudo']." : </h1>";
-/*        echo "<img src=./images/Profil/".$_SESSION['PhotoProfil']. "</img>";*/
+        foreach ($photo as $key) {
+        echo "<img src=./images/Profil/".$key['PhotoProfil']." id=\"Photo\"/>";
+
+        }
         echo "<div class =\"DivMyAnime\">";
         echo '<h2>Liste d\'anime</h2>';
         if ($listeAnime){

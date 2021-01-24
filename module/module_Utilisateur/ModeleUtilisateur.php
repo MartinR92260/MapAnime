@@ -15,7 +15,16 @@ class ModeleUtilisateur extends ConnexionBD{
 
 	public function requestListe(){
 		$idUtilisateur = $_SESSION['idUtilisateur'];
-		$this->request = 'SELECT idAnime,nom, ImageAnime FROM utilisateur NATURAL JOIN liste NATURAL JOIN anime WHERE idUtilisateur=?';
+		$this->request = 'SELECT idAnime,nom,ImageAnime FROM utilisateur NATURAL JOIN liste NATURAL JOIN anime WHERE idUtilisateur=?';
+		$this->arg = array($idUtilisateur);
+		$this->requestPrepare = self::$bdd->prepare($this->request);
+		$this->requestPrepare->execute($this->arg);
+		return $this->requestPrepare->fetchAll();
+	}
+
+		public function utili(){
+		$idUtilisateur = $_SESSION['idUtilisateur'];
+		$this->request = 'SELECT idUtilisateur,PhotoProfil FROM utilisateur WHERE idUtilisateur=?';
 		$this->arg = array($idUtilisateur);
 		$this->requestPrepare = self::$bdd->prepare($this->request);
 		$this->requestPrepare->execute($this->arg);
@@ -130,8 +139,7 @@ class ModeleUtilisateur extends ConnexionBD{
 
 public function getPseudoSenderMessage($id) {//Afficher pseudo du mec sur qui on clique :/
 
-/*        $this->request = "SELECT pseudo,idUtilisateur FROM Utilisateur  NATURAL JOIN message WHERE idUtilisateur = ?  ";
-*/  
+  
 		$this->request = "SELECT pseudo FROM Utilisateur  WHERE idUtilisateur = ?  ";
 
      	$this->arg=array($id);
