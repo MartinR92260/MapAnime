@@ -145,19 +145,14 @@ public function insertionCommentaire($idAmi){
 
     	$date=date("Y-m-d");
     	$heure=date("H:i:s");
-    	
         $req = self::$bdd->prepare("INSERT INTO message VALUES (default, ?, ?, ?, ?, ?)");
         $result=$req->execute(array($_SESSION['idUtilisateur'], $idAmi, $_POST['commentaireV22'],$date,$heure));
+     
+   
         return $result;
+
     }
 
-/*public function suppressionCommentaire($idAmi){
-    	    	header('Location:index.php');
-
-    	$req = self::$bdd->prepare("DELETE FROM message WHERE idMessage LIKE ?");
-        $result=$req->execute(array( $idAmi));
-        return $result;
-    }*/
 
 
 

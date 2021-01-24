@@ -42,7 +42,7 @@ class ContUtilisateur{
 	}
 
 	public function envoyerMessageAmi($id){
-		$this->vue->pageMesssage($this->modele->getUser($id),$this->modele->envoyerMessageAmi($id),$id,$this->modele->listeAmis(),$this->modele->getMessage($id),/*$this->modele->getRecepteurMessage($id),*/$this->modele->getPseudoSenderMessage($id));
+		$this->vue->pageMesssage($id,$this->modele->listeAmis(),$this->modele->getMessage($id),$this->modele->getPseudoSenderMessage($id));
 	}
 
 	
@@ -50,14 +50,16 @@ class ContUtilisateur{
 	public function insererCommentaire($idAmi){
 	 
 	    	$this->modele->insertionCommentaire($idAmi);
+	    	$this->envoyerMessageAmi($idAmi);
+
 
 
     }
 
     
 
-   /* public function supprimerCommentaire($idAmi){
+    public function supprimerCommentaire($idAmi){
     	$this->vue->result($this->modele->suppressionCommentaire($idAmi));
-    }*/
+    }
 }
 ?>

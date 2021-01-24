@@ -38,15 +38,11 @@ class ModUtilisateur{
 					case "envoyerMessage":
 						$idAmi=htmlspecialchars($_GET['id']);
                         $this->controleur->envoyerMessageAmi($idAmi,);
+                        break;
                     case "AddCommentaire":
 						$id=htmlspecialchars($_GET['id']);
 				       $this->controleur->insererCommentaire($id);
 				        break;
-				   /* case "DelCommentaire":
-				    	$id=htmlspecialchars($_GET['id']);
-				       $this->controleur->supprimerCommentaire($id);
-				    	break;*/
-					break;
 					default:
 					?>
 						<script type="text/javascript"> 

@@ -94,7 +94,7 @@ class VueUtilisateur extends VueIndex{
         }
 }
 
-    public function pageMesssage($idUtilisateur,$message,$idAmi,$listeInfoAmi,$getMessage/*,$recepteur*/,$pseudoEnvoyeur){
+    public function pageMesssage($idAmi,$listeInfoAmi,$getMessage,$pseudoEnvoyeur){
     	
 	   	foreach($listeInfoAmi as $key) {
 	   		if($key['idAmi']==$idAmi){//$idAmi=id ami du mec sur qui on clique
@@ -109,16 +109,7 @@ class VueUtilisateur extends VueIndex{
 
 		   		foreach($pseudoEnvoyeur as $user) {
 
-		   			/*if($mess['idAmi']==$idAmi && $mess['idUtilisateur']==$_SESSION['idUtilisateur']  ){
-		   				echo":".$_SESSION['pseudo'].":".$mess['contenu']."</br>";
-		  		 	}
-
-		  		 	else if($mess['idAmi']==$_SESSION['idUtilisateur'] && $mess['idUtilisateur']==$idAmi) {
-		  		 		echo":".$user['pseudo'].":".$mess['contenu']."</br>";
-
-		  		 	}
-		  		 */
-
+		   			
 		  		 	if($mess['idUtilisateur']==$_SESSION['idUtilisateur']) {
 		  		 		echo":".$_SESSION['pseudo'].":".$mess['contenu']."-"
 		  		 		.$mess['Heure']."<p>"
@@ -148,6 +139,7 @@ class VueUtilisateur extends VueIndex{
 	            	</form>
 	            </div> 
 	        </div>";
+
 
 	
 	
