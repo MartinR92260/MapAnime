@@ -29,7 +29,8 @@ class ContAnime{
     }
 
     public function supprimerCommentaire($idCo){
-    	$this->vue->result($this->modele->suppressionCommentaire($idCo));//If session -> Admin
+    	$this->modele->suppressionCommentaire($idCo);//If session -> Admin
+
     }
 
     public function InsertionAnime(){
