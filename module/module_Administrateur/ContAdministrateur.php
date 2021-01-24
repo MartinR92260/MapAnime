@@ -26,5 +26,29 @@ class ContAdministrateur{
 	public function insertionGenre(){
     	$this->modele->insertGenre();
 	}
+
+	public function modifGenre($id){
+    	$this->vue->formulaireUpdateGenre($id);
+	}
+
+	public function modifGenreEnCours($id){
+		$this->modele->updateGenre($id);
+	}
+
+	public function supprGenre($id){
+		$this->modele->supprGenre($id);
+	}
+
+	public function modifUser($id){
+    	$this->vue->formulaireUpdateUser($id);
+	}
+
+	public function modifUserEnCours($id){
+		$this->modele->updateUser($id);
+	}
+
+	public function supprUser($id){
+		$this->modele->supprUser($id);
+	}
 }
 ?>

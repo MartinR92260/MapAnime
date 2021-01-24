@@ -37,6 +37,7 @@ class ModeleAnime extends ConnexionBD{
     }
 
 	public function insertAnime(){
+		header('Location:index.php?module=Administrateur&action=affichePanel');
 		$req = self::$bdd->prepare("INSERT INTO Anime VALUES (default,?,?,?,?,?,?,?)");
 		if(!empty($_POST['nom'])){
 			$nom = $_POST['nom'];
@@ -147,10 +148,7 @@ class ModeleAnime extends ConnexionBD{
     }
 
     public function suppressionAnime($idAnime){
-
-    	header('Location:index.php');
-
-
+    	header('Location:index.php?module=Administrateur&action=affichePanel');
     	$req = self::$bdd->prepare("DELETE FROM anime WHERE idAnime = ?");
         $result=$req->execute(array($idAnime));
         return $result;
@@ -226,6 +224,7 @@ class ModeleAnime extends ConnexionBD{
 	}
 
 	public function updateAnime($id){
+		header('Location:index.php?module=Administrateur&action=affichePanel');
 		$nom=$_POST['nom'];
 		$nbSaisons=$_POST['nbSaisons'];
 		$nbEpisodes=$_POST['nbEpisodes'];

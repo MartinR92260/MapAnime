@@ -4,17 +4,33 @@ include_once('./VueIndex.php');
 
 class VueAdministrateur extends VueIndex{
 
-    public function __construct(){
-        echo '<link rel="stylesheet" type="text/css" href="module/module_Administrateur/VueAdministrateur.css"/>';
-    }
+  public function __construct(){
+    echo '<link rel="stylesheet" type="text/css" href="module/module_Administrateur/VueAdministrateur.css"/>';
+  }
+
+  public function formulaireUpdateUser($id){
+    echo "<form action=\"index.php?module=Administrateur&action=modifUserEnCours&id=".$id."\" method=\"post\">
+        <label>Entrer le num du role : </label><br/>
+        <input type=\"text\" name=\"admin\" required><br/>
+        <input type=\"submit\" value=\"Modifier\"> 
+      </form>";
+  }
+
+  public function formulaireUpdateGenre($id){
+    echo "<form action=\"index.php?module=Administrateur&action=modifGenreEnCours&id=".$id."\" method=\"post\">
+        <label>Entrer le nom : </label><br/>
+        <input type=\"text\" name=\"nom\" required><br/>
+        <input type=\"submit\" value=\"Modifier\"> 
+      </form>";
+  }
 
     public function formulaireGenre(){
-    echo '<form action="index.php?action=ajoutGenreEnCours&module=Administrateur" method="post">
+    echo "<form action=\"index.php?action=ajoutGenreEnCours&module=Administrateur\" method=\"post\">
         <h6>Ajouter un genre</h6>
         <label>Entrer le nom : </label><br/>
-        <input type="text" name="nom" required><br/>   
-        <input type="submit" value="Ajouter">
-      </form>';
+        <input type=\"text\" name=\"nom\" required><br/>   
+        <input type=\"submit\" value=\"Ajouter\">
+      </form>";
   }
 
     public function affichePanel($infoAnimes,$infoUsers,$infoClubs,$infoComs,$infoGenres){
@@ -29,6 +45,7 @@ class VueAdministrateur extends VueIndex{
   			<tr class="header">
     			<th style="width:50px;">Id</th>
     			<th style="width:300px;">Nom</th>
+          <th style="width:300px;">Image</th>
     			<th style="width:100px;">Nb Episodes</th>
     			<th style="width:100px;">Nb Saisons</th>
     			<th style="width:100px;">Options</th>
@@ -38,12 +55,12 @@ class VueAdministrateur extends VueIndex{
   			echo "<tr>
     			<td>".$anime['idAnime']."</td>
     			<td>".$anime['nom']."</td>
+          <td>".$anime['ImageAnime']."</td>
     			<td>".$anime['nbEpisodes']."</td>
     			<td>".$anime['nbSaisons']."</td>
     			<td><a href=\"index.php?module=Anime&action=modifAnime&id=".$anime['idAnime']."\" class=\"col-auto\">Modifier</a> </br> <a href=\"index.php?module=Anime&action=SupprAnime&id=".$anime['idAnime']."\" class=\"col-auto\">Supprimer</a></td>
   			</tr>";
-		
-  				}
+  		}
 ?>
   		</table>
   		<script>
@@ -103,10 +120,9 @@ class VueAdministrateur extends VueIndex{
         echo "<tr>
           <td>".$genre['idGenre']."</td>
           <td>".$genre['nomGenre']."</td>
-          <td><a href=\"index.php?module=Utilisateur&action=afficheProfil&id=".$genre['idGenre']."\" class=\"col-auto\">Modifier</a> </br> <a href=\"index.php?module=Utilisateur&action=afficheProfil&id=".$genre['idGenre']."\" class=\"col-auto\">Supprimer</a></td>
+          <td><a href=\"index.php?module=Administrateur&action=modifGenre&id=".$genre['idGenre']."\" class=\"col-auto\">Modifier</a> </br> <a href=\"index.php?module=Administrateur&action=supprGenre&id=".$genre['idGenre']."\" class=\"col-auto\">Supprimer</a></td>
         </tr>";
-    
-          }
+      }
 ?>
       </table>
       <script>
@@ -170,10 +186,9 @@ class VueAdministrateur extends VueIndex{
     			<td>".$user['pseudo']."</td>
     			<td>".$user['Email']."</td>
     			<td>".$user['Admin']."</td>
-    			<td><a href=\"index.php?module=Utilisateur&action=afficheProfil&id=".$user['idUtilisateur']."\" class=\"col-auto\">Modifier</a> </br> <a href=\"index.php?module=Utilisateur&action=afficheProfil&id=".$user['idUtilisateur']."\" class=\"col-auto\">Supprimer</a></td>
+    			<td><a href=\"index.php?module=Administrateur&action=modifUser&id=".$user['idUtilisateur']."\" class=\"col-auto\">Modifier</a> </br> <a href=\"index.php?module=Administrateur&action=supprUser&id=".$user['idUtilisateur']."\" class=\"col-auto\">Supprimer</a></td>
   			</tr>";
-		
-  				}
+  		}
 ?>
   		</table>
   		<script>
@@ -251,10 +266,9 @@ class VueAdministrateur extends VueIndex{
         echo "<tr>
           <td>".$club['idClub']."</td>
           <td>".$club['nomClub']."</td>
-          <td><a href=\"index.php?module=Utilisateur&action=afficheProfil&id=".$club['idClub']."\" class=\"col-auto\">Modifier</a> </br> <a href=\"index.php?module=Utilisateur&action=afficheProfil&id=".$club['idClub']."\" class=\"col-auto\">Supprimer</a></td>
+          <td><a href=\"index.php?module=Club&action=SupprClub&id=".$club['idClub']."\" class=\"col-auto\">Supprimer</a></td>
         </tr>";
-    
-          }
+      }
 ?>
       </table>
       <script>
@@ -265,15 +279,15 @@ class VueAdministrateur extends VueIndex{
       table = document.getElementById("clubMyTable");
       tr = table.getElementsByTagName("tr");
       for (i = 0; i < tr.length; i++) {
-          td = tr[i].getElementsByTagName("td")[0];
-          if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-              } else {
-                tr[i].style.display = "none";
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
             }
-          }       
+        }       
       }
     }
 
@@ -325,11 +339,13 @@ class VueAdministrateur extends VueIndex{
           <td>".$com['idClub']."</td>
           <td>".$com['contenu']."</td>
           <td>".$com['Date']."</td>
-          <td>".$com['Heure']."</td>
-          <td><a href=\"index.php?module=Utilisateur&action=afficheProfil&id=".$com['idCommentaire']."\" class=\"col-auto\">Modifier</a> </br> <a href=\"index.php?module=Utilisateur&action=afficheProfil&id=".$com['idCommentaire']."\" class=\"col-auto\">Supprimer</a></td>
+          <td>".$com['Heure']."</td>";
+          if($com['idClub']==NULL)
+            echo "<td><a href=\"index.php?module=Anime&action=DelCommentaire&id=".$com['idCommentaire']."\" class=\"col-auto\">Supprimer</a></td>";
+          else
+            echo "<td><a href=\"index.php?module=Club&action=SupprimerCommentaire&id=".$com['idCommentaire']."\" class=\"col-auto\">Supprimer</a></td>
         </tr>";
-    
-          }
+      }
 ?>
       </table>
       <script>
