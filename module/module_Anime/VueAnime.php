@@ -36,7 +36,6 @@ class VueAnime extends VueIndex{
 
 
 		    		 if($arrayGenre){
-						/*echo "<h2>Genre :</h2></br>";*/
 						foreach ($arrayGenre as $keyG) {
 							echo " - ".$keyG['NomGenre']."</br>";
 						}
@@ -185,20 +184,6 @@ class VueAnime extends VueIndex{
 					if($key['nbEpisodes']!=NULL || $key['nbEpisodes']!=0){
 						echo "<h3>Nombre total d'épisode :</h3> ".$key['nbEpisodes']."<br/>";
 					}
-					/*if($key['nomStudio']!=NULL){
-						echo "<h3>Nom du Studio d'Animation :</h3> ".$key['nomStudio']."<br/>";
-					}
-					echo "<br/>";*/
-
-					
-					
-
-
-
-
-
-
-
 
             
 	            echo"<div class=\"form-commentaire\">
