@@ -68,15 +68,18 @@ class ContClub{
 	    }
 	}
 
-    public function supprimerCommentaire($id){
-    	$this->vue->result($this->modele->retirerCommentaire($id));
+    public function supprimerCommentaire($idCo,$idClub){
+    	$this->modele->retirerCommentaire($idCo);
+    	$this->detailClub($idClub);
+
+
     }
 
     public function detailClub($id) {
 	    	$this->vue->afficheImage($this->modele->getClub($id));
 			$this->vue->afficheCommentaire($this->modele->getCommentaire($id), $this->modele->getClub($id));
-			$this->vue->afficheButtonRejoindre($this->modele->getClub($id));
-			$this->vue->afficheButtonQuitter($this->modele->getClub($id));
+			$this->vue->afficheButtonRejoindre($this->modele->getClub($id),$this->modele->dejaAdherentDuClub($id,$_SESSION['idUtilisateur']));
+			$this->vue->afficheButtonQuitter($this->modele->getClub($id),$this->modele->dejaAdherentDuClub($id,$_SESSION['idUtilisateur']));
 			$this->vue->afficheNbAdherent($this->modele->getNbAdherent($id));
 			$this->vue->afficheUtilisateur($this->modele->getListeUtilisateur($id), $this->modele->getClub($id));
 	}
@@ -86,25 +89,26 @@ class ContClub{
 	}
 
 	public function InsertionClub(){
-    	$this->vue->result($this->modele->insertClub());
+    	$this->modele->insertClub();
+
 	}
 
 	public function SuppressionClub($idClub){
-		$this->vue->result($this->modele->suppressionClub($idClub));
+		$this->modele->suppressionClub($idClub);
 	}
 
 	public function modifClub($id){
 		$this->vue->formulaireUpdateClub($id);
+
 	}
 
 	public function modifClubEnCours($id){
 		$this->modele->updateClub($id);
+		$this->detailClub($id);
+
 	}
 
-/*	public function banUser($id) {
-		$this->modele->bannir($id, $id);
-		$this->detailClub($id);
-	}*/
+
 
 }
 

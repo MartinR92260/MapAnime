@@ -28,8 +28,9 @@ class ModClub{
 					$this->cont->insererCommentaire($id);
 				break;
 				case "SupprimerCommentaire":
-					$id=htmlspecialchars($_GET['id']);
-					$this->cont->supprimerCommentaire($id);
+					$idCo=htmlspecialchars($_GET['idCo']);
+					$idClub=htmlspecialchars($_GET['idClub']);
+					$this->cont->supprimerCommentaire($idCo,$idClub);
 				break;
 				case "AjoutClub":
 					$this->cont->AjouterClub();
